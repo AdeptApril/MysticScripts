@@ -1,3 +1,5 @@
+# -*- coding: CP437 -*-
+
 ## This is a modified version of the testpython.mpy file
 ## The intent is to eventually only have functions made by April,
 ## but this is meant as a quick-start sort of thing in order to
@@ -36,14 +38,15 @@ def count_to_n():
 	count = 0
 	#write(input)
 
-	try: #This try/except loop does not seem to work
-		while count <= int(input):
-			write('|[X01|[Y02|16|12' + str(count))
-			delay(5)
-			count = count + 1
-	except (KeyboardInterrupt):
-		count = int(input)
-		pass
+	#try: #This try/except loop does not seem to work
+	while count <= int(input):
+		writeln('|[X01|[Y02|16|12' + str(count))
+		#writeln(str(count))
+		getkey()
+		count = count + 1
+	#except (KeyboardInterrupt):
+	#	count = int(input)
+	#	pass
 		
 	writeln('')
 	writeln('Count Finished')
@@ -52,6 +55,155 @@ def count_to_n():
 	ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
  	backspace(wherex(), True)
+
+################################
+## CUSTOM FUNCTION: Go ##
+################################
+# Attempting to make a correspondance Go (Weiqi, Baduk) program
+# First step: Display Go board of a certain size
+def play_go():
+
+	write('|CL|CR|09What is the width of the board? ')
+	width = int(getstr(11, 40, 120, "3"))
+	writeln("|00|16|CL")
+
+	n = width * 2 - 1
+	row = 1
+	col = 1
+	count = 0
+	#write(input)
+
+	while(row <= n+1):
+		#This version works up through 12 lines on a 25-line screen.
+		#larger boards should not have the spaces and - characters
+		count = count + 1
+		if(row == n+1 and col == n):
+			writeln(chr(ord('A') + col - 1))
+		elif(row == n+1):
+			write(chr(ord('A') + col - 1))
+		elif( row == 1 and col == 1):
+			write("|00|22+")
+			#write("|00|22" + str(count))
+		#elif( row == n and col == n): #Not necessary
+			#writeln("+" + str(row%10))
+			#write(str(count))
+		elif( col == n):
+			writeln("+" + str(row))
+		elif( row % 2 == 1 and col % 2 == 1 ):
+			write("+")
+		elif( row % 2 == 1):
+			write("-")
+		elif(col % 2 == 1):
+			write("+")
+		else:
+			write(" ")
+			
+		#move on to the next character
+		col = col + 1
+		if(col > n):
+			#writeln()
+			col = 1
+			row = row + 1
+		
+	writeln('')
+	writeln('Board displayed')
+	write("|07*PAUSE*")
+ 
+	ch = onekey(chr(13) + 'Q', False)
+ 	# after getting input, erase the pause prompt then process the input
+ 	backspace(wherex(), True)
+
+
+################################
+## CUSTOM FUNCTION: DISPLAY FUNCTION RESULTS ##
+################################
+
+def function_results():
+
+	writeln("|15|16|CL|17 Testing functions |16|CR")
+
+	writeln("getcfg: ")
+	temp = getcfg()
+	writeln(str(temp))
+	writeln()
+	
+	writeln("getfbase: ")
+	temp = getfbase()
+	writeln(str(temp))
+	writeln()
+	 
+	writeln("getfbaseid: ")
+	temp = getfbaseid()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getfgroup: ")
+	temp = getfgroup()
+	writeln(str(temp))
+	writeln()
+	
+	writeln("getfgroupid: ")
+	temp = getfgroupid()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getkey: ")
+	temp = getkey()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getmbase: ")
+	temp = getmbase()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getmbaseid: ")
+	temp = getmbaseid()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getmgroup: ")
+	temp = getmgroup()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getmgroupid: ")
+	temp = getmgroupid()
+	writeln(str(temp))
+	writeln()
+
+	#writeln("getnetaddr: ")
+	#temp = getnetaddr()
+	#writeln(str(temp))
+	#writeln()
+
+	writeln("getprompt: ")
+	temp = getprompt()
+	writeln(str(temp))
+	writeln()
+
+	writeln("getstr: ")
+	temp = getstr()
+	writeln(str(temp))
+	writeln()
+
+	#getuser() and getuserid() result in infinite loops, though data does display
+	#writeln("getuser: ")
+	#temp = getuser()
+	#writeln(str(temp))
+	#writeln()
+
+	#writeln("getuserid: ")
+	#temp = getuserid()
+	#writeln(str(temp))
+	#writeln()
+
+	writeln("getyn: ")
+	temp = getyn()
+	writeln(str(temp))
+	writeln()
+
+	write("|CR|14Done!|CR|CR|PA")
 
 
 
@@ -155,11 +307,13 @@ def show_main_menu():
 		writeln("  |09(|11I|09) Input Demo")
 		writeln("  |09(|11U|09) User List")
 		writeln("  |09(|11C|09) Count to n")
+		writeln("  |09(|11G|09) Play Go")
+		writeln("  |09(|11F|09) Function Testing")
 		write  ("|CREnter option (|11Q|09/|11Quit|09): |11")
 
 		# get one character input using defined list of valid keys
 
-		char = onekey("CIQU", True)
+		char = onekey("CFGIQU", True)
 
 		if char == "I":
 			do_input_demo()
@@ -173,6 +327,11 @@ def show_main_menu():
 		if char == "C":
 		    count_to_n()
 
+		if char == "G":
+		    play_go()
+			
+		if char == "F":
+			function_results()
 		
 
 ###################################
