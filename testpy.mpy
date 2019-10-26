@@ -11,6 +11,9 @@
 
 from mystic_bbs import *
 
+import os, os.path, sys, fnmatch, glob, re
+import time, socket, errno, string, platform, traceback
+
 KEY_UP       = chr(72)       # Some keyboard code defines returned by input functions
 KEY_DOWN     = chr(80)
 KEY_ESCAPE   = chr(27)
@@ -22,6 +25,36 @@ KEY_RIGHT    = chr(77)
 user_deleted = int("00000004")  # user deleted flag from records.pas
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
+
+################################
+## CUSTOM FUNCTION: Lightning Bolt ##
+################################
+def lightning_bolt():
+	
+	n = 9
+	count = 0
+	#write(input)
+
+	while count <= n:
+		write('|[X1' + str(count%10) + '|[Y1' + str(count%10) + '|16|14' + chr(219))
+		delay(1)
+		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
+		getkey()
+		count = count + 1
+	
+	count = 0
+	while count <= n:
+		write('|[X1' + str(count%10) + '|[Y1' + str(count%10) + '|16|00' + chr(219))
+		delay(1)
+		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
+		getkey()
+		count = count + 1
+		
+	write("|07*PAUSE*")
+ 
+	ch = onekey(chr(13) + 'Q', False)
+ 	# after getting input, erase the pause prompt then process the input
+ 	backspace(wherex(), True)
 
 ################################
 ## CUSTOM FUNCTION: Count to n ##
@@ -40,8 +73,10 @@ def count_to_n():
 
 	#try: #This try/except loop does not seem to work
 	while count <= int(input):
-		writeln('|[X01|[Y02|16|12' + str(count))
+		write('|[X01|[Y02|16|12' + str(count))
+		delay(5)
 		#writeln(str(count))
+		stuffkey("A")
 		getkey()
 		count = count + 1
 	#except (KeyboardInterrupt):
@@ -84,9 +119,6 @@ def play_go():
 		elif( row == 1 and col == 1):
 			write("|00|22+")
 			#write("|00|22" + str(count))
-		#elif( row == n and col == n): #Not necessary
-			#writeln("+" + str(row%10))
-			#write(str(count))
 		elif( col == n):
 			writeln("+" + str(row))
 		elif( row % 2 == 1 and col % 2 == 1 ):
@@ -309,11 +341,12 @@ def show_main_menu():
 		writeln("  |09(|11C|09) Count to n")
 		writeln("  |09(|11G|09) Play Go")
 		writeln("  |09(|11F|09) Function Testing")
+		writeln("  |09(|11L|09) Lightning Bolt")
 		write  ("|CREnter option (|11Q|09/|11Quit|09): |11")
 
 		# get one character input using defined list of valid keys
 
-		char = onekey("CFGIQU", True)
+		char = onekey("CFGILQU", True)
 
 		if char == "I":
 			do_input_demo()
@@ -332,6 +365,9 @@ def show_main_menu():
 			
 		if char == "F":
 			function_results()
+			
+		if char == "L":
+			lightning_bolt()
 		
 
 ###################################
