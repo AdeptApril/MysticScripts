@@ -1,0 +1,145 @@
+# -*- coding: CP437 -*-
+
+## LIGHTNING BOLT PYTHON FUNCTION FOR MYSTIC BBS
+## By April Monoceros / Adept from Storm BBS (stormbbs.com)
+## Version 0.1 released 2019-Oct-2019
+##
+## Display a number of lightning strikes
+## See the global variable section for configuration options
+##
+
+##############################################################
+## INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
+##############################################################
+
+from mystic_bbs import *
+import random
+
+NUMBER_OF_LIGHTNING_STRIKES = 1
+MAX_X = 79 # Column not to go past on the right side of the screen
+MAX_LENGTH = 20 # Max loops of the while loop creating the bolt placement. Failsafe, but also length of the lightning bolt.
+SLOW_STRIKE = True #True has a delay to slow down the lightning strike
+DELAY_STRIKES = False #true if delay wanted between strikes - mostly useful if SLOW_STRIKE is False
+DELAY_BETWEEN_STRIKES = 30 #only matters if DELAY_STRIKES is true
+
+################################
+## Lightning Bolt             ##
+################################
+
+def lightning_bolt():
+	
+	i = 0
+	startx = random.randint(0,80)	
+	starty = random.randint(0,15) 	#Point to display first 
+	currx = startx	#
+	curry = starty 	# Current point on way to endx/y
+	endx = random.randint(0,80)	#
+	endy = random.randint(starty + 1, 23)	#Point to end up at
+	pointlist = [startx, starty]	#array starting with the start values. Will contain all points of the bolt
+									#Could have another list with the characters being overwritten, with the intent of putting them back
+	left_chance = 1		#Idea is to have a random number from 1 to 10, if it's <= left_chance, bolt will go left
+	right_chance = 6	#if it's >= right_chance, bolt will go right, between the two it stays centered
+	down_chance = 9		#random number between 1 and 10, will go down if <= down_chance
+	
+	#Randomly move the currx/y until arriving at the end point, appending to pointlist as it goes along
+	while( curry <= endy and i < MAX_LENGTH):
+		i = i + 1
+		#Generate random numbers for left/right/down_chance
+		rollx = random.randint(1,11)
+		rolly = random.randint(1,11)
+		
+		#Move currx appropriately
+		if(rollx <= left_chance and currx > 0):
+			currx = currx - 1
+		elif(rollx >= right_chance and currx < MAX_X):
+			currx = currx + 1
+		#else:				#Default is to stay in the center
+		#	currx = currx
+		
+		#Move curry appropriately
+		if(rolly <= down_chance and (curry <= endy-1 or currx == endx or currx + 1 == endx or currx - 1 == endx)):
+			curry = curry + 1
+		#else:				#Default is to stay on the same line (yes this means that currx and curry might not change, and could be wasteful.
+		
+		#add results to pointlist
+		pointlist.append(currx)
+		pointlist.append(curry)
+		
+		#Further adjustments (if desired)
+		#Perhaps change left/right/down_chance depending on where currx/y are in comparison to endx/y
+		
+		#Make it more likely to go toward endx if greater than 5 columns away
+		if(currx + 5 < endx):
+			left_chance = left_chance - 1
+			right_chance = right_chance - 1
+		elif(currx - 5 > endx):
+			left_chance = left_chance + 1
+			right_chance = right_chance + 1
+		#...but if within 2 columns, default to a central number
+		elif(currx + 2 >= endx and currx - 2 <= endx):
+			left_chance = 3
+			right_chance = 8
+		
+		#If next to the last line, make sure x is going the right way
+		if(curry + 1 >= endy):
+			if(currx < endx):
+				left_chance = -1
+				right_chance = 0
+			elif(currx > endx):
+				left_chance = 10
+				right_chance = 11
+		
+	
+	#Write out the lightning bolt 
+	i = 0
+	xval = '0'
+	yval = '0'
+	while(i < len(pointlist)):
+		if(pointlist[i] < 10):
+			xval = '0' + str(pointlist[i])
+		else:
+			xval = str(pointlist[i])
+			
+		if(pointlist[i + 1] < 10):
+			yval = '0' + str(pointlist[i+1])
+		else:
+			yval = str(pointlist[i+1])
+			
+		write('|[X' + xval + '|[Y' + yval + '|16|14' + chr(219))
+		if(SLOW_STRIKE):
+			delay(1)
+		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
+		getkey()
+		i = i + 2
+	
+	#Erase the lightning bolt
+	if(DELAY_STRIKES):
+		delay(DELAY_BETWEEN_STRIKES)
+	i = 0
+	xval = '0'
+	yval = '0'
+	while(i < len(pointlist)):
+		if(pointlist[i] < 10):
+			xval = '0' + str(pointlist[i])
+		else:
+			xval = str(pointlist[i])
+			
+		if(pointlist[i + 1] < 10):
+			yval = '0' + str(pointlist[i+1])
+		else:
+			yval = str(pointlist[i+1])
+			
+		write('|[X' + xval + '|[Y' + yval + '|16|00' + chr(219))
+		#Can uncomment this if wiping should be slower
+		#if(SLOW_STRIKE):
+		#	delay(1)
+		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
+		getkey()
+		i = i + 2
+	
+###################################
+## PROGRAM EXECUTION BEGINS HERE ##
+###################################
+
+for x in range(0,NUMBER_OF_LIGHTNING_STRIKES):
+	lightning_bolt()
