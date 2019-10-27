@@ -10,9 +10,12 @@
 ##############################################################
 
 from mystic_bbs import *
+import random
 
-import os, os.path, sys, fnmatch, glob, re
-import time, socket, errno, string, platform, traceback
+#The following were used in the MRC client, and leaving them for a bit as
+#a possible prompt for future ideas
+#import os, os.path, sys, fnmatch, glob, re
+#import time, socket, errno, string, platform, traceback
 
 KEY_UP       = chr(72)       # Some keyboard code defines returned by input functions
 KEY_DOWN     = chr(80)
@@ -22,18 +25,23 @@ KEY_TAB      = chr(9)
 KEY_LEFT     = chr(75)
 KEY_RIGHT    = chr(77)
 
-user_deleted = int("00000004")  # user deleted flag from records.pas
-
+#The following were used in the user list item from testpython.mpy, but
+#Are not currently used anywhere in here.
+#user_deleted = int("00000004")  # user deleted flag from records.pas
 thisuser = getuser(0);    # read the currently logged in user into thisuser
 
 ################################
-## CUSTOM FUNCTION: Lightning Bolt ##
+## CUSTOM FUNCTION: Lightning Bolt attempt 1 - proof of concept##
 ################################
-def lightning_bolt():
+def lightning_bolt1():
 	
 	n = 9
 	count = 0
 	#write(input)
+	#TODO: Idea - Use random.randint(1,11), and if it's 1 to 7, go down,
+	#8 to 10, go right (maybe some other version that splits)
+	#And then store the numbers in a 2D array, so that it can be blacked out afterward
+	#Perhaps just make the 2D array directly (easier to add the '0' if needed, rather than hard coding it), then iterate through the array twice.
 
 	while count <= n:
 		write('|[X1' + str(count%10) + '|[Y1' + str(count%10) + '|16|14' + chr(219))
@@ -55,6 +63,128 @@ def lightning_bolt():
 	ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
  	backspace(wherex(), True)
+
+################################
+## CUSTOM FUNCTION: Lightning Bolt attempt2##
+################################
+# Take a start point and end point (perhaps eventually with user input)
+# Create an array that's a set of points
+
+#Including some enums (or whatever python calls #define-type things) here because of assuming this'll be broken out into its own file eventually
+MAX_X = 79 # Column not to go past on the right side of the screen
+MAX_LENGTH = 10 # Max loops of the while loop creating the bolt placement. Failsafe.
+
+def lightning_bolt():
+	
+	i = 0
+	startx = random.randint(0,80)	
+	starty = random.randint(0,15) 	#Point to display first 
+	currx = startx	#
+	curry = starty 	# Current point on way to endx/y
+	endx = random.randint(0,80)	#
+	endy = random.randint(starty + 1, 23)	#Point to end up at
+	pointlist = [startx, starty]	#array starting with the start values. Will contain all points of the bolt
+									#Could have another list with the characters being overwritten, with the intent of putting them back
+	left_chance = 1		#Idea is to have a random number from 1 to 10, if it's <= left_chance, bolt will go left
+	right_chance = 6	#if it's >= right_chance, bolt will go right, between the two it stays centered
+	down_chance = 9		#random number between 1 and 10, will go down if <= down_chance
+	
+	#Randomly move the currx/y until arriving at the end point, appending to pointlist as it goes along
+	while( curry <= endy and i < MAX_LENGTH):
+		i = i + 1
+		#Generate random numbers for left/right/down_chance
+		rollx = random.randint(1,11)
+		rolly = random.randint(1,11)
+		
+		#Move currx appropriately
+		if(rollx <= left_chance and currx > 0):
+			currx = currx - 1
+		elif(rollx >= right_chance and currx < MAX_X):
+			currx = currx + 1
+		#else:				#Default is to stay in the center
+		#	currx = currx
+		
+		#Move curry appropriately
+		if(rolly <= down_chance and (curry <= endy-1 or currx == endx or currx + 1 == endx or currx - 1 == endx)):
+			curry = curry + 1
+		#else:				#Default is to stay on the same line (yes this means that currx and curry might not change, and could be wasteful.
+		
+		#add results to pointlist
+		pointlist.append(currx)
+		pointlist.append(curry)
+		
+		#Further adjustments (if desired)
+		#Perhaps change left/right/down_chance depending on where currx/y are in comparison to endx/y
+		
+		#Make it more likely to go toward endx if greater than 5 columns away
+		if(currx + 5 < endx):
+			left_chance = left_chance - 1
+			right_chance = right_chance - 1
+		elif(currx - 5 > endx):
+			left_chance = left_chance + 1
+			right_chance = right_chance + 1
+		#...but if within 2 columns, default to a central number
+		elif(currx + 2 >= endx and currx - 2 <= endx):
+			left_chance = 3
+			right_chance = 8
+		
+		#If next to the last line, make sure x is going the right way
+		if(curry + 1 >= endy):
+			if(currx < endx):
+				left_chance = -1
+				right_chance = 0
+			elif(currx > endx):
+				left_chance = 10
+				right_chance = 11
+		
+	
+	#Write out the lightning bolt 
+	i = 0
+	xval = '0'
+	yval = '0'
+	while(i < len(pointlist)):
+		if(pointlist[i] < 10):
+			xval = '0' + str(pointlist[i])
+		else:
+			xval = str(pointlist[i])
+			
+		if(pointlist[i + 1] < 10):
+			yval = '0' + str(pointlist[i+1])
+		else:
+			yval = str(pointlist[i+1])
+			
+		write('|[X' + xval + '|[Y' + yval + '|16|14' + chr(219))
+		delay(1)
+		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
+		getkey()
+		i = i + 2
+	
+	#Erase the lightning bolt
+	i = 0
+	xval = '0'
+	yval = '0'
+	while(i < len(pointlist)):
+		if(pointlist[i] < 10):
+			xval = '0' + str(pointlist[i])
+		else:
+			xval = str(pointlist[i])
+			
+		if(pointlist[i + 1] < 10):
+			yval = '0' + str(pointlist[i+1])
+		else:
+			yval = str(pointlist[i+1])
+			
+		write('|[X' + xval + '|[Y' + yval + '|16|00' + chr(219))
+		delay(1)
+		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
+		getkey()
+		i = i + 2
+	
+	#Finish/exit
+	#write("|07*PAUSE*")
+	#ch = onekey(chr(13) + 'Q', False)
+ 	# after getting input, erase the pause prompt then process the input
+ 	#backspace(wherex(), True)
 
 ################################
 ## CUSTOM FUNCTION: Count to n ##
@@ -237,94 +367,6 @@ def function_results():
 
 	write("|CR|14Done!|CR|CR|PA")
 
-
-
-################################
-## CUSTOM FUNCTION: USER LIST ##
-################################
-
-def show_user_list():
-
-	writeln("|15|16|CL|17 Python Demonstration Program > User Listing|$X79 |16|CR")
-
-	count = 1
-	user  = getuser(count)
-	shown = 0
-
-	while not user is None:
-
-		if not user["flags"] & user_deleted:
-
-			writeln(user["handle"])
-			shown = shown + 1
-
-		count = count + 1
-		user  = getuser(count)	
-
-	write("|CR|14Listed |15" + str(shown) + " |14user(s)|CR|CR|PA")
-
-
-
-################################
-## CUSTOM FUNCTION: BOX DEMO  ##
-################################
-
-def do_box_demo():
-
-	box = box_options()
-
-	box["header"]  = " Demo Box "
-	box["restore"] = False
-
-	writeln(str(box["attr1"]) + "|PN")
-
-	#box_open  (box, 20, 3, 60, 9)
-	#box_close (box)
-
-
-#################################
-## CUSTOM FUNCTION: INPUT DEMO ##
-#################################
-
-def do_input_demo():
-
-	writeln("|15|16|CL|17 Python Demonstration Program > Input Demo|$X79 |16")
-
-	write('|CR|09Type a string: ');
-
-	input = getstr(11, 40, 120, "Default");
-
-	writeln("|CR|13Enter characters and press |05[|15ESCAPE|15|05] |13when done:|07|CR")
-
-	while not shutdown():
-
-		char, extended = getkey();
-
-		if extended:
-
-			if char == KEY_UP:
-				writeln("you pressed up arrow");
-			elif char == KEY_DOWN:
-				writeln("you pressed down arrow");
-			elif char == KEY_LEFT:
-				writeln("you pressed left arrow");
-			elif char == KEY_RIGHT:
-				writeln("you pressed right arrow");
-			else:
-				writeln("You pressed extended key #" + str(ord(char)))
-
-		else:
-			if char == KEY_ESCAPE:
-				writeln("you pressed ESCAPE");
-				break;
-			elif char == KEY_ENTER:
-				writeln("you pressed enter");
-			elif char == KEY_TAB:
-				writeln("you pressed tab");
-			else:
-				writeln("you pressed character " + char);
-
-
 ################################
 ## CUSTOM FUNCTION: MAIN MENU ##
 ################################
@@ -333,11 +375,9 @@ def show_main_menu():
 
 	while not shutdown():
 
-		writeln("|15|16|CL|17 Python Demonstration Program > Main Menu|$X79 |16")
+		writeln("|15|16|CL|17 April's Python Testing Ground > Main Menu|$X79 |16")
 
 		writeln("|CR|15Hello, |14" + thisuser["handle"] + " #" + str(thisuser["id"]) + "|15!  Please select one of the following options:|CR")
-		writeln("  |09(|11I|09) Input Demo")
-		writeln("  |09(|11U|09) User List")
 		writeln("  |09(|11C|09) Count to n")
 		writeln("  |09(|11G|09) Play Go")
 		writeln("  |09(|11F|09) Function Testing")
@@ -346,16 +386,10 @@ def show_main_menu():
 
 		# get one character input using defined list of valid keys
 
-		char = onekey("CFGILQU", True)
-
-		if char == "I":
-			do_input_demo()
+		char = onekey("CFGLQ", True)
 
 		if char == "Q":
 			break
-
-		if char ==  "U":
-			show_user_list()
 
 		if char == "C":
 		    count_to_n()
@@ -367,7 +401,8 @@ def show_main_menu():
 			function_results()
 			
 		if char == "L":
-			lightning_bolt()
+			for x in range(0,3):
+				lightning_bolt()
 		
 
 ###################################
