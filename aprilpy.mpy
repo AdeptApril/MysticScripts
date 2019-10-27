@@ -232,33 +232,48 @@ def play_go():
 	width = int(getstr(11, 40, 120, "3"))
 	writeln("|00|16|CL")
 
-	n = width * 2 - 1
+	n = width
 	row = 1
 	col = 1
 	count = 0
 	#write(input)
 
 	while(row <= n+1):
-		#This version works up through 12 lines on a 25-line screen.
 		#larger boards should not have the spaces and - characters
 		count = count + 1
+		#last letter in the bottom row
 		if(row == n+1 and col == n):
 			writeln(chr(ord('A') + col - 1))
+		#last row (all letters)
 		elif(row == n+1):
 			write(chr(ord('A') + col - 1))
+		#top-left corner
 		elif( row == 1 and col == 1):
-			write("|00|22+")
-			#write("|00|22" + str(count))
+			write("|00|22" + chr(218))
+		#top-right corner of board
+		elif( row == 1 and col == n):
+			writeln("|00|22" + chr(191) + str(row))
+		#bottom-left corner of board
+		elif( row == n and col == 1):
+			write("|00|22" + chr(192))
+		#bottom-right corner of board
+		elif( row == n and col == n):
+			writeln("|00|22" + chr(217) + str(row))
+		#bottom row, normal column of board
+		elif( row == n):
+			write("|00|22" + chr(193))
+		#top row, normal column of board
+		elif( row == 1 ):
+			write("|00|22" + chr(194))
+		#right side
 		elif( col == n):
-			writeln("+" + str(row))
-		elif( row % 2 == 1 and col % 2 == 1 ):
-			write("+")
-		elif( row % 2 == 1):
-			write("-")
-		elif(col % 2 == 1):
-			write("+")
+			writeln(chr(180) + str(row))
+		#left side
+		elif( col == 1):
+			write(chr(195))
+		#normal row/column
 		else:
-			write(" ")
+			write(chr(197))
 			
 		#move on to the next character
 		col = col + 1
