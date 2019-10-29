@@ -225,19 +225,32 @@ def count_to_n():
 ## CUSTOM FUNCTION: Go ##
 ################################
 # Attempting to make a correspondance Go (Weiqi, Baduk) program
-# First step: Display Go board of a certain size
+# First step: Display Go board of a certain size - Done
+# Second step: Display black pieces on board when given coordinates
+# Known issues:
+# any size board allowed, some would not work, and incorrect input will crash the program
+# Combinations other than A## for move_pos will return bad input (And also should check for positions not on the board)
 def play_go():
 
 	write('|CL|CR|09What is the width of the board? ')
 	width = int(getstr(11, 40, 120, "3"))
 	writeln("|00|16|CL")
 
+	display_base_board(width)
+	
+	move_pos = getstr(11, 5, 5, "A1")
+	 
+	ch = onekey(chr(13) + 'Q', False)
+ 	# after getting input, erase the pause prompt then process the input
+ 	backspace(wherex(), True)
+
+
+def display_base_board(width):
 	n = width
 	row = 1
 	col = 1
 	count = 0
 	#write(input)
-
 	while(row <= n+1):
 		#larger boards should not have the spaces and - characters
 		count = count + 1
@@ -282,14 +295,16 @@ def play_go():
 			col = 1
 			row = row + 1
 		
-	writeln('')
-	writeln('Board displayed')
-	write("|07*PAUSE*")
- 
-	ch = onekey(chr(13) + 'Q', False)
- 	# after getting input, erase the pause prompt then process the input
- 	backspace(wherex(), True)
+	#writeln('')
+	#writeln('Board displayed')
+	#write("|07*PAUSE*")
 
+#Convert int to 2-digit string
+def int_to_2str(num):
+	if(num < 10):
+		return '0' + str(num)
+	else:
+		return str(num)
 
 ################################
 ## CUSTOM FUNCTION: DISPLAY FUNCTION RESULTS ##
