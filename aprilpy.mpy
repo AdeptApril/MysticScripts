@@ -234,16 +234,35 @@ def play_go():
 
 	write('|CL|CR|09What is the width of the board? ')
 	width = int(getstr(11, 40, 120, "3"))
-	writeln("|00|16|CL")
+	write("|00|16|CL")
 
+	#TODO: Create a 2d array of ANSI characters for the board at any given position
+	#Probably have this as a return from the display_base_board function (though the name might be off, then)
+	#This would allow for correcting the board after taking a piece
+	#This could be done in a ton of other ways (including ones that take less memory)
 	display_base_board(width)
-	
-	move_pos = getstr(11, 5, 5, "A1")
+	while(True):
+		gotoxy(27, 1)
+		move_pos = getstr(11, 5, 5, "A1")
+		if(move_pos.upper() == 'Q'):
+			break
+		#TODO: if outside bounds, continue loop
+		col = move_pos[0].upper()
+		row = move_pos[1:]
+		#writeln("Move position: " + col + " " + row)
+		place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), "white")
 	 
-	ch = onekey(chr(13) + 'Q', False)
+	#ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
- 	backspace(wherex(), True)
+ 	#backspace(wherex(), True)
 
+def place_stone(col, row, color):
+	gotoxy(27,2)
+	write("Move position: " + color + " at " + col + " " + row)
+	if(color == "black"):
+		write('|[X' + col + '|[Y' + row + '|22|00' + chr(254))
+	elif(color == "white"):
+		write('|[X' + col + '|[Y' + row + '|22|15' + chr(254))
 
 def display_base_board(width):
 	n = width
