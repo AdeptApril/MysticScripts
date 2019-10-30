@@ -11,6 +11,7 @@
 
 from mystic_bbs import *
 import random
+#import numpy # For use to make 2D arrays (e.g., a = numpy.empty((10,10)); a.fill(foo))
 
 #The following were used in the MRC client, and leaving them for a bit as
 #a possible prompt for future ideas
@@ -227,6 +228,8 @@ def count_to_n():
 # Attempting to make a correspondance Go (Weiqi, Baduk) program
 # First step: Display Go board of a certain size - Done
 # Second step: Display black pieces on board when given coordinates
+# Step: switch color after each move
+# Step: keep track of moves in game
 # Known issues:
 # any size board allowed, some would not work, and incorrect input will crash the program
 # Combinations other than A## for move_pos will return bad input (And also should check for positions not on the board)
@@ -240,7 +243,8 @@ def play_go():
 	#Probably have this as a return from the display_base_board function (though the name might be off, then)
 	#This would allow for correcting the board after taking a piece
 	#This could be done in a ton of other ways (including ones that take less memory)
-	display_base_board(width)
+	baseboard = display_base_board(width)
+	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
 	while(True):
 		gotoxy(27, 1)
 		move_pos = getstr(11, 5, 5, "A1")
@@ -250,7 +254,11 @@ def play_go():
 		col = move_pos[0].upper()
 		row = move_pos[1:]
 		#writeln("Move position: " + col + " " + row)
-		place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), "white")
+		place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
+		if(color_of_move == "black"):
+			color_of_move = "white"
+		else:
+			color_of_move = "black"
 	 
 	#ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
@@ -265,6 +273,9 @@ def place_stone(col, row, color):
 		write('|[X' + col + '|[Y' + row + '|22|15' + chr(254))
 
 def display_base_board(width):
+	board = 0 #TODO: This is wrong, but numpy isn't working quite yet, so delaying the feature for now
+	#board = numpy.empty((width, width))
+	#board.fill("|00|22" + chr(197))
 	n = width
 	row = 1
 	col = 1
@@ -299,13 +310,13 @@ def display_base_board(width):
 			write("|00|22" + chr(194))
 		#right side
 		elif( col == n):
-			writeln(chr(180) + str(row))
+			writeln("|00|22" + chr(180) + str(row))
 		#left side
 		elif( col == 1):
-			write(chr(195))
+			write("|00|22" + chr(195))
 		#normal row/column
 		else:
-			write(chr(197))
+			write("|00|22" + chr(197))
 			
 		#move on to the next character
 		col = col + 1
@@ -317,6 +328,7 @@ def display_base_board(width):
 	#writeln('')
 	#writeln('Board displayed')
 	#write("|07*PAUSE*")
+	return board
 
 #Convert int to 2-digit string
 def int_to_2str(num):
