@@ -229,12 +229,12 @@ def count_to_n():
 # First step: Display Go board of a certain size - Done
 # Second step: Display black pieces on board when given coordinates
 # Step: switch color after each move
-# Step: keep track of moves in game
+# Step: keep track of moves in game - perhaps use SGF format
 # Known issues:
 # any size board allowed, some would not work, and incorrect input will crash the program
 # Combinations other than A## for move_pos will return bad input (And also should check for positions not on the board)
 def play_go():
-
+	
 	write('|CL|CR|09What is the width of the board? ')
 	width = int(getstr(11, 40, 120, "3"))
 	write("|00|16|CL")
@@ -250,9 +250,13 @@ def play_go():
 		move_pos = getstr(11, 5, 5, "A1")
 		if(move_pos.upper() == 'Q'):
 			break
-		#TODO: if outside bounds, continue loop
 		col = move_pos[0].upper()
 		row = move_pos[1:]
+		#if outside bounds, continue loop
+		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
+			gotoxy(27,2) #TODO: get rid of the magic numbers
+			write("Position not on board. Please try another")
+			continue
 		#writeln("Move position: " + col + " " + row)
 		place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
 		if(color_of_move == "black"):
@@ -265,7 +269,7 @@ def play_go():
  	#backspace(wherex(), True)
 
 def place_stone(col, row, color):
-	gotoxy(27,2)
+	gotoxy(27,2) #TODO: get rid of the magic numbers
 	write("Move position: " + color + " at " + col + " " + row)
 	if(color == "black"):
 		write('|[X' + col + '|[Y' + row + '|22|00' + chr(254))
