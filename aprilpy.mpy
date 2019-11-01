@@ -12,6 +12,7 @@
 from mystic_bbs import *
 import random
 #import numpy # For use to make 2D arrays (e.g., a = numpy.empty((10,10)); a.fill(foo))
+#import ctypes
 
 #The following were used in the MRC client, and leaving them for a bit as
 #a possible prompt for future ideas
@@ -237,6 +238,10 @@ def play_go():
 	
 	write('|CL|CR|09What is the width of the board? ')
 	width = int(getstr(11, 40, 120, "3"))
+	if(width < 3 or width > 23):
+		gotoxy(1,3) #TODO: get rid of the magic numbers
+		write("Board size should be between 3 and 23. Returning.|PA")
+		return
 	write("|00|16|CL")
 
 	#TODO: Create a 2d array of ANSI characters for the board at any given position
@@ -267,6 +272,9 @@ def play_go():
 	#ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
  	#backspace(wherex(), True)
+
+def is_legal_move(board, width):
+	return True
 
 def place_stone(col, row, color):
 	gotoxy(27,2) #TODO: get rid of the magic numbers
