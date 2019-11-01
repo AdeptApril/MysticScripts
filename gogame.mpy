@@ -1,0 +1,189 @@
+# -*- coding: CP437 -*-
+
+## This is a modified version of the testpython.mpy file
+## The intent is to eventually only have functions made by April,
+## but this is meant as a quick-start sort of thing in order to
+## start seeing how the BBS handles various Python code.
+
+##############################################################
+## INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
+##############################################################
+
+from mystic_bbs import *
+import random
+
+KEY_UP       = chr(72)       # Some keyboard code defines returned by input functions
+KEY_DOWN     = chr(80)
+KEY_ESCAPE   = chr(27)
+KEY_ENTER    = chr(13)
+KEY_TAB      = chr(9)
+KEY_LEFT     = chr(75)
+KEY_RIGHT    = chr(77)
+
+thisuser = getuser(0);    # read the currently logged in user into thisuser
+
+################################
+## CUSTOM FUNCTION: Go ##
+################################
+# Attempting to make a correspondance Go (Weiqi, Baduk) program
+# First step: Display Go board of a certain size - Done
+# Second step: Display black pieces on board when given coordinates - Done
+# Step: switch color after each move - done
+# Step: Keep track of current board position
+# Step: See if piece already placed at requested location
+# Step: See if piece placed on empty square is a legal move 
+# Step: Deal with Ko
+# Step: keep track of moves in game - perhaps use SGF format
+# Known issues:
+# 
+def play_go():
+	
+	write('|CL|CR|09What is the width of the board? ')
+	width = int(getstr(11, 40, 120, "3"))
+	if(width < 3 or width > 23):
+		gotoxy(1,3) #TODO: get rid of the magic numbers
+		write("Board size should be between 3 and 23. Returning.|PA")
+		return
+	write("|00|16|CL")
+
+	#TODO: Create a 2d array of ANSI characters for the board at any given position
+	#Probably have this as a return from the display_base_board function (though the name might be off, then)
+	#This would allow for correcting the board after taking a piece
+	#This could be done in a ton of other ways (including ones that take less memory)
+	baseboard = display_base_board(width)
+	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
+	while(True):
+		gotoxy(27, 1)
+		move_pos = getstr(11, 5, 5, "A1")
+		if(move_pos.upper() == 'Q'):
+			break
+		col = move_pos[0].upper()
+		row = move_pos[1:]
+		#if outside bounds, continue loop
+		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
+			gotoxy(27,2) #TODO: get rid of the magic numbers
+			write("Position not on board. Please try another")
+			continue
+		#writeln("Move position: " + col + " " + row)
+		place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
+		if(color_of_move == "black"):
+			color_of_move = "white"
+		else:
+			color_of_move = "black"
+	 
+	#ch = onekey(chr(13) + 'Q', False)
+ 	# after getting input, erase the pause prompt then process the input
+ 	#backspace(wherex(), True)
+
+def is_legal_move(board, width):
+	return True
+
+def place_stone(col, row, color):
+	gotoxy(27,2) #TODO: get rid of the magic numbers
+	write("Move position: " + color + " at " + col + " " + row)
+	if(color == "black"):
+		write('|[X' + col + '|[Y' + row + '|22|00' + chr(254))
+	elif(color == "white"):
+		write('|[X' + col + '|[Y' + row + '|22|15' + chr(254))
+
+def display_base_board(width):
+	board = 0 #TODO: This is wrong, but numpy isn't working quite yet, so delaying the feature for now
+	#board = numpy.empty((width, width))
+	#board.fill("|00|22" + chr(197))
+	n = width
+	row = 1
+	col = 1
+	count = 0
+	#write(input)
+	while(row <= n+1):
+		#larger boards should not have the spaces and - characters
+		count = count + 1
+		#last letter in the bottom row
+		if(row == n+1 and col == n):
+			writeln(chr(ord('A') + col - 1))
+		#last row (all letters)
+		elif(row == n+1):
+			write(chr(ord('A') + col - 1))
+		#top-left corner
+		elif( row == 1 and col == 1):
+			write("|00|22" + chr(218))
+		#top-right corner of board
+		elif( row == 1 and col == n):
+			writeln("|00|22" + chr(191) + str(row))
+		#bottom-left corner of board
+		elif( row == n and col == 1):
+			write("|00|22" + chr(192))
+		#bottom-right corner of board
+		elif( row == n and col == n):
+			writeln("|00|22" + chr(217) + str(row))
+		#bottom row, normal column of board
+		elif( row == n):
+			write("|00|22" + chr(193))
+		#top row, normal column of board
+		elif( row == 1 ):
+			write("|00|22" + chr(194))
+		#right side
+		elif( col == n):
+			writeln("|00|22" + chr(180) + str(row))
+		#left side
+		elif( col == 1):
+			write("|00|22" + chr(195))
+		#normal row/column
+		else:
+			write("|00|22" + chr(197))
+			
+		#move on to the next character
+		col = col + 1
+		if(col > n):
+			#writeln()
+			col = 1
+			row = row + 1
+		
+	#writeln('')
+	#writeln('Board displayed')
+	#write("|07*PAUSE*")
+	return board
+
+########################################
+## Convert int into to 2-digit string ##
+########################################
+
+#Convert int to 2-digit string
+#This is used for positioning on the screen, as pipe codes allow choosing cursor location with X## and Y## text
+def int_to_2str(num):
+	if(num < 10):
+		return '0' + str(num)
+	else:
+		return str(num)
+
+################################
+## CUSTOM FUNCTION: MAIN MENU ##
+################################
+
+def show_main_menu():
+
+	while not shutdown():
+
+		writeln("|15|16|CL|17 BBS Go/Weiqi/Baduk > Main Menu|$X79 |16")
+
+		writeln("|CR|15Hello, |14" + thisuser["handle"] + " #" + str(thisuser["id"]) + "|15!  Please select one of the following options:|CR")
+		writeln("  |09(|11G|09) Play Go")
+		write  ("|CREnter option (|11Q|09/|11Quit|09): |11")
+
+		# get one character input using defined list of valid keys
+
+		char = onekey("GQ", True)
+
+		if char == "Q":
+			break
+
+		if char == "G":
+		    play_go()
+
+###################################
+## PROGRAM EXECUTION BEGINS HERE ##
+###################################
+
+show_main_menu()
+
+writeln("|CR|14Demo complete! |PA");
