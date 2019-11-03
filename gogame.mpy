@@ -47,11 +47,12 @@ def play_go():
 		return
 	write("|00|16|CL")
 
-	#TODO: Create a 2d array of ANSI characters for the board at any given position
 	#Probably have this as a return from the display_base_board function (though the name might be off, then)
 	#This would allow for correcting the board after taking a piece
 	#This could be done in a ton of other ways (including ones that take less memory)
 	baseboard = display_base_board(width)
+	#gameboard has 'n' for no stone/nothing, 'b' for black stone, and 'w' for white stone
+	gameboard = [['n' for i in range(width)] for j in range(width)]
 	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
 	while(True):
 		gotoxy(27, 1)
@@ -76,17 +77,28 @@ def play_go():
 			write("Position not on board. Please try another")
 			continue
 		#writeln("Move position: " + col + " " + row)
-		place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
-		if(color_of_move == "black"):
-			color_of_move = "white"
-		else:
-			color_of_move = "black"
+		if(is_legal_move(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+			place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
+			gameboard[ord(col) - 64 - 1][int(row)-1] = color_of_move[0] #board is base-0, color_of_move[0] should be 'b' or 'w'
+			if(color_of_move == "black"):
+				color_of_move = "white"
+			else:
+				color_of_move = "black"
 	 
 	#ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
  	#backspace(wherex(), True)
 
-def is_legal_move(board, width):
+#board is 2D array of 'n', 'b', or 'w' for whatever is on that spot on the board. 0-based
+#width is width of board
+#color should be 'n', 'b', or 'w'
+#col and row are ints, already turned into 0-base for the board.
+def is_legal_move(board, width, color, col, row):
+	#Not allowed: placing on top of already-placed piece
+	if(board[col][row] != 'n'):
+		gotoxy(27,2) #TODO: get rid of the magic numbers
+		write("Stone already there. Choose another position.")
+		return False
 	return True
 
 def place_stone(col, row, color):
