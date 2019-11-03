@@ -35,7 +35,8 @@ thisuser = getuser(0);    # read the currently logged in user into thisuser
 # Step: Deal with Ko
 # Step: keep track of moves in game - perhaps use SGF format
 # Known issues:
-# 
+# Text output not cleared before writing new info (e.g., "Position not on board. Please try another" displayed, then
+# "Move position: black at 03 03" displayed, but it becomes "Move position: black at 03 03 try another"
 def play_go():
 	
 	write('|CL|CR|09What is the width of the board? ')
@@ -55,6 +56,16 @@ def play_go():
 	while(True):
 		gotoxy(27, 1)
 		move_pos = getstr(11, 5, 5, "A1")
+		#'R' refreshes the board, and is also a test that baseboard has what it should have
+		#TODO: Remove this functionality when test is not needed.
+		if(move_pos.upper() == 'R'):
+			#output baseboard object to the screen
+			for i in range(width):
+				for j in range(width):
+					#+1 because baseboard is 0-based array, but the screen is 1-based
+					gotoxy(i+1, j+1)
+					write(baseboard[i][j])
+			continue
 		if(move_pos.upper() == 'Q'):
 			break
 		col = move_pos[0].upper()
@@ -86,15 +97,19 @@ def place_stone(col, row, color):
 	elif(color == "white"):
 		write('|[X' + col + '|[Y' + row + '|22|15' + chr(254))
 
+################################################################
+## Display base board and return 2D array of the visual board ##
+################################################################
 def display_base_board(width):
-	board = 0 #TODO: This is wrong, but numpy isn't working quite yet, so delaying the feature for now
-	#board = numpy.empty((width, width))
-	#board.fill("|00|22" + chr(197))
+	#Start with a board that has the ┼ character, along with the specified ANSI colors
+	#board is 0-based, display is 1-based
+	board = [["|00|22" + chr(197) for i in range(width)] for j in range(width)]
 	n = width
 	row = 1
 	col = 1
 	count = 0
 	#write(input)
+	#Run through the various possibilities, assigning as needed, both writing it to the screen and to the board object
 	while(row <= n+1):
 		#larger boards should not have the spaces and - characters
 		count = count + 1
@@ -107,30 +122,39 @@ def display_base_board(width):
 		#top-left corner
 		elif( row == 1 and col == 1):
 			write("|00|22" + chr(218))
+			board[col-1][row-1] = "|00|22" + chr(218)
 		#top-right corner of board
 		elif( row == 1 and col == n):
 			writeln("|00|22" + chr(191) + str(row))
+			board[col-1][row-1] = "|00|22" + chr(191)
 		#bottom-left corner of board
 		elif( row == n and col == 1):
 			write("|00|22" + chr(192))
+			board[col-1][row-1] = "|00|22" + chr(192)
 		#bottom-right corner of board
 		elif( row == n and col == n):
 			writeln("|00|22" + chr(217) + str(row))
+			board[col-1][row-1] = "|00|22" + chr(217)
 		#bottom row, normal column of board
 		elif( row == n):
 			write("|00|22" + chr(193))
+			board[col-1][row-1] = "|00|22" + chr(193)
 		#top row, normal column of board
 		elif( row == 1 ):
 			write("|00|22" + chr(194))
+			board[col-1][row-1] = "|00|22" + chr(194)
 		#right side
 		elif( col == n):
 			writeln("|00|22" + chr(180) + str(row))
+			board[col-1][row-1] = "|00|22" + chr(180)
 		#left side
 		elif( col == 1):
 			write("|00|22" + chr(195))
+			board[col-1][row-1] = "|00|22" + chr(195)
 		#normal row/column
 		else:
 			write("|00|22" + chr(197))
+			#board[col-1][row-1] = "|00|22" + chr(197) #This was already written when initializing board.
 			
 		#move on to the next character
 		col = col + 1
