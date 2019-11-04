@@ -45,14 +45,17 @@ thisuser = getuser(0);    # read the currently logged in user into thisuser
 # First step: Display Go board of a certain size - Done
 # Second step: Display black pieces on board when given coordinates - Done
 # Step: switch color after each move - done
-# Step: Keep track of current board position
-# Step: See if piece already placed at requested location
-# Step: See if piece placed on empty square is a legal move 
+# Step: Keep track of current board position - done
+# Step: See if piece already placed at requested location - done
+# Step: See if piece placed on empty square is a legal move - done
 # Step: Deal with Ko
 # Step: keep track of moves in game - perhaps use SGF format
+# Step: Allow for local play of the game
+# Step(s): Play against other users
+# Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Known issues:
-# Text output not cleared before writing new info (e.g., "Position not on board. Please try another" displayed, then
-# "Move position: black at 03 03" displayed, but it becomes "Move position: black at 03 03 try another"
+# the capture methods are running when there aren't captures (e.g., black stone played next to a black stone)
+# - this does not appear to be causing any harm to the board (either object or displayed image)
 def play_go():
 	
 	write('|CL|CR|09What is the width of the board? ')
