@@ -1,10 +1,5 @@
 # -*- coding: CP437 -*-
 
-## This is a modified version of the testpython.mpy file
-## The intent is to eventually only have functions made by April,
-## but this is meant as a quick-start sort of thing in order to
-## start seeing how the BBS handles various Python code.
-
 class BoardPosition:
 	'Simple 0-based set of ints to represent a board position'
 	
@@ -38,6 +33,8 @@ KEY_ENTER    = chr(13)
 KEY_TAB      = chr(9)
 KEY_LEFT     = chr(75)
 KEY_RIGHT    = chr(77)
+MESSAGE_POS_X = 27			#Where to place the message on the screen
+MESSAGE_POS_Y = 2
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
 
@@ -78,21 +75,21 @@ def play_go():
 		move_pos = getstr(11, 5, 5, "A1")
 		#'R' refreshes the board, and is also a test that baseboard has what it should have
 		#TODO: Remove this functionality when test is not needed.
-		if(move_pos.upper() == 'R'):
-			#output baseboard object to the screen
-			for i in range(width):
-				for j in range(width):
-					#+1 because baseboard is 0-based array, but the screen is 1-based
-					gotoxy(i+1, j+1)
-					write(baseboard[i][j])
-			continue
+		#if(move_pos.upper() == 'R'):
+		#	#output baseboard object to the screen
+		#	for i in range(width):
+		#		for j in range(width):
+		#			#+1 because baseboard is 0-based array, but the screen is 1-based
+		#			gotoxy(i+1, j+1)
+		#			write(baseboard[i][j])
+		#	continue
 		if(move_pos.upper() == 'Q'):
 			break
 		col = move_pos[0].upper()
 		row = move_pos[1:]
 		#if outside bounds, continue loop
 		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
-			gotoxy(27,2) #TODO: get rid of the magic numbers
+			gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
 			write("Position not on board. Please try another")
 			continue
 		#writeln("Move position: " + col + " " + row)
@@ -120,8 +117,8 @@ def play_go():
 def is_legal_move(board, width, color, col, row):
 	#Not allowed: placing on top of already-placed piece
 	if(board[col][row] != 'n'):
-		gotoxy(27,2) #TODO: get rid of the magic numbers
-		write("Stone already there. Choose another position.")
+		gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
+		write("Stone already there. Choose another position.       ")
 		return False
 	#Check to see if it's suicide
 	else:
@@ -147,8 +144,8 @@ def is_legal_move(board, width, color, col, row):
 			explored.add(boardPos)
 			#Check if space open - if so, move is legal, as it's a liberty
 			if(board[c][r] == 'n'):
-				gotoxy(27,3) #TODO: get rid of the magic numbers
-				write("c: " + str(c) + " r: " + str(r) + " returned true")
+				#gotoxy(27,3) #Magic numbers, here, but just for debugging
+				#write("c: " + str(c) + " r: " + str(r) + " returned true")
 				return True
 			#If space not open, continue if opponent color...
 			elif(board[c][r] != color[0]):
@@ -167,7 +164,7 @@ def is_legal_move(board, width, color, col, row):
 		#If it gets here, it's either a capture, or suicide
 		#TODO: check if it'd capture, and thus not be suicide.
 		#TODO: Check if it's Ko
-		gotoxy(27,2) #TODO: get rid of the magic numbers
+		gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
 		write("That move would be suicide. Choose another position.")
 		return False
 
@@ -175,8 +172,8 @@ def is_legal_move(board, width, color, col, row):
 ## Place stone by outputting the appropriate ANSI ##
 ####################################################
 def place_stone(col, row, color):
-	gotoxy(27,2) #TODO: get rid of the magic numbers
-	write("Move position: " + color + " at " + col + " " + row)
+	gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
+	write("Move position: " + color + " at " + col + " " + row + "                 ")
 	if(color == "black"):
 		write('|[X' + col + '|[Y' + row + '|22|00' + chr(254))
 	elif(color == "white"):
