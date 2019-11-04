@@ -5,12 +5,31 @@
 ## but this is meant as a quick-start sort of thing in order to
 ## start seeing how the BBS handles various Python code.
 
+class BoardPosition:
+	'Simple 0-based set of ints to represent a board position'
+	
+	def __init__(self, col, row):
+		self.col = col
+		self.row = row
+
+	#Compare objects correctly -- BoardPositions with same row and col are the same
+	def __eq__(self, other):
+		if not isinstance(other, BoardPosition):
+			return NotImplemented
+
+		return self.col == other.col and self.row == other.row
+		
+	def __hash__(self):
+		#Using eq makes this unhashable. Since these are objects designed not to change, the following should be okay:
+		return hash((self.col, self.row))
+		
 ##############################################################
 ## INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
 ##############################################################
 
 from mystic_bbs import *
 import random
+import Queue
 
 KEY_UP       = chr(72)       # Some keyboard code defines returned by input functions
 KEY_DOWN     = chr(80)
@@ -89,6 +108,11 @@ def play_go():
  	# after getting input, erase the pause prompt then process the input
  	#backspace(wherex(), True)
 
+################################################################
+## Check if move is legal given board, color, and position ##
+################################################################
+# Returns True if move is legal
+# returns False otherwise, with some text printed out explaining why
 #board is 2D array of 'n', 'b', or 'w' for whatever is on that spot on the board. 0-based
 #width is width of board
 #color should be 'n', 'b', or 'w'
@@ -99,8 +123,57 @@ def is_legal_move(board, width, color, col, row):
 		gotoxy(27,2) #TODO: get rid of the magic numbers
 		write("Stone already there. Choose another position.")
 		return False
-	return True
+	#Check to see if it's suicide
+	else:
+		explored = set()
+		explored.add(BoardPosition(col, row))
+		q=Queue.Queue()
+		if(col-1 >= 0):
+			q.put(BoardPosition(col-1, row))
+		if(row-1 >= 0):
+			q.put(BoardPosition(col, row-1))
+		if(col+1 < width):
+			q.put(BoardPosition(col+1, row))
+		if(row+1 < width):
+			q.put(BoardPosition(col, row+1))
+		while(not q.empty()):
+			boardPos = q.get()
+			#This _shouldn't_ be necessary, but it seems like the if statements below aren't catching
+			#things when the loop goes back to the starting position.
+			if(boardPos in explored):
+				continue
+			c = getattr(boardPos, 'col')
+			r = getattr(boardPos, 'row')
+			explored.add(boardPos)
+			#Check if space open - if so, move is legal, as it's a liberty
+			if(board[c][r] == 'n'):
+				gotoxy(27,3) #TODO: get rid of the magic numbers
+				write("c: " + str(c) + " r: " + str(r) + " returned true")
+				return True
+			#If space not open, continue if opponent color...
+			elif(board[c][r] != color[0]):
+				continue
+			#...or else add possible spaces if self color
+			else:
+				if(c-1 >= 0 and BoardPosition(c-1, r) not in explored):
+					q.put(BoardPosition(c-1, r))
+				if(r-1 >= 0 and BoardPosition(c, r-1) not in explored):
+					q.put(BoardPosition(c, r-1))
+				if(c+1 < width and BoardPosition(c+1, r) not in explored):
+					q.put(BoardPosition(c+1, r))
+				if(r+1 < width and BoardPosition(c, r+1) not in explored):
+					q.put(BoardPosition(c, r+1))	
+			
+		#If it gets here, it's either a capture, or suicide
+		#TODO: check if it'd capture, and thus not be suicide.
+		#TODO: Check if it's Ko
+		gotoxy(27,2) #TODO: get rid of the magic numbers
+		write("That move would be suicide. Choose another position.")
+		return False
 
+####################################################
+## Place stone by outputting the appropriate ANSI ##
+####################################################
 def place_stone(col, row, color):
 	gotoxy(27,2) #TODO: get rid of the magic numbers
 	write("Move position: " + color + " at " + col + " " + row)
