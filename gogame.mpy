@@ -90,12 +90,18 @@ def play_go():
 		#if outside bounds, continue loop
 		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
 			gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
-			write("Position not on board. Please try another")
+			write("Position not on board. Please try another       ")
 			continue
 		#writeln("Move position: " + col + " " + row)
 		if(is_legal_move(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+			if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+				#TODO - bug: this triggers when stones of the same color are placed next to each other
+				#That said, I don't think it causes issues with the board (either represented or displayed)
+				gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y+8)
+				write("Capture!                                    ")
 			place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
 			gameboard[ord(col) - 64 - 1][int(row)-1] = color_of_move[0] #board is base-0, color_of_move[0] should be 'b' or 'w'
+			gameboard = remove_captured_stones(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1, baseboard)
 			if(color_of_move == "black"):
 				color_of_move = "white"
 			else:
@@ -104,6 +110,85 @@ def play_go():
 	#ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
  	#backspace(wherex(), True)
+
+################################################################
+## Remove captured stones                                     ##
+################################################################
+#board is 2D array of 'n', 'b', or 'w' for whatever is on that spot on the board. 0-based
+#width is width of board
+#color should be 'n', 'b', or 'w' - and is the capturing color
+#col and row are ints, already turned into 0-base for the board.
+#baseboard is the board with ANSI characters to replace the removed stones
+def remove_captured_stones(board, width, color, col, row, baseboard):
+	#check left
+	if(col-1 >= 0):
+		result = check_for_capture(board, width, color, col-1, row)
+		if(result == True):
+			explored = set()
+			explored.add(BoardPosition(col, row))
+			q=Queue.Queue()
+			q.put(BoardPosition(col-1, row))
+			board = modify_board(q, board, baseboard, color, width)
+	
+	#check right
+	if(col+1 < width):
+		result = check_for_capture(board, width, color, col+1, row)
+		if(result == True):
+			explored = set()
+			explored.add(BoardPosition(col, row))
+			q=Queue.Queue()
+			q.put(BoardPosition(col+1, row))
+			board = modify_board(q, board, baseboard, color, width)
+			
+	#check up
+	if(row-1 >= 0):
+		result = check_for_capture(board, width, color, col, row-1)
+		if(result == True):
+			explored = set()
+			explored.add(BoardPosition(col, row))
+			q=Queue.Queue()
+			q.put(BoardPosition(col, row-1))
+			board = modify_board(q, board, baseboard, color, width)
+			
+	#check down
+	if(row+1 < width):
+		result = check_for_capture(board, width, color, col, row+1)
+		if(result == True):
+			explored = set()
+			explored.add(BoardPosition(col, row))
+			q=Queue.Queue()
+			q.put(BoardPosition(col, row+1))
+			board = modify_board(q, board, baseboard, color, width)
+
+	return board
+
+def modify_board(q, board, baseboard, color, width):
+	explored = set()
+	while(not q.empty()):
+		boardPos = q.get()
+		if(boardPos in explored):
+			continue
+		c = getattr(boardPos, 'col')
+		r = getattr(boardPos, 'row')
+		explored.add(boardPos)
+		#continue if opponent color...
+		if(board[c][r] == color):
+			continue
+		#...or else add possible spaces if self color
+		#Also, remove stones from board - both the structure and the screen
+		else:
+			board[c][r] = 'n'
+			#Screen is base 1, baseboard and board are base 0
+			write('|[X' + int_to_2str(c+1) + '|[Y' + int_to_2str(int(r+1)) + baseboard[c][r])
+			if(c-1 >= 0 and BoardPosition(c-1, r) not in explored):
+				q.put(BoardPosition(c-1, r))
+			if(r-1 >= 0 and BoardPosition(c, r-1) not in explored):
+				q.put(BoardPosition(c, r-1))
+			if(c+1 < width and BoardPosition(c+1, r) not in explored):
+				q.put(BoardPosition(c+1, r))
+			if(r+1 < width and BoardPosition(c, r+1) not in explored):
+				q.put(BoardPosition(c, r+1))	
+	return board
 
 ################################################################
 ## Check if move is legal given board, color, and position ##
@@ -148,7 +233,7 @@ def is_legal_move(board, width, color, col, row):
 				#write("c: " + str(c) + " r: " + str(r) + " returned true")
 				return True
 			#If space not open, continue if opponent color...
-			elif(board[c][r] != color[0]):
+			elif(board[c][r] != color[0]): #color should already be a single letter, but this still works
 				continue
 			#...or else add possible spaces if self color
 			else:
@@ -162,18 +247,96 @@ def is_legal_move(board, width, color, col, row):
 					q.put(BoardPosition(c, r+1))	
 			
 		#If it gets here, it's either a capture, or suicide
-		#TODO: check if it'd capture, and thus not be suicide.
+		#Check if it'd capture, and thus not be suicide.
+		if(did_capture(board, width, color, col, row)):
+			return True
+			
 		#TODO: Check if it's Ko
 		gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
 		write("That move would be suicide. Choose another position.")
 		return False
+
+def did_capture(board, width, color, col, row):
+	#board is 2D array of 'n', 'b', or 'w' for whatever is on that spot on the board. 0-based
+	#width is width of board
+	#color should be 'n', 'b', or 'w'
+	#col and row are ints, already turned into 0-base for the board.
+	#board[c][r] != color
+	
+	#Assuming Python is pass by value, messing with the board here should be fine.
+	#However, if this turns into updating the board, too, might have to unwind this placing of a stone.
+	board[col][row] = color
+	
+	#check left
+	if(col-1 >= 0):
+		result = check_for_capture(board, width, color, col-1, row)
+		if(result == True):
+			return True
+	
+	#check right
+	if(col+1 < width):
+		result = check_for_capture(board, width, color, col+1, row)
+		if(result == True):
+			return True
+			
+	#check up
+	if(row-1 >= 0):
+		result = check_for_capture(board, width, color, col, row-1)
+		if(result == True):
+			return True
+			
+	#check down
+	if(row+1 < width):
+		result = check_for_capture(board, width, color, col, row+1)
+		if(result == True):
+			return True
+	
+	return False
+
+def check_for_capture(board, width, color, col, row):
+	#color is the _capturing_ color (just first letter)
+	#starting position is the place that'll possibly be captured
+	#if adjacent intersection has no stone, return false
+	#if adjacent intersection has stone of capturing color, don't add to the queue
+	
+	explored = set()
+	q=Queue.Queue()
+	q.put(BoardPosition(col, row))
+	i = 3
+	while(not q.empty()):
+		boardPos = q.get()
+		c = getattr(boardPos, 'col')
+		r = getattr(boardPos, 'row')
+		explored.add(boardPos)
+		#Check if space open - if so, it's a liberty, and not a capture in this direction
+		if(board[c][r] == 'n'):
+			return False
+		#If space not open, continue if capturing color...
+		elif(board[c][r] == color):
+			gotoxy(27,i) #Magic numbers, here, but just for debugging
+			i = i + 1
+			write("c: " + str(c) + " r: " + str(r) + " is capturing color")
+			continue
+		#...or else add possible spaces if self color
+		else:
+			if(c-1 >= 0 and BoardPosition(c-1, r) not in explored):
+				q.put(BoardPosition(c-1, r))
+			if(r-1 >= 0 and BoardPosition(c, r-1) not in explored):
+				q.put(BoardPosition(c, r-1))
+			if(c+1 < width and BoardPosition(c+1, r) not in explored):
+				q.put(BoardPosition(c+1, r))
+			if(r+1 < width and BoardPosition(c, r+1) not in explored):
+				q.put(BoardPosition(c, r+1))
+				
+	#if the queue is empty, and no open space has been reached, capture has happened
+	return True
 
 ####################################################
 ## Place stone by outputting the appropriate ANSI ##
 ####################################################
 def place_stone(col, row, color):
 	gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
-	write("Move position: " + color + " at " + col + " " + row + "                 ")
+	write("Move position: " + color + " at " + col + " " + row + "                       ")
 	if(color == "black"):
 		write('|[X' + col + '|[Y' + row + '|22|00' + chr(254))
 	elif(color == "white"):
