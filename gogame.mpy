@@ -25,6 +25,7 @@ class BoardPosition:
 from mystic_bbs import *
 import random
 import Queue
+import copy
 
 KEY_UP       = chr(72)       # Some keyboard code defines returned by input functions
 KEY_DOWN     = chr(80)
@@ -48,7 +49,7 @@ thisuser = getuser(0);    # read the currently logged in user into thisuser
 # Step: Keep track of current board position - done
 # Step: See if piece already placed at requested location - done
 # Step: See if piece placed on empty square is a legal move - done
-# Step: Deal with Ko
+# Step: Deal with Ko - done
 # Step: keep track of moves in game - perhaps use SGF format
 # Step: Allow for local play of the game
 # Step(s): Play against other users
@@ -75,6 +76,8 @@ def play_go():
 	baseboard = display_base_board(width)
 	#gameboard has 'n' for no stone/nothing, 'b' for black stone, and 'w' for white stone
 	gameboard = [['n' for i in range(width)] for j in range(width)]
+	gameboard_older = copy.deepcopy(gameboard) #older and oldest are used for determining Ko
+	gameboard_oldest = copy.deepcopy(gameboard_older)
 	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
 	while(True):
 		gotoxy(27, 1)
@@ -99,15 +102,15 @@ def play_go():
 			write("Position not on board. Please try another       ")
 			continue
 		#writeln("Move position: " + col + " " + row)
-		if(is_legal_move(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
-			if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
-				#TODO - bug: this triggers when stones of the same color are placed next to each other
-				#That said, I don't think it causes issues with the board (either represented or displayed)
-				gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y+8)
-				write("Capture!                                    ")
+		if(is_legal_move(gameboard, gameboard_oldest, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+			#if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+				#gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y+8)
+				#write("Capture!                                    ")
 			place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
 			gameboard[ord(col) - 64 - 1][int(row)-1] = color_of_move[0] #board is base-0, color_of_move[0] should be 'b' or 'w'
 			gameboard = remove_captured_stones(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1, baseboard)
+			gameboard_oldest = copy.deepcopy(gameboard_older) #Prepare for Ko checks next time around
+			gameboard_older = copy.deepcopy(gameboard)
 			if(color_of_move == "black"):
 				color_of_move = "white"
 			else:
@@ -185,7 +188,8 @@ def modify_board(q, board, baseboard, color, width):
 		else:
 			board[c][r] = 'n'
 			#Screen is base 1, baseboard and board are base 0
-			write('|[X' + int_to_2str(c+1) + '|[Y' + int_to_2str(int(r+1)) + baseboard[c][r])
+			if(baseboard != None): #When checking for Ko, a board object is modified here, and I don't want the on-screen board modified
+				write('|[X' + int_to_2str(c+1) + '|[Y' + int_to_2str(int(r+1)) + baseboard[c][r])
 			if(c-1 >= 0 and BoardPosition(c-1, r) not in explored):
 				q.put(BoardPosition(c-1, r))
 			if(r-1 >= 0 and BoardPosition(c, r-1) not in explored):
@@ -205,7 +209,7 @@ def modify_board(q, board, baseboard, color, width):
 #width is width of board
 #color should be 'n', 'b', or 'w'
 #col and row are ints, already turned into 0-base for the board.
-def is_legal_move(board, width, color, col, row):
+def is_legal_move(board, board_oldest, width, color, col, row):
 	#Not allowed: placing on top of already-placed piece
 	if(board[col][row] != 'n'):
 		gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
@@ -250,9 +254,25 @@ def is_legal_move(board, width, color, col, row):
 		#Check if it'd capture, and thus not be suicide.
 		if(did_capture(board, width, color, col, row)):
 			#TODO: Check if it's Ko
+			temp = copy.deepcopy(board)
 			#The Ko rule comes into effect if placing the piece results in the board being the same state as it was
 			#after the previous same-color turn.
-			return True
+			temp = remove_captured_stones(temp, width, color, col, row, None)
+			#Check to see if the after-capture board has returned the board to the state it was after this color's last turn
+			for j in range(width):
+				for i in range(width):
+					if(temp[i][j] != board_oldest[i][j]):
+						#gotoxy(27,3)
+						#write("Not Ko. Intersection " + str(i) + " " + str(j) + " temp: " + temp[i][j] + " oldest: " + board_oldest[i][j])
+						return True
+			#if it reaches here, it's a Ko situation
+			gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
+			write("Ko rule. You must go elsewhere this turn.             ")
+			#Undoing what did_capture did, I think. This is still very much a kludge, and I hate it.
+			#But without this, somehow a stone still gets placed.
+			#TODO: Make this be less terrible. A good solution might mess other things up, though.
+			board[col][row] = 'n'
+			return False
 			
 		#If it gets here, it's a suicidal position
 		gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
@@ -275,32 +295,32 @@ def did_capture(board, width, color, col, row):
 	if(col-1 >= 0):
 		result = check_for_capture(board, width, color, col-1, row)
 		if(result == True):
-			#gotoxy(27,3) #Magic numbers, here, but just for debugging
-			#write("check left resulted in True")
+			#revert the board because this otherwise messes things up when checking for Ko
+			#board[col][row] = 'n'
 			return True
 	
 	#check right
 	if(col+1 < width):
 		result = check_for_capture(board, width, color, col+1, row)
 		if(result == True):
-			#gotoxy(27,3) #Magic numbers, here, but just for debugging
-			#write("check right resulted in True")
+			#revert the board because this otherwise messes things up when checking for Ko
+			#board[col][row] = 'n'
 			return True
 			
 	#check up
 	if(row-1 >= 0):
 		result = check_for_capture(board, width, color, col, row-1)
 		if(result == True):
-			#gotoxy(27,3) #Magic numbers, here, but just for debugging
-			#write("check up resulted in True")
+			#revert the board because this otherwise messes things up when checking for Ko
+			#board[col][row] = 'n'
 			return True
 			
 	#check down
 	if(row+1 < width):
 		result = check_for_capture(board, width, color, col, row+1)
 		if(result == True):
-			#gotoxy(27,3) #Magic numbers, here, but just for debugging
-			#write("check down resulted in True")
+			#revert the board because this otherwise messes things up when checking for Ko
+			#board[col][row] = 'n'
 			return True
 	
 	#Gets here, no capture, and thus it's suicide.
