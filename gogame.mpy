@@ -54,8 +54,6 @@ thisuser = getuser(0);    # read the currently logged in user into thisuser
 # Step(s): Play against other users
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Known issues:
-# the capture methods are running when there aren't captures (e.g., black stone played next to a black stone)
-# - this does not appear to be causing any harm to the board (either object or displayed image)
 def play_go():
 	
 	write('|CL|CR|09What is the width of the board? ')
@@ -223,20 +221,14 @@ def is_legal_move(board, width, color, col, row):
 			q.put(BoardPosition(col, row+1))
 		while(not q.empty()):
 			boardPos = q.get()
-			#This _shouldn't_ be necessary, but it seems like the if statements below aren't catching
-			#things when the loop goes back to the starting position.
-			if(boardPos in explored):
-				continue
 			c = getattr(boardPos, 'col')
 			r = getattr(boardPos, 'row')
 			explored.add(boardPos)
 			#Check if space open - if so, move is legal, as it's a liberty
 			if(board[c][r] == 'n'):
-				#gotoxy(27,3) #Magic numbers, here, but just for debugging
-				#write("c: " + str(c) + " r: " + str(r) + " returned true")
 				return True
 			#If space not open, continue if opponent color...
-			elif(board[c][r] != color[0]): #color should already be a single letter, but this still works
+			elif(board[c][r] != color):
 				continue
 			#...or else add possible spaces if self color
 			else:
@@ -252,9 +244,12 @@ def is_legal_move(board, width, color, col, row):
 		#If it gets here, it's either a capture, or suicide
 		#Check if it'd capture, and thus not be suicide.
 		if(did_capture(board, width, color, col, row)):
+			#TODO: Check if it's Ko
+			#The Ko rule comes into effect if placing the piece results in the board being the same state as it was
+			#after the previous same-color turn.
 			return True
 			
-		#TODO: Check if it's Ko
+		#If it gets here, it's a suicidal position
 		gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
 		write("That move would be suicide. Choose another position.")
 		return False
@@ -262,38 +257,51 @@ def is_legal_move(board, width, color, col, row):
 def did_capture(board, width, color, col, row):
 	#board is 2D array of 'n', 'b', or 'w' for whatever is on that spot on the board. 0-based
 	#width is width of board
-	#color should be 'n', 'b', or 'w'
+	#color should be 'n', 'b', or 'w', and be the capturing color
 	#col and row are ints, already turned into 0-base for the board.
 	#board[c][r] != color
 	
 	#Assuming Python is pass by value, messing with the board here should be fine.
 	#However, if this turns into updating the board, too, might have to unwind this placing of a stone.
+	#...and this seemed to cause issues, so perhaps this is being pass by reference?
 	board[col][row] = color
 	
 	#check left
 	if(col-1 >= 0):
 		result = check_for_capture(board, width, color, col-1, row)
 		if(result == True):
+			#gotoxy(27,3) #Magic numbers, here, but just for debugging
+			#write("check left resulted in True")
 			return True
 	
 	#check right
 	if(col+1 < width):
 		result = check_for_capture(board, width, color, col+1, row)
 		if(result == True):
+			#gotoxy(27,3) #Magic numbers, here, but just for debugging
+			#write("check right resulted in True")
 			return True
 			
 	#check up
 	if(row-1 >= 0):
 		result = check_for_capture(board, width, color, col, row-1)
 		if(result == True):
+			#gotoxy(27,3) #Magic numbers, here, but just for debugging
+			#write("check up resulted in True")
 			return True
 			
 	#check down
 	if(row+1 < width):
 		result = check_for_capture(board, width, color, col, row+1)
 		if(result == True):
+			#gotoxy(27,3) #Magic numbers, here, but just for debugging
+			#write("check down resulted in True")
 			return True
 	
+	#Gets here, no capture, and thus it's suicide.
+	#reverting the board because it was causing issues where it wouldn't display a piece there
+	#when saying it's suicide, but it'd put a stone there anyway. This was unexpected behavior.
+	board[col][row] = 'n'
 	return False
 
 def check_for_capture(board, width, color, col, row):
@@ -305,7 +313,8 @@ def check_for_capture(board, width, color, col, row):
 	explored = set()
 	q=Queue.Queue()
 	q.put(BoardPosition(col, row))
-	i = 3
+	#i = 3
+	opponentColorFound = False
 	while(not q.empty()):
 		boardPos = q.get()
 		c = getattr(boardPos, 'col')
@@ -316,12 +325,13 @@ def check_for_capture(board, width, color, col, row):
 			return False
 		#If space not open, continue if capturing color...
 		elif(board[c][r] == color):
-			gotoxy(27,i) #Magic numbers, here, but just for debugging
-			i = i + 1
-			write("c: " + str(c) + " r: " + str(r) + " is capturing color")
+			#gotoxy(27,i) #Magic numbers, here, but just for debugging
+			#i = i + 1
+			#write("c: " + str(c) + " r: " + str(r) + " is capturing color")
 			continue
 		#...or else add possible spaces if self color
 		else:
+			opponentColorFound = True
 			if(c-1 >= 0 and BoardPosition(c-1, r) not in explored):
 				q.put(BoardPosition(c-1, r))
 			if(r-1 >= 0 and BoardPosition(c, r-1) not in explored):
@@ -331,8 +341,12 @@ def check_for_capture(board, width, color, col, row):
 			if(r+1 < width and BoardPosition(c, r+1) not in explored):
 				q.put(BoardPosition(c, r+1))
 				
+	#If they ever ran into the other color, and
 	#if the queue is empty, and no open space has been reached, capture has happened
-	return True
+	if(opponentColorFound):
+		return True
+	else:
+		return False
 
 ####################################################
 ## Place stone by outputting the appropriate ANSI ##
