@@ -92,19 +92,18 @@ def play_go():
 			write("|15|16" + player_white + "'s (White's) turn")
 		gotoxy(27, 1)
 		move_pos = getstr(11, 5, 5, "A1")
-		gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
-		write("|15|16                                                      ") #Wiping out any previous message
-		#'R' refreshes the board, and is also a test that baseboard has what it should have
-		#TODO: Remove this functionality when test is not needed.
-		#if(move_pos.upper() == 'R'):
-		#	#output baseboard object to the screen
-		#	for i in range(width):
-		#		for j in range(width):
-		#			#+1 because baseboard is 0-based array, but the screen is 1-based
-		#			gotoxy(i+1, j+1)
-		#			write(baseboard[i][j])
-		#	continue
-		if(move_pos.upper() == 'Q'):
+		gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y) #Wiping out any previous message
+		write("|15|16                                                      ")
+		
+		#Deal with irregularities
+		if(move_pos == None):
+			continue
+		#Dealing with Passing
+		elif(move_pos.upper() == 'P'):
+			color_of_move = change_turn(color_of_move)
+			continue
+		#Dealing with quitting the program
+		elif(move_pos.upper() == 'Q'):
 			break
 		col = move_pos[0].upper()
 		row = move_pos[1:]
@@ -128,14 +127,17 @@ def play_go():
 			gameboard = remove_captured_stones(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1, baseboard)
 			gameboard_oldest = copy.deepcopy(gameboard_older) #Prepare for Ko checks next time around
 			gameboard_older = copy.deepcopy(gameboard)
-			if(color_of_move == "black"):
-				color_of_move = "white"
-			else:
-				color_of_move = "black"
+			color_of_move = change_turn(color_of_move)
 	 
 	#ch = onekey(chr(13) + 'Q', False)
  	# after getting input, erase the pause prompt then process the input
  	#backspace(wherex(), True)
+
+def change_turn(color):
+	if(color == "black"):
+		return "white"
+	else:
+		return "black"
 
 ################################################################
 ## Remove captured stones                                     ##
