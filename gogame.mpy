@@ -34,10 +34,14 @@ KEY_ENTER    = chr(13)
 KEY_TAB      = chr(9)
 KEY_LEFT     = chr(75)
 KEY_RIGHT    = chr(77)
+TURN_COLOR_X = 33
+TURN_COLOR_Y = 1
 MESSAGE_POS_X = 27			#Where to place the message on the screen
 MESSAGE_POS_Y = 2
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
+player_white = thisuser["handle"] #TODO - Make these assigned when setting up the game.
+player_black = thisuser["handle"]
 
 ################################
 ## CUSTOM FUNCTION: Go ##
@@ -54,6 +58,7 @@ thisuser = getuser(0);    # read the currently logged in user into thisuser
 # Step: Allow for local play of the game
 # Step(s): Play against other users
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
+# Step (repeated): break out code into additional class(es)
 # Known issues:
 def play_go():
 	
@@ -80,8 +85,15 @@ def play_go():
 	gameboard_oldest = copy.deepcopy(gameboard_older)
 	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
 	while(True):
+		gotoxy(TURN_COLOR_X, TURN_COLOR_Y)
+		if(color_of_move is "black"):
+			write("|00|23" + player_black + "'s (Black's) turn")
+		else:
+			write("|15|16" + player_white + "'s (White's) turn")
 		gotoxy(27, 1)
 		move_pos = getstr(11, 5, 5, "A1")
+		gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
+		write("|15|16                                                      ") #Wiping out any previous message
 		#'R' refreshes the board, and is also a test that baseboard has what it should have
 		#TODO: Remove this functionality when test is not needed.
 		#if(move_pos.upper() == 'R'):
@@ -103,9 +115,14 @@ def play_go():
 			continue
 		#writeln("Move position: " + col + " " + row)
 		if(is_legal_move(gameboard, gameboard_oldest, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
-			#if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+			if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
 				#gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y+8)
 				#write("Capture!                                    ")
+				gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
+				if(color_of_move is "black"):
+					write("|15|16Black has captured white stone(s)")
+				else:
+					write("|15|16White has captured black stone(s)")
 			place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
 			gameboard[ord(col) - 64 - 1][int(row)-1] = color_of_move[0] #board is base-0, color_of_move[0] should be 'b' or 'w'
 			gameboard = remove_captured_stones(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1, baseboard)
@@ -378,7 +395,7 @@ def check_for_capture(board, width, color, col, row):
 ####################################################
 def place_stone(col, row, color):
 	gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
-	write("Move position: " + color + " at " + col + " " + row + "                       ")
+	#write("Move position: " + color + " at " + col + " " + row + "                       ")
 	if(color == "black"):
 		write('|[X' + col + '|[Y' + row + '|22|00' + chr(254))
 	elif(color == "white"):
