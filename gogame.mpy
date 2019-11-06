@@ -54,8 +54,9 @@ player_black = thisuser["handle"]
 # Step: See if piece already placed at requested location - done
 # Step: See if piece placed on empty square is a legal move - done
 # Step: Deal with Ko - done
+# Step: Allow for local play of the game - Done? Game is playable at this point, though it doesn't end.
+# Step: Make the game be over after consecutive passes.
 # Step: keep track of moves in game - perhaps use SGF format
-# Step: Allow for local play of the game
 # Step(s): Play against other users
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Step (repeated): break out code into additional class(es)
@@ -63,49 +64,27 @@ player_black = thisuser["handle"]
 def play_go():
 	
 	write('|CL|CR|09What is the width of the board? ')
-	try:
-		width = int(getstr(11, 40, 120, "3"))
-	except ValueError:
-		gotoxy(1,3) #TODO: get rid of the magic numbers
-		write("Board size should be a number. Returning.|PA")
-		return
-	if(width < 3 or width > 23):
-		gotoxy(1,3) #TODO: get rid of the magic numbers
-		write("Board size should be between 3 and 23. Returning.|PA")
-		return
+	width = set_board_size()
 	write("|00|16|CL")
 
-	#Probably have this as a return from the display_base_board function (though the name might be off, then)
-	#This would allow for correcting the board after taking a piece
-	#This could be done in a ton of other ways (including ones that take less memory)
-	baseboard = display_base_board(width)
+	baseboard = display_base_board(width) #baseboard is the ANSI characters for the board (and just where the stones go)
 	#gameboard has 'n' for no stone/nothing, 'b' for black stone, and 'w' for white stone
 	gameboard = [['n' for i in range(width)] for j in range(width)]
 	gameboard_older = copy.deepcopy(gameboard) #older and oldest are used for determining Ko
-	gameboard_oldest = copy.deepcopy(gameboard_older)
+	gameboard_oldest = copy.deepcopy(gameboard_older) #TODO: Maybe grab older at a different point, call it gameboard_Ko_check, and reduce the amount of copies.
 	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
 	while(True):
-		gotoxy(TURN_COLOR_X, TURN_COLOR_Y)
-		if(color_of_move is "black"):
-			write("|00|23" + player_black + "'s (Black's) turn")
-		else:
-			write("|15|16" + player_white + "'s (White's) turn")
-		gotoxy(27, 1)
-		move_pos = getstr(11, 5, 5, "A1")
-		gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y) #Wiping out any previous message
-		write("|15|16                                                      ")
+		display_current_player_and_color(player_white, player_black, color_of_move)
+		move_pos = wipe_message_and_get_move()
 		
-		#Deal with irregularities
-		if(move_pos == None):
-			continue
+		#Dealing with quitting the program
+		if(move_pos == 'Q'):
+			break
 		#Dealing with Passing
-		elif(move_pos.upper() == 'P'):
+		elif(move_pos == 'P'):
 			color_of_move = change_turn(color_of_move)
 			continue
-		#Dealing with quitting the program
-		elif(move_pos.upper() == 'Q'):
-			break
-		col = move_pos[0].upper()
+		col = move_pos[0]
 		row = move_pos[1:]
 		#if outside bounds, continue loop
 		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
@@ -115,8 +94,6 @@ def play_go():
 		#writeln("Move position: " + col + " " + row)
 		if(is_legal_move(gameboard, gameboard_oldest, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
 			if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
-				#gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y+8)
-				#write("Capture!                                    ")
 				gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
 				if(color_of_move is "black"):
 					write("|15|16Black has captured white stone(s)")
@@ -128,11 +105,49 @@ def play_go():
 			gameboard_oldest = copy.deepcopy(gameboard_older) #Prepare for Ko checks next time around
 			gameboard_older = copy.deepcopy(gameboard)
 			color_of_move = change_turn(color_of_move)
-	 
-	#ch = onekey(chr(13) + 'Q', False)
- 	# after getting input, erase the pause prompt then process the input
- 	#backspace(wherex(), True)
 
+def wipe_message_and_get_move():
+	while(True):
+		gotoxy(27, 1)
+		move_pos = getstr(11, 5, 5, "A1")
+		gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y) #Wiping out any previous message
+		write("|15|16                                                      ")
+		
+		#Deal with irregularities
+		if(move_pos == None):
+			continue
+			
+		return move_pos.upper()
+
+def display_current_player_and_color(player_white, player_black, color_of_move):
+	gotoxy(TURN_COLOR_X, TURN_COLOR_Y)
+	if(color_of_move is "black"):
+		write("|00|23" + player_black + "'s (Black's) turn")
+	else:
+		write("|15|16" + player_white + "'s (White's) turn")
+
+def set_board_size():
+	successful = False
+	width = 0
+	while(not successful):
+		write('|CL|CR|09What is the width of the board? ')
+		try:
+			width = int(getstr(11, 40, 120, "9"))
+			if(width < 3 or width > 23):
+				gotoxy(1,3) #TODO: get rid of the magic numbers
+				write("Board size should be between 3 and 23. Try again.|PA")
+			else:
+				successful = True
+		except ValueError:
+			gotoxy(1,3) #TODO: get rid of the magic numbers
+			write("Board size should be a number. Try again.|PA")
+	return width
+				
+
+################################################################
+## Change turn                                                ##
+################################################################
+ 
 def change_turn(color):
 	if(color == "black"):
 		return "white"
