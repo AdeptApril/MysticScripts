@@ -73,6 +73,7 @@ def play_go():
 	gameboard_older = copy.deepcopy(gameboard) #older and oldest are used for determining Ko
 	gameboard_oldest = copy.deepcopy(gameboard_older) #TODO: Maybe grab older at a different point, call it gameboard_Ko_check, and reduce the amount of copies.
 	color_of_move = "black" #Could probably do a boolean switch (color_of_move = !color_of_move), but not sure how Python handles that.
+	last_move_was_a_pass = False #If a pass happens and this is True, the game is over
 	while(True):
 		display_current_player_and_color(player_white, player_black, color_of_move)
 		move_pos = wipe_message_and_get_move()
@@ -82,6 +83,9 @@ def play_go():
 			break
 		#Dealing with Passing
 		elif(move_pos == 'P'):
+			if(last_move_was_a_pass):
+				end_game()
+			last_move_was_a_pass = True
 			color_of_move = change_turn(color_of_move)
 			continue
 		col = move_pos[0]
@@ -93,6 +97,7 @@ def play_go():
 			continue
 		#writeln("Move position: " + col + " " + row)
 		if(is_legal_move(gameboard, gameboard_oldest, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
+			last_move_was_a_pass = False
 			if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
 				gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
 				if(color_of_move is "black"):
@@ -105,6 +110,12 @@ def play_go():
 			gameboard_oldest = copy.deepcopy(gameboard_older) #Prepare for Ko checks next time around
 			gameboard_older = copy.deepcopy(gameboard)
 			color_of_move = change_turn(color_of_move)
+
+def end_game():
+	#Not Quite sure how I want to handle this, yet.
+	gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
+	write("Game over, ma'am! Hit Q to quit.")
+	return
 
 def wipe_message_and_get_move():
 	while(True):
