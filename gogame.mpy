@@ -43,6 +43,17 @@ thisuser = getuser(0);    # read the currently logged in user into thisuser
 player_white = thisuser["handle"] #TODO - Make these assigned when setting up the game.
 player_black = thisuser["handle"]
 
+def example_game():
+	# Step: Load list of SGF files from /example directory
+	# Step: Load SGF file
+	# Step: Display starting board, with a pause
+	# Step: Display player names
+	# Step: Go through game a move at a time, pausing after each move
+	# Step: Allow 'Q' to quit
+	# Step: keys to jump forward/backward 10 moves, to the beginning/end
+	# Step: Commentary (not sure if there's commentary in the SGF file, but at least something saying, "Game ended here, white won"
+	return
+
 ################################
 ## CUSTOM FUNCTION: Go ##
 ################################
@@ -64,7 +75,7 @@ player_black = thisuser["handle"]
 def play_go():
 	
 	write('|CL|CR|09What is the width of the board? ')
-	width = set_board_size()
+	width = request_board_size()
 	write("|00|16|CL")
 
 	baseboard = display_base_board(width) #baseboard is the ANSI characters for the board (and just where the stones go)
@@ -137,7 +148,7 @@ def display_current_player_and_color(player_white, player_black, color_of_move):
 	else:
 		write("|15|16" + player_white + "'s (White's) turn")
 
-def set_board_size():
+def request_board_size():
 	successful = False
 	width = 0
 	while(not successful):
@@ -440,7 +451,7 @@ def display_base_board(width):
 	row = 1
 	col = 1
 	count = 0
-	#write(input)
+
 	#Run through the various possibilities, assigning as needed, both writing it to the screen and to the board object
 	while(row <= n+1):
 		#larger boards should not have the spaces and - characters
@@ -494,10 +505,6 @@ def display_base_board(width):
 			#writeln()
 			col = 1
 			row = row + 1
-		
-	#writeln('')
-	#writeln('Board displayed')
-	#write("|07*PAUSE*")
 	return board
 
 ########################################
@@ -523,18 +530,22 @@ def show_main_menu():
 		writeln("|15|16|CL|17 BBS Go/Weiqi/Baduk > Main Menu|$X79 |16")
 
 		writeln("|CR|15Hello, |14" + thisuser["handle"] + " #" + str(thisuser["id"]) + "|15!  Please select one of the following options:|CR")
-		writeln("  |09(|11G|09) Play Go")
+		writeln("  |09(|11S|09) Single-player, no AI Game (" + thisuser["handle"] + " will be both players)")
+		writeln("  |09(|11E|09) Example Games")
 		write  ("|CREnter option (|11Q|09/|11Quit|09): |11")
 
 		# get one character input using defined list of valid keys
 
-		char = onekey("GQ", True)
+		char = onekey("ESQ", True)
 
 		if char == "Q":
 			break
 
-		if char == "G":
+		if char == "S":
 		    play_go()
+			
+		if char == "E":
+			example_game()
 
 ###################################
 ## PROGRAM EXECUTION BEGINS HERE ##
@@ -542,4 +553,4 @@ def show_main_menu():
 
 show_main_menu()
 
-writeln("|CR|14Demo complete! |PA");
+writeln("|CR|14Program Ended! |PA");
