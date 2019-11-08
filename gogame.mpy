@@ -22,6 +22,10 @@ class BoardPosition:
 ## INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
 ##############################################################
 
+import os
+from os import listdir
+from os.path import isfile, join
+from gomill import sgf
 from mystic_bbs import *
 import random
 import Queue
@@ -38,13 +42,14 @@ TURN_COLOR_X = 33
 TURN_COLOR_Y = 1
 MESSAGE_POS_X = 27			#Where to place the message on the screen
 MESSAGE_POS_Y = 2
+EXAMPLES_DIR = "doors/go/examples/"
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
 player_white = thisuser["handle"] #TODO - Make these assigned when setting up the game.
 player_black = thisuser["handle"]
 
 def example_game():
-	# Step: Load list of SGF files from /example directory
+	# Step: Load list of SGF files from /example directory - Done. In example_files
 	# Step: Load SGF file
 	# Step: Display starting board, with a pause
 	# Step: Display player names
@@ -52,6 +57,20 @@ def example_game():
 	# Step: Allow 'Q' to quit
 	# Step: keys to jump forward/backward 10 moves, to the beginning/end
 	# Step: Commentary (not sure if there's commentary in the SGF file, but at least something saying, "Game ended here, white won"
+	
+	
+	gotoxy(1, 1)
+	writeln("|CL|15|16Example games")
+	example_files = [f for f in listdir(EXAMPLES_DIR) if isfile(join(EXAMPLES_DIR, f))]
+	i = 1
+	for filename in example_files:
+		gotoxy(1, 1+i)
+		write("|15|16" + str(i) + ". " + str(filename) )
+		i = i+1
+	#games = []#sgf for sgf in example_files]
+	
+	gotoxy(1, 23)
+	write("|15|16|PA")
 	return
 
 ################################
