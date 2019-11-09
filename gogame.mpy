@@ -57,21 +57,41 @@ def example_game():
 	# Step: Allow 'Q' to quit
 	# Step: keys to jump forward/backward 10 moves, to the beginning/end
 	# Step: Commentary (not sure if there's commentary in the SGF file, but at least something saying, "Game ended here, white won"
-	
+	# Known problems:
+	# Games list will likely bug out over 22 or 23 entries due to screen length
 	
 	gotoxy(1, 1)
 	writeln("|CL|15|16Example games")
 	example_files = [f for f in listdir(EXAMPLES_DIR) if isfile(join(EXAMPLES_DIR, f))]
-	i = 1
+	num_of_example_files = 1
 	for filename in example_files:
-		gotoxy(1, 1+i)
-		write("|15|16" + str(i) + ". " + str(filename) )
-		i = i+1
+		gotoxy(1, 1+num_of_example_files)
+		write("|15|16" + str(num_of_example_files) + ". " + str(filename) )
+		num_of_example_files = num_of_example_files+1
 	#games = []#sgf for sgf in example_files]
 	
+	num = choose_game_number(num_of_example_files)
 	gotoxy(1, 23)
-	write("|15|16|PA")
+	write("|15|16"+str(num)+" |PA")
 	return
+
+def choose_game_number(maxint):
+	successful = False
+	num = 0
+	while(not successful):
+		gotoxy(1,22) #TODO: get rid of the magic numbers
+		write('|15|16Which game would you like to review? ')
+		try:
+			num = int(getstr(11, 23, 120, "1")) #How exactly does the 11, 23 affect things? It affects the text box, but how?
+			if(num < 1 or num > maxint):
+				gotoxy(1,22) #TODO: get rid of the magic numbers
+				write("That number isn't in the list.|PA")
+			else:
+				successful = True
+		except ValueError:
+			gotoxy(1,22) #TODO: get rid of the magic numbers
+			write("Please choose a number. Try again.|PA")
+	return num
 
 ################################
 ## CUSTOM FUNCTION: Go ##
