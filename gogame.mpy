@@ -46,7 +46,7 @@ EXAMPLES_DIR = "doors/go/examples/"
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
 player_white = thisuser["handle"] #TODO - Make these assigned when setting up the game.
-player_black = thisuser["handle"]
+player_black = thisuser["handle"] #TODO - possibly make them variables to pass in to the go game, rather than global vars
 
 def example_game():
 	# Step: Load list of SGF files from /example directory - Done. In example_files
@@ -69,10 +69,14 @@ def example_game():
 		write("|15|16" + str(num_of_example_files) + ". " + str(filename) )
 		num_of_example_files = num_of_example_files+1
 	#games = []#sgf for sgf in example_files]
-	
 	num = choose_game_number(num_of_example_files)
+	with open(EXAMPLES_DIR + example_files[num-1]) as gamefile:
+		sgf_str ="".join(line.rstrip() for line in gamefile)
+	game = sgf.Sgf_game.from_string(sgf_str)
+	play_go(game)
+	
 	gotoxy(1, 23)
-	write("|15|16"+str(num)+" |PA")
+	write("|15|16|PA")
 	return
 
 def choose_game_number(maxint):
@@ -111,10 +115,17 @@ def choose_game_number(maxint):
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Step (repeated): break out code into additional class(es)
 # Known issues:
-def play_go():
+# Not currently dealing with Komi
+def play_go(game):
 	
-	write('|CL|CR|09What is the width of the board? ')
-	width = request_board_size()
+	if(game == None):
+		write('|CL|CR|09What is the width of the board? ')
+		width = request_board_size()
+	else:
+		width = game.get_size()
+		player_white = game.get_player_name('w')
+		player_black = game.get_player_name('b')
+		
 	write("|00|16|CL")
 
 	baseboard = display_base_board(width) #baseboard is the ANSI characters for the board (and just where the stones go)
@@ -181,6 +192,8 @@ def wipe_message_and_get_move():
 		return move_pos.upper()
 
 def display_current_player_and_color(player_white, player_black, color_of_move):
+	gotoxy(TURN_COLOR_X, TURN_COLOR_Y)
+	write("|15|16                                                ")
 	gotoxy(TURN_COLOR_X, TURN_COLOR_Y)
 	if(color_of_move is "black"):
 		write("|00|23" + player_black + "'s (Black's) turn")
@@ -581,7 +594,7 @@ def show_main_menu():
 			break
 
 		if char == "S":
-		    play_go()
+		    play_go(None)
 			
 		if char == "E":
 			example_game()
