@@ -45,8 +45,6 @@ MESSAGE_POS_Y = 2
 EXAMPLES_DIR = "doors/go/examples/"
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
-player_white = thisuser["handle"] #TODO - Make these assigned when setting up the game.
-player_black = thisuser["handle"] #TODO - possibly make them variables to pass in to the go game, rather than global vars
 
 def example_game():
 	# Step: Load list of SGF files from /example directory - Done. In example_files
@@ -71,8 +69,10 @@ def example_game():
 	#games = []#sgf for sgf in example_files]
 	num = choose_game_number(num_of_example_files)
 	with open(EXAMPLES_DIR + example_files[num-1]) as gamefile:
-		sgf_str ="".join(line.rstrip() for line in gamefile)
+		sgf_str ="".join(line for line in gamefile)
+		#sgf_str ="".join(line.rstrip() for line in gamefile) #Not sure if line stripping is at all necessary
 	game = sgf.Sgf_game.from_string(sgf_str)
+	write("|15|16" + str(game.get_root()) + "|PA")
 	play_go(game)
 	
 	gotoxy(1, 23)
@@ -117,12 +117,18 @@ def choose_game_number(maxint):
 # Known issues:
 # Not currently dealing with Komi
 def play_go(game):
+	replaying_game = False
 	
 	if(game == None):
+		player_white = thisuser["handle"] #TODO - Make these assigned when setting up the game.
+		player_black = thisuser["handle"] #TODO - possibly make them variables to pass in to the go game, rather than global vars
 		write('|CL|CR|09What is the width of the board? ')
 		width = request_board_size()
+		
 	else:
+		replaying_game = True
 		width = game.get_size()
+		game_iter = game.main_sequence_iter()
 		player_white = game.get_player_name('w')
 		player_black = game.get_player_name('b')
 		
@@ -137,13 +143,29 @@ def play_go(game):
 	last_move_was_a_pass = False #If a pass happens and this is True, the game is over
 	while(True):
 		display_current_player_and_color(player_white, player_black, color_of_move)
-		move_pos = wipe_message_and_get_move()
+		if(replaying_game):
+			next_item = next(game_iter, None)
+			if(next_item is None):
+				move_pos = None
+				end_game()
+			else:
+				move_pos = next_item.get_move()
+			while(move_pos is not None and move_pos[0] is None):
+				move_pos = next(game_iter).get_move()
+			if(move_pos == None): #TODO on how to handle this. I thought it was just a pass, but I think it might be the end of the game play. Or might never be reached.
+				replaying_game = False
+			elif(move_pos[0] is None or move_pos[1] is None):
+				move_pos = 'P'
+			else:
+				move_pos = chr(64+move_pos[1][0] + 1) + str(move_pos[1][1] + 1) #Convert to be the same as would be entered on the game screen.
+		if(not replaying_game):
+			move_pos = wipe_message_and_get_move()
 		
 		#Dealing with quitting the program
 		if(move_pos == 'Q'):
 			break
 		#Dealing with Passing
-		elif(move_pos == 'P'):
+		elif(move_pos == 'P' and not replaying_game):
 			if(last_move_was_a_pass):
 				end_game()
 			last_move_was_a_pass = True
@@ -152,6 +174,7 @@ def play_go(game):
 		col = move_pos[0]
 		row = move_pos[1:]
 		#if outside bounds, continue loop
+		#TODO: Deal with bad input somehow. Maybe a try/catch?
 		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
 			gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
 			write("Position not on board. Please try another       ")
@@ -171,11 +194,21 @@ def play_go(game):
 			gameboard_oldest = copy.deepcopy(gameboard_older) #Prepare for Ko checks next time around
 			gameboard_older = copy.deepcopy(gameboard)
 			color_of_move = change_turn(color_of_move)
+		
+		if(replaying_game):
+			gotoxy(79, 23) #Hitting right is putting an 'm'. Probably could delete the character through some backspace function, but maybe this is fine?
+			char = onekey(KEY_RIGHT + "Q", True)
+
+			if char == "Q":
+				break
+				
+			if char == KEY_RIGHT:
+				continue
 
 def end_game():
 	#Not Quite sure how I want to handle this, yet.
 	gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
-	write("Game over, ma'am! Hit Q to quit.")
+	write("Game over, ma'am! Hit Q to quit.                       ")
 	return
 
 def wipe_message_and_get_move():
