@@ -49,6 +49,30 @@ GAMES_DIR = "doors/go/games/"
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
 
+def load_game():
+	# Step: Load list of SGF files from /games directory
+	
+	gotoxy(1, 1)
+	writeln("|CL|15|16Previous games")
+	example_files = [f for f in listdir(GAMES_DIR) if isfile(join(GAMES_DIR, f))]
+	num_of_example_files = 1
+	for filename in example_files:
+		gotoxy(1, 1+num_of_example_files)
+		write("|15|16" + str(num_of_example_files) + ". " + str(filename) )
+		num_of_example_files = num_of_example_files+1
+	#games = []#sgf for sgf in example_files]
+	num = choose_game_number(num_of_example_files)
+	with open(GAMES_DIR + example_files[num-1]) as gamefile:
+		sgf_str ="".join(line for line in gamefile)
+		#sgf_str ="".join(line.rstrip() for line in gamefile) #Not sure if line stripping is at all necessary
+	game = sgf.Sgf_game.from_string(sgf_str)
+	write("|15|16" + str(game.get_root()) + "|PA")
+	play_go(game)
+	
+	gotoxy(1, 23)
+	write("|15|16|PA")
+	return
+
 def example_game():
 	# Step: Load list of SGF files from /example directory - Done. In example_files
 	# Step: Load SGF file - Done
@@ -634,11 +658,12 @@ def show_main_menu():
 		writeln("|CR|15Hello, |14" + thisuser["handle"] + " #" + str(thisuser["id"]) + "|15!  Please select one of the following options:|CR")
 		writeln("  |09(|11S|09) Single-player, no AI Game (" + thisuser["handle"] + " will be both players)")
 		writeln("  |09(|11E|09) Example Games")
+		writeln("  |09(|11L|09) Load ongoing or previous games")
 		write  ("|CREnter option (|11Q|09/|11Quit|09): |11")
 
 		# get one character input using defined list of valid keys
 
-		char = onekey("ESQ", True)
+		char = onekey("ELSQ", True)
 
 		if char == "Q":
 			break
@@ -648,6 +673,9 @@ def show_main_menu():
 			
 		if char == "E":
 			example_game()
+			
+		if char == "L":
+			load_game()
 
 ###################################
 ## PROGRAM EXECUTION BEGINS HERE ##
