@@ -24,6 +24,8 @@ class BoardPosition:
 
 import os
 from os import listdir
+import time
+from datetime import datetime
 from os.path import isfile, join
 from gomill import sgf
 from mystic_bbs import *
@@ -43,18 +45,21 @@ TURN_COLOR_Y = 1
 MESSAGE_POS_X = 27			#Where to place the message on the screen
 MESSAGE_POS_Y = 2
 EXAMPLES_DIR = "doors/go/examples/"
+GAMES_DIR = "doors/go/games/"
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
 
 def example_game():
 	# Step: Load list of SGF files from /example directory - Done. In example_files
-	# Step: Load SGF file
-	# Step: Display starting board, with a pause
-	# Step: Display player names
-	# Step: Go through game a move at a time, pausing after each move
-	# Step: Allow 'Q' to quit
+	# Step: Load SGF file - Done
+	# Step: Display starting board, with a pause - Done, I think. Not sure what pause I meant
+	# Step: Display player names - Done
+	# Step: Go through game a move at a time, pausing after each move - Done
+	# Step: Allow 'Q' to quit - done
+	# Step: Make it possible to unplace a stone (Both on the display and the internal representation.
 	# Step: keys to jump forward/backward 10 moves, to the beginning/end
-	# Step: Commentary (not sure if there's commentary in the SGF file, but at least something saying, "Game ended here, white won"
+	# Step: Have a legend of some sort for keys. Assuming 'q', left, right, and maybe 'b' and 'e' for beginning and end?
+	# Step: Commentary (not sure if there's commentary in the SGF file, but at least something saying, "Game ended here, white won" - currently it does say that the game is over.
 	# Known problems:
 	# Games list will likely bug out over 22 or 23 entries due to screen length
 	
@@ -109,13 +114,15 @@ def choose_game_number(maxint):
 # Step: See if piece placed on empty square is a legal move - done
 # Step: Deal with Ko - done
 # Step: Allow for local play of the game - Done? Game is playable at this point, though it doesn't end.
-# Step: Make the game be over after consecutive passes.
-# Step: keep track of moves in game - perhaps use SGF format
+# Step: Make the game be over after consecutive passes. - Not really done - just displays a message
+# Step: keep track of moves in game - perhaps use SGF format - Done
 # Step(s): Play against other users
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Step (repeated): break out code into additional class(es)
 # Known issues:
 # Not currently dealing with Komi
+# Passes are not being added to the .sgf
+# After the game is done being replayed, it goes into being a regular game, and creates a new save file. Not sure what the behavior _should_ be.
 def play_go(game):
 	replaying_game = False
 	
@@ -124,7 +131,11 @@ def play_go(game):
 		player_black = thisuser["handle"] #TODO - possibly make them variables to pass in to the go game, rather than global vars
 		write('|CL|CR|09What is the width of the board? ')
 		width = request_board_size()
-		
+		game = sgf.Sgf_game(width)
+		node = game.get_last_node()
+		node.set('PB', player_black)
+		node.set('PW', player_white)
+				
 	else:
 		replaying_game = True
 		width = game.get_size()
@@ -163,6 +174,9 @@ def play_go(game):
 		
 		#Dealing with quitting the program
 		if(move_pos == 'Q'):
+			if(game is not None):
+				with open(GAMES_DIR + "StormGame" + str(datetime.today().year) + str(datetime.today().month) + str(datetime.today().day) + str(datetime.today().hour) + str(datetime.today().minute) + str(datetime.today().second) + ".sgf", "w") as file:
+					file.write(game.serialise())
 			break
 		#Dealing with Passing
 		elif(move_pos == 'P' and not replaying_game):
@@ -190,6 +204,9 @@ def play_go(game):
 					write("|15|16White has captured black stone(s)")
 			place_stone(int_to_2str(ord(col) - 64), int_to_2str(int(row)), color_of_move)
 			gameboard[ord(col) - 64 - 1][int(row)-1] = color_of_move[0] #board is base-0, color_of_move[0] should be 'b' or 'w'
+			node = game.extend_main_sequence()
+			node.set_move(color_of_move[0], (ord(col) - 64 - 1, int(row)-1))
+			#Could set a comment here by using if(move_info.comment is not None): node.set*"C", move_info.comment
 			gameboard = remove_captured_stones(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1, baseboard)
 			gameboard_oldest = copy.deepcopy(gameboard_older) #Prepare for Ko checks next time around
 			gameboard_older = copy.deepcopy(gameboard)
