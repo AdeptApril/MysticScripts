@@ -62,6 +62,8 @@ def load_game():
 		num_of_example_files = num_of_example_files+1
 	#games = []#sgf for sgf in example_files]
 	num = choose_game_number(num_of_example_files)
+	if(num is None):
+		return
 	with open(GAMES_DIR + example_files[num-1]) as gamefile:
 		sgf_str ="".join(line for line in gamefile)
 		#sgf_str ="".join(line.rstrip() for line in gamefile) #Not sure if line stripping is at all necessary
@@ -97,6 +99,8 @@ def example_game():
 		num_of_example_files = num_of_example_files+1
 	#games = []#sgf for sgf in example_files]
 	num = choose_game_number(num_of_example_files)
+	if(num is None):
+		return
 	with open(EXAMPLES_DIR + example_files[num-1]) as gamefile:
 		sgf_str ="".join(line for line in gamefile)
 		#sgf_str ="".join(line.rstrip() for line in gamefile) #Not sure if line stripping is at all necessary
@@ -115,7 +119,11 @@ def choose_game_number(maxint):
 		gotoxy(1,22) #TODO: get rid of the magic numbers
 		write('|15|16Which game would you like to review? ')
 		try:
-			num = int(getstr(11, 23, 120, "1")) #How exactly does the 11, 23 affect things? It affects the text box, but how?
+			num = getstr(11, 23, 120, "1") #How exactly does the 11, 23 affect things? It affects the text box, but how?
+			if(num is 'Q' or num is 'q'):
+				return None
+			else:
+				num = int(num)
 			if(num < 1 or num > maxint):
 				gotoxy(1,22) #TODO: get rid of the magic numbers
 				write("That number isn't in the list.|PA")
