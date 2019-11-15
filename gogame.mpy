@@ -1,5 +1,9 @@
 # -*- coding: CP437 -*-
 
+# Possible additions
+# Add a list of users looking to be challenged
+# Have that list be something that checks to see if they've logged in over the last 30 days
+
 class BoardPosition:
 	'Simple 0-based set of ints to represent a board position'
 	
@@ -48,6 +52,39 @@ EXAMPLES_DIR = "doors/go/examples/"
 GAMES_DIR = "doors/go/games/"
 
 thisuser = getuser(0);    # read the currently logged in user into thisuser
+
+def challenge_user():
+	#What's the width of the board? (default to 9)
+	gotoxy(1,1)
+	width = request_board_size()
+	game = sgf.Sgf_game(width)
+	
+	#Who would you like to challenge? (Must be alias on BBS) #default to Adept
+	gotoxy(1,1)
+	write('|CL|CR|09Who would you like to challenge? (Alias only)')
+	gotoxy(1,4)
+	opponent = getstr(11, 40, 120, "Adept")
+	
+	#Are you playing as black or white?
+	write('|CL|CR|09Are you playing as black or white (enter B or W)')
+	char = onekey("BWQ", True)
+	node = game.get_last_node()
+	if char == "Q":
+			return
+	elif char == "B":
+		node.set('PB', thisuser["handle"])
+		node.set('PW', opponent)
+	elif char == "W":
+		node.set('PW', thisuser["handle"])
+		node.set('PB', opponent)
+	
+	#TODO - implement this so that it's not just a meaningless question
+	#Is there a handicap? 0 for no.
+
+	#Start game
+	play_go(game)
+	
+	return
 
 def load_game():
 	# Step: Load list of SGF files from /games directory - done
@@ -163,9 +200,13 @@ def choose_game_number(maxint):
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Step (repeated): break out code into additional class(es)
 # Known issues:
-# Not currently dealing with Komi
+# No real end or scoring to the game
+# Not currently dealing with a handicap
 # Passes are not being added to the .sgf
 # After the game is done being replayed, it goes into being a regular game, and creates a new save file. Not sure what the behavior _should_ be.
+# "A1q" response crashes the game, rather than quitting or saying it's an invalid response.
+# Allows you to play moves for any user, rather than just yourself.
+
 def play_go(game):
 	replaying_game = False
 	
@@ -180,11 +221,16 @@ def play_go(game):
 		node.set('PW', player_white)
 				
 	else:
-		replaying_game = True
 		width = game.get_size()
-		game_iter = game.main_sequence_iter()
 		player_white = game.get_player_name('w')
 		player_black = game.get_player_name('b')
+		#If a new game created through a challenge:
+		if(len(game.get_main_sequence()) < 2):
+			replaying_game = False #Strictly unnecessary, as it should start as False
+		else: #otherwise a loaded game of some sort
+			replaying_game = True
+			game_iter = game.main_sequence_iter()
+		
 		
 	write("|00|16|CL")
 
@@ -678,11 +724,12 @@ def show_main_menu():
 		writeln("  |09(|11S|09) Single-player, no AI Game (" + thisuser["handle"] + " will be both players)")
 		writeln("  |09(|11E|09) Example Games")
 		writeln("  |09(|11L|09) Load ongoing or previous games")
+		writeln("  |09(|11C|09) Challenge Someone")
 		write  ("|CREnter option (|11Q|09/|11Quit|09): |11")
 
 		# get one character input using defined list of valid keys
 
-		char = onekey("ELSQ", True)
+		char = onekey("CELSQ", True)
 
 		if char == "Q":
 			break
@@ -695,6 +742,9 @@ def show_main_menu():
 			
 		if char == "L":
 			load_game()
+			
+		if char == "C":
+			challenge_user()
 
 ###################################
 ## PROGRAM EXECUTION BEGINS HERE ##
