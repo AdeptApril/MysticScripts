@@ -54,36 +54,33 @@ def load_game():
 	# Step: Load only games where the user is a player
 	
 	gotoxy(1, 1)
-	writeln("|CL|15|16Previous games")
+	writeln("|CL|15|16Previous games                 Black player              White Player")
+	#Go through the files in the games dir, and return a list of only the ones that include the current user
 	example_files = [f for f in listdir(GAMES_DIR) if isfile(join(GAMES_DIR, f))]
 	num_of_example_files = 1
 	num_of_files_with_user = 1
 	user_game_numbers = list()
 	for filename in example_files:
-		#gotoxy(1, 1+num_of_example_files)
-		#write("|15|16" + str(num_of_example_files) + ". " + str(filename) )
 		with open(GAMES_DIR + filename) as gamefile:
 			sgf_str ="".join(line for line in gamefile)
 			game = sgf.Sgf_game.from_string(sgf_str)
-			#gotoxy(1, 4) #Debug
-			#write("|15|16 Debug - player w: " + game.get_player_name('w') + " player b: " + game.get_player_name('b') + " this user: " + thisuser["handle"] )
 			if(game.get_player_name('w') == thisuser["handle"] or game.get_player_name('b') == thisuser["handle"]):
 				user_game_numbers.append(num_of_example_files)
 				gotoxy(1, 1+num_of_files_with_user)
 				write("|15|16" + str(num_of_files_with_user) + ". " + str(filename) )
+				gotoxy(32, 1+num_of_files_with_user)
+				write(game.get_player_name('b'))
+				gotoxy(58, 1+num_of_files_with_user)
+				write(game.get_player_name('w'))
 				num_of_files_with_user = num_of_files_with_user + 1
 		num_of_example_files = num_of_example_files+1
-	#games = []#sgf for sgf in example_files]
-	#gotoxy(1, 5) #Debug
-	#write("|15|16 Debug -  example files: " + str(num_of_example_files) + " user files: " + str(num_of_files_with_user) )
 	num = choose_game_number(num_of_files_with_user)
-	if(num is None):
+	if(num is None): #None is likely to come back if the user hits 'q'
 		return
 	with open(GAMES_DIR + example_files[user_game_numbers[num-1]-1]) as gamefile:
 		sgf_str ="".join(line for line in gamefile)
-		#sgf_str ="".join(line.rstrip() for line in gamefile) #Not sure if line stripping is at all necessary
 	game = sgf.Sgf_game.from_string(sgf_str)
-	write("|15|16" + str(game.get_root()) + "|PA")
+	write("|15|16" + str(game.get_root()) + "|PA") #This writes out game info (then pauses), but is not necessary.
 	play_go(game)
 	
 	gotoxy(1, 23)
@@ -112,14 +109,13 @@ def example_game():
 		gotoxy(1, 1+num_of_example_files)
 		write("|15|16" + str(num_of_example_files) + ". " + str(filename) )
 		num_of_example_files = num_of_example_files+1
-	#games = []#sgf for sgf in example_files]
 	num = choose_game_number(num_of_example_files)
 	if(num is None):
 		return
 	with open(EXAMPLES_DIR + example_files[num-1]) as gamefile:
 		sgf_str ="".join(line for line in gamefile)
-		#sgf_str ="".join(line.rstrip() for line in gamefile) #Not sure if line stripping is at all necessary
 	game = sgf.Sgf_game.from_string(sgf_str)
+	#Display game info. Perhaps remove?
 	write("|15|16" + str(game.get_root()) + "|PA")
 	play_go(game)
 	
