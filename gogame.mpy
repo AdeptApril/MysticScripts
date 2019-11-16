@@ -88,7 +88,9 @@ def challenge_user():
 
 def load_game():
 	# Step: Load list of SGF files from /games directory - done
-	# Step: Load only games where the user is a player
+	# Step: Load only games where the user is a player - done
+	# Todo: Delete opened file after opening it, as it will be saved anew after quitting. Or possibly some other more elegant solution.
+	# Todo: Mention that one should hit right until up to current point in game
 	
 	gotoxy(1, 1)
 	writeln("|CL|15|16Previous games                 Black player              White Player")
@@ -262,11 +264,19 @@ def play_go(game):
 			move_pos = wipe_message_and_get_move()
 		
 		#Dealing with quitting the program
+		#Debugging:
+		#gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y+2)
+		#write("|15|16User: " + thisuser["handle"] + " white: " + player_white + " black: " + player_black + " move:" + color_of_move + str(thisuser["handle"] != player_white and color_of_move is "white") + str(thisuser["handle"] != player_black and color_of_move is "black"))
 		if(move_pos == 'Q'):
 			if(game is not None):
 				with open(GAMES_DIR + "StormGame" + str(datetime.today().year) + str(datetime.today().month) + str(datetime.today().day) + str(datetime.today().hour) + str(datetime.today().minute) + str(datetime.today().second) + ".sgf", "w") as file:
 					file.write(game.serialise())
 			break
+		#Make sure that current player has the right to move
+		elif((thisuser["handle"] != player_white and color_of_move is "white") or (thisuser["handle"] != player_black and color_of_move is "black")):
+			gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
+			write("|15|16It's not your turn. Hit Q to quit.")
+			continue
 		#Dealing with Passing
 		elif(move_pos == 'P' and not replaying_game):
 			if(last_move_was_a_pass):
@@ -320,7 +330,7 @@ def end_game():
 def wipe_message_and_get_move():
 	while(True):
 		gotoxy(27, 1)
-		move_pos = getstr(11, 5, 5, "A1")
+		move_pos = getstr(11, 5, 5, "")
 		gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y) #Wiping out any previous message
 		write("|15|16                                                      ")
 		
