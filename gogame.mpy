@@ -119,6 +119,9 @@ def load_game():
 	with open(GAMES_DIR + example_files[user_game_numbers[num-1]-1]) as gamefile:
 		sgf_str ="".join(line for line in gamefile)
 	game = sgf.Sgf_game.from_string(sgf_str)
+	#Delete this save. Possibly a better way to do it, but with the auto-saving on the other end
+	#Honestly, TODO - do this a different way. Perhaps have file names not based on time.
+	os.remove(GAMES_DIR + example_files[user_game_numbers[num-1]-1])
 	write("|15|16" + str(game.get_root()) + "|PA") #This writes out game info (then pauses), but is not necessary.
 	play_go(game)
 	
