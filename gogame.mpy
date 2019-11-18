@@ -210,7 +210,6 @@ def choose_game_number(maxint):
 # Passes are not being added to the .sgf
 # After the game is done being replayed, it goes into being a regular game, and creates a new save file. Not sure what the behavior _should_ be.
 # "A1q" response crashes the game, rather than quitting or saying it's an invalid response.
-# Allows you to play moves for any user, rather than just yourself.
 
 def play_go(game):
 	replaying_game = False
@@ -238,6 +237,7 @@ def play_go(game):
 		
 		
 	write("|00|16|CL")
+	write("|00|16|CL")
 
 	baseboard = display_base_board(width) #baseboard is the ANSI characters for the board (and just where the stones go)
 	#gameboard has 'n' for no stone/nothing, 'b' for black stone, and 'w' for white stone
@@ -255,10 +255,14 @@ def play_go(game):
 				end_game()
 			else:
 				move_pos = next_item.get_move()
+				
 			while(move_pos is not None and move_pos[0] is None):
 				move_pos = next(game_iter).get_move()
+				
 			if(move_pos == None): #TODO on how to handle this. I thought it was just a pass, but I think it might be the end of the game play. Or might never be reached.
 				replaying_game = False
+				gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y+2)
+				write("|15|16                                                 ")
 			elif(move_pos[0] is None or move_pos[1] is None):
 				move_pos = 'P'
 			else:
@@ -276,7 +280,7 @@ def play_go(game):
 					file.write(game.serialise())
 			break
 		#Make sure that current player has the right to move
-		elif((thisuser["handle"] != player_white and color_of_move is "white") or (thisuser["handle"] != player_black and color_of_move is "black")):
+		elif(not replaying_game and ((thisuser["handle"] != player_white and color_of_move is "white") or (thisuser["handle"] != player_black and color_of_move is "black"))):
 			gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
 			write("|15|16It's not your turn. Hit Q to quit.")
 			continue
@@ -315,6 +319,8 @@ def play_go(game):
 			color_of_move = change_turn(color_of_move)
 		
 		if(replaying_game):
+			#gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y+2)
+			#write("|15|16Press right to replay next move or hit Q to quit.")
 			gotoxy(79, 23) #Hitting right is putting an 'm'. Probably could delete the character through some backspace function, but maybe this is fine?
 			char = onekey(KEY_RIGHT + "Q", True)
 
