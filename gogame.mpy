@@ -201,13 +201,14 @@ def choose_game_number(maxint):
 # Step: Allow for local play of the game - Done? Game is playable at this point, though it doesn't end.
 # Step: Make the game be over after consecutive passes. - Not really done - just displays a message
 # Step: keep track of moves in game - perhaps use SGF format - Done
-# Step(s): Play against other users
+# Step(s): Play against other users - Done, I think
 # Step(s): Keep data on april.tech or otherwise do inter-BBS communications
 # Step (repeated): break out code into additional class(es)
 # Known issues:
 # No real end or scoring to the game
 # Not currently dealing with a handicap
 # Passes are not being added to the .sgf
+# -Update - passes are being added to the .sgf, but game is not interpreting them correctly when replaying.
 # After the game is done being replayed, it goes into being a regular game, and creates a new save file. Not sure what the behavior _should_ be.
 # "A1q" response crashes the game, rather than quitting or saying it's an invalid response.
 
@@ -286,6 +287,8 @@ def play_go(game):
 			continue
 		#Dealing with Passing
 		elif(move_pos == 'P' and not replaying_game):
+			node = game.extend_main_sequence()
+			node.set_move(color_of_move[0], None)
 			if(last_move_was_a_pass):
 				end_game()
 			last_move_was_a_pass = True
@@ -295,13 +298,14 @@ def play_go(game):
 		row = move_pos[1:]
 		#if outside bounds, continue loop
 		#TODO: Deal with bad input somehow. Maybe a try/catch?
-		if(ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width):
+		if((ord(col) - 64 < 1 or ord(col) - 64 > width or int(row) < 1 or int(row) > width) and not last_move_was_a_pass):
 			gotoxy(MESSAGE_POS_X,MESSAGE_POS_Y)
 			write("Position not on board. Please try another       ")
 			continue
+		else:
+			last_move_was_a_pass = False #TODO: This might have weird behavior, if people try an illegal move first, then pass. But if people just pass some more it'll take care of the problem.
 		#writeln("Move position: " + col + " " + row)
-		if(is_legal_move(gameboard, gameboard_oldest, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
-			last_move_was_a_pass = False
+		if(not last_move_was_a_pass and is_legal_move(gameboard, gameboard_oldest, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
 			if(did_capture(gameboard, width, color_of_move[0], ord(col) - 64 - 1, int(row)-1)):
 				gotoxy(MESSAGE_POS_X, MESSAGE_POS_Y)
 				if(color_of_move is "black"):
