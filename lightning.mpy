@@ -15,11 +15,11 @@
 from mystic_bbs import *
 import random
 
-NUMBER_OF_LIGHTNING_STRIKES = 1
+NUMBER_OF_LIGHTNING_STRIKES = 5
 MAX_X = 79 # Column not to go past on the right side of the screen
 MAX_LENGTH = 20 # Max loops of the while loop creating the bolt placement. Failsafe, but also length of the lightning bolt.
 SLOW_STRIKE = True #True has a delay to slow down the lightning strike
-DELAY_STRIKES = False #true if delay wanted between strikes - mostly useful if SLOW_STRIKE is False
+DELAY_STRIKES = True #true if delay wanted between strikes - mostly useful if SLOW_STRIKE is False
 DELAY_BETWEEN_STRIKES = 30 #only matters if DELAY_STRIKES is true
 
 ################################
@@ -37,8 +37,8 @@ def lightning_bolt():
 	endy = random.randint(starty + 8, 23)	#Point to end up at
 	pointlist = [startx, starty]	#array starting with the start values. Will contain all points of the bolt
 									#Could have another list with the characters being overwritten, with the intent of putting them back
-	left_chance = 1		#Idea is to have a random number from 1 to 10, if it's <= left_chance, bolt will go left
-	right_chance = 6	#if it's >= right_chance, bolt will go right, between the two it stays centered
+	left_chance = 3		#Idea is to have a random number from 1 to 10, if it's <= left_chance, bolt will go left
+	right_chance = 8	#if it's >= right_chance, bolt will go right, between the two it stays centered
 	down_chance = 9		#random number between 1 and 10, will go down if <= down_chance
 	
 	#Randomly move the currx/y until arriving at the end point, appending to pointlist as it goes along
@@ -107,7 +107,7 @@ def lightning_bolt():
 			
 		write('|[X' + xval + '|[Y' + yval + '|16|14' + chr(219))
 		if(SLOW_STRIKE):
-			delay(1)
+			delay(8)
 		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
 		getkey()
 		i = i + 2
