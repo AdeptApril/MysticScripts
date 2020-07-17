@@ -1,0 +1,56 @@
+# -*- coding: CP437 -*-
+
+## DAILY CALENDAR DISPLAY FOR MYSTIC BBS
+## By April Monoceros / Adept from Storm BBS (stormbbs.com)
+## Version ? (Not yet released)
+##
+## The intent of this program is to display a different ANSI
+## screen every day of the year, preferably with different
+## items for various holidays. E.g., US Thanksgiving will
+## trigger on the right day, and same with Easter.
+##
+## Naming convention for ANSI files:
+## MMDDPPName
+##  - MM: 2 digit month - DD: 2 digit day - PP: 2 digit priority level(higher # is higher priority) - Name: Anything, but ignored
+## MMcWDPPName
+##  - Same as above, but 'c' signifies cardinal week, W is which week, and D is which day of the week. So American
+##   Thanksgiving starts 11c45, being in the 11th month (November), the 4th week, and on Thursday (Sunday = 1,
+##   Thursday = 5, Saturday = 7).
+## MMd - Default ANSI for the month
+
+
+##############################################################
+## INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
+##############################################################
+
+from mystic_bbs import *
+#import random
+
+#Replacement identifiers (Must be constants, in caps, with _ for spaces rather than camelCase.
+
+
+
+################################
+## Calendar                   ##
+################################
+
+def calendar():
+    #stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
+    #getkey()
+
+    #Determine what day it is
+    #Look to see if there's any ANSIs for that day
+    #Look to see if there's any ANSIs for that day of that week of that month (e.g., 4th Thursday in November)
+    #Look to see if there's any special-day ANSIs (Mainly thinking of Easter)
+    #If no ANSIs found, use default for the month
+    #If still nothing found, print error message
+    #If more than one ANSI found, choose based on which has higher priority
+    #If no difference in priority, just choose the first one. Whatever that is.
+    #display the ANSI
+    #display the date
+
+###################################
+## PROGRAM EXECUTION BEGINS HERE ##
+###################################
+
+calendar()

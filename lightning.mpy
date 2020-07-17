@@ -2,7 +2,7 @@
 
 ## LIGHTNING BOLT PYTHON FUNCTION FOR MYSTIC BBS
 ## By April Monoceros / Adept from Storm BBS (stormbbs.com)
-## Version 0.1 released 2019-Oct-2019
+## Version 0.11 committed 16-Jul-2020
 ##
 ## Display a number of lightning strikes
 ## See the global variable section for configuration options
@@ -15,11 +15,11 @@
 from mystic_bbs import *
 import random
 
-NUMBER_OF_LIGHTNING_STRIKES = 5
+NUMBER_OF_LIGHTNING_STRIKES = 1
 MAX_X = 79 # Column not to go past on the right side of the screen
 MAX_LENGTH = 20 # Max loops of the while loop creating the bolt placement. Failsafe, but also length of the lightning bolt.
 SLOW_STRIKE = True #True has a delay to slow down the lightning strike
-DELAY_STRIKES = True #true if delay wanted between strikes - mostly useful if SLOW_STRIKE is False
+DELAY_STRIKES = False #true if delay wanted between strikes - mostly useful if SLOW_STRIKE is False
 DELAY_BETWEEN_STRIKES = 30 #only matters if DELAY_STRIKES is true
 
 ################################
@@ -107,7 +107,7 @@ def lightning_bolt():
 			
 		write('|[X' + xval + '|[Y' + yval + '|16|14' + chr(219))
 		if(SLOW_STRIKE):
-			delay(8)
+			delay(1)
 		stuffkey("A") #The stuffkey/getkey is a kludge to get fTerm to update
 		getkey()
 		i = i + 2
