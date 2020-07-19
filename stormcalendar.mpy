@@ -7,6 +7,8 @@
 # # The program displays a different ANSI screen depending on the month, particular date, particular day of the
 # # week in a month (E.g., US Thanksgiving), or special day (e.g. Easter)
 # # Easter is the western Easter and defined through 2030
+# # In reverse order of preference, the chosen ANSI is none, monthly default, particular day of month, particular day of
+# # cardinal week, special ANSI.
 # #
 # # Naming convention for ANSI files:
 # # nMMDDName
@@ -39,11 +41,9 @@ LOCATION = './themes/default/scripts/stormcal/'  # Directory that the calendar A
 
 
 def stormcal():
-    # stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
-    # getkey()
     chosen_ansi = 'none'
 
-    # Determine what day it is '{:%Y%m%d}'.format(today)
+    # Determine what day it is and set the related variables
     today = date.today()
     year = '{:%Y}'.format(today)
     month = '{:%m}'.format(today)
@@ -51,47 +51,28 @@ def stormcal():
     day = '{:%d}'.format(today)
     day_of_week = str(today.weekday())
     day_of_week_english = calendar.day_name[today.weekday()]  # So '2' should be "Wednesday"
-    week_of_month = str((today.day // 7) + 1)  # So the 7th would still be the 1st week, 8th.
-    # used because it'd still work the same in Python3
+    week_of_month = str((today.day // 7) + 1)  # So the 7th would still be the 1st week, 8th would be the 2nd week.
 
-    # testing to see if the info is displaying correctly.
+    # Test to see what the system says all the variables are
     # writeln('year ' + year + ' month ' + month + '(' + month_english + ') day ' + day
     #         + ', day of week ' + str(day_of_week) + '(' + day_of_week_english + '), week of month '
     #         + str(week_of_month))
-    # stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
-    # getkey()
+    # writeln("|CR|PA")  #This pauses
 
     # write out all the files in the stormcal directory
     files_in_dir = []
 
     # r=>root, d=>directories, f=>files
-    # writeln('Trying to display a list of all the ANSIs')
+    # Starting from the set LOCATION, finding all .ans files
     for r, d, f in os.walk(LOCATION):
         for item in f:
-            # writeln(item)
-            # chosen_ansi = item
             if '.ans' in item:
                 files_in_dir.append(os.path.join(r, item))
-    # writeln("Those are the files. Now to display the last of those files")
-    # writeln("|CR|PA")
-    #
-    # for item in files_in_dir:
-    #     print("file in dir: ", item)
-    # f = open(LOCATION + chosen_ansi, 'r')
-    # file_contents = f.read()
-    # write (file_contents)
-    # f.close()
-    # write('|[X01|[Y23|16|14 ' + str(day_of_week_english) + ', ' + str(month_english) + ' ' + str(day))
-    # writeln("|CR|PA")
 
-    # If no ANSIs found, use default for the month
     # writeln("The default ANSI for " + month_english)
     monthly_ansi = dFilter(files_in_dir, month)
     for item in monthly_ansi:
-        # writeln(item)
         chosen_ansi = item
-
-    # writeln("|CR|PA")
 
     # Look to see if there's any ANSIs for that day
     # writeln("Now the list of ANSIs for " + month_english + " " + day)
@@ -102,39 +83,20 @@ def stormcal():
     # writeln("|CR|PA")
 
     # Look to see if there's any ANSIs for that day of that week of that month (e.g., 4th Thursday in November)
-    # writeln("Now the list of ANSIs for the " + day_of_week_english + " of week " + week_of_month + " of "
-    #         + month_english)
     cardinal_ansi = cFilter(files_in_dir, month, week_of_month, day_of_week)
     for item in cardinal_ansi:
-        # writeln(item)
         chosen_ansi = item
-    # writeln("|CR|PA")
 
-    # Look to see if there's any special-day ANSIs (Mainly thinking of Easter)
-    # writeln("Now the list of ANSIs for Easter (to demonstrate that the special filter works)")
-    # special_ansi = sFilter(files_in_dir, "Easter")
-    # for item in special_ansi:
-    #     writeln(item)
-    #     # chosen_ansi = item
-    # writeln("|CR|PA")
-
-    # writeln("Now to use that special filter if it's actually Easter")
+    # Checking to see if it's Easter -- Add similar functions if there are other special days
     if today_is_easter(year, month, day):
-        # writeln("Today is Easter!")
         special_ansi = sFilter(files_in_dir, "Easter")
         for item in special_ansi:
-            # writeln(item)
             chosen_ansi = item
-    # writeln("|CR|PA")
-
-    # writeln("In reverse order of preference, the chosen ANSI is monthly default, particular day of month,"
-    #         "particular day of cardinal week, special ANSI. Of those, this is the chosen ANSI:")
-    # writeln(chosen_ansi)
-    # writeln("|CR|PA")
 
     # If still nothing found, print error message
-    # If more than one ANSI found, choose based on which has higher priority
-    # If no difference in priority, just choose the first one. Whatever that is.
+    if chosen_ansi == 'none':
+        writeln("No ANSI found for today. Today's date is: ")
+
     # display the ANSI
     if chosen_ansi != 'none':
         f = open(chosen_ansi, 'r')
@@ -143,7 +105,7 @@ def stormcal():
         f.close()
 
     # display the date
-    write('|[X01|[Y23|16|14 ' + str(day_of_week_english) + ', ' + str(month_english) + ' ' + str(day))
+    write('|[X01|[Y23|16|14 ' + day_of_week_english + ', ' + month_english + ' ' + day)
     writeln("|CR|PA")
 
 
@@ -190,14 +152,6 @@ def today_is_easter(year, month, day):
         '2030': y2030(month, day),
     }
     return switcher.get(year, False)
-
-
-# The following items are a ton of Easter definitions because Python does not have a good way to do a switch statement
-# def y2020(month, day):
-#     writeln("Testing: Month is " + month + " and the Day is " + day)
-#     if month == '07' and day == '19':
-#         return True
-#     return False
 
 
 def y2021(month, day):
