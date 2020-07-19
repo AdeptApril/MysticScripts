@@ -20,6 +20,9 @@
 # # sName - 's' for "special". Initially this is for easter, but could be for one-off events, other moon-related days,
 # #     or equinoxes and solstices. This is one time when "Name" will be highly important
 # # dMM - Default ANSI for the month
+# #
+# # Note on ANSI formatting -- Save without sauce, or it'll flash by in some situations, and maxing out at 23 lines
+# # looks better.
 
 # #############################################################
 # # INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
@@ -101,6 +104,7 @@ def stormcal():
     if chosen_ansi != 'none':
         f = open(chosen_ansi, 'r')
         file_contents = f.read()
+        writeln("")
         write (file_contents)
         f.close()
 
