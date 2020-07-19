@@ -4,28 +4,20 @@
 # # By April Monoceros / Adept from Storm BBS (stormbbs.com)
 # # Version ? (Not yet released)
 # #
-# # The intent of this program is to display a different ANSI
-# # screen every day of the year, preferably with different
-# # items for various holidays. E.g., US Thanksgiving will
-# # trigger on the right day, and same with Easter.
+# # The program displays a different ANSI screen depending on the month, particular date, particular day of the
+# # week in a month (E.g., US Thanksgiving), or special day (e.g. Easter)
+# # Easter is the western Easter and defined through 2030
 # #
 # # Naming convention for ANSI files:
-# # MMDDPPName
-# #  - MM: 2 digit month - DD: 2 digit day - PP: 2 digit priority level(higher # is higher priority) - Name: Anything, but ignored
-# # MMcWDPPName
-# #  - Same as above, but 'c' signifies cardinal week, W is which week, and D is which day of the week. So American
-# #   Thanksgiving starts 11c43, being in the 11th month (November), the 4th week, and on Thursday (Monday = 0,
+# # nMMDDName
+# #  - MM: 2 digit month  - DD: 2 digit day  - Name: Anything, but ignored
+# # cMMWDName
+# #  - 'c' signifies cardinal week, MM a 2-digit month, W is which week, and D is which day of the week. So American
+# #   Thanksgiving starts c1143, being in the 11th month (November), the 4th week, and on Thursday (Monday = 0,
 # #   Thursday = 3, Sunday = 6). Monday is 0 because that's how datetime treats it in Python.
-# # MMd - Default ANSI for the month
-
-# Milesstones
-# Load and display ANSI
-# Retrieve current date and display it back in a variety of forms
-# Have a default ANSI for the month display.
-# Create an ANSI for the current date and have it display it because the date matches
-# Create an ANSI for the current day of week that's the 1st/2nd/3rd/4th/5th in the month, and display it (removing previous success)
-# Create a special date ANSI, e.g. fake Easter where it's called and triggered through program logic
-# Have multiple ANSIs that show up, but with different priorities, and have it display the one with highest priority
+# # sName - 's' for "special". Initially this is for easter, but could be for one-off events, other moon-related days,
+# #     or equinoxes and solstices. This is one time when "Name" will be highly important
+# # dMM - Default ANSI for the month
 
 # #############################################################
 # # INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
@@ -35,71 +27,237 @@ from mystic_bbs import *
 from datetime import date
 import calendar
 import os
-
-# import random
+# Import re module to use regular expression
+import re
 
 # Replacement identifiers (Must be constants, in caps, with _ for spaces rather than camelCase.
-
+LOCATION = './themes/default/scripts/stormcal/'  # Directory that the calendar ANSIs are stored in
 
 # ###############################
 # # Calendar                   ##
 # ###############################
 
+
 def stormcal():
     # stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
     # getkey()
-    chosen_ansi = ''
+    chosen_ansi = 'none'
 
-    # Determine what day it is
+    # Determine what day it is '{:%Y%m%d}'.format(today)
     today = date.today()
-    year = today.year
-    month = today.month
-    month_english = calendar.month_name[month]
-    day = today.day
-    day_of_week = today.weekday()
-    day_of_week_english = calendar.day_name[day_of_week] # So '2' should be "Wednesday"
-    week_of_month = (day // 7) + 1 # So the 7th would still be the 1st week, 8th.
+    year = '{:%Y}'.format(today)
+    month = '{:%m}'.format(today)
+    month_english = calendar.month_name[today.month]
+    day = '{:%d}'.format(today)
+    day_of_week = str(today.weekday())
+    day_of_week_english = calendar.day_name[today.weekday()]  # So '2' should be "Wednesday"
+    week_of_month = str((today.day // 7) + 1)  # So the 7th would still be the 1st week, 8th.
     # used because it'd still work the same in Python3
 
     # testing to see if the info is displaying correctly.
-    writeln('year ' + str(year) + ' month ' + str(month) + ' day ' + str(day) + ' day of week ' + str(day_of_week) +
-          ' ...in English ' + day_of_week_english + ' week of month ' + str(week_of_month))
-    stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
-    getkey()
+    # writeln('year ' + year + ' month ' + month + '(' + month_english + ') day ' + day
+    #         + ', day of week ' + str(day_of_week) + '(' + day_of_week_english + '), week of month '
+    #         + str(week_of_month))
+    # stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
+    # getkey()
 
     # write out all the files in the stormcal directory
-    location = './themes/default/scripts/stormcal/'
     files_in_dir = []
 
     # r=>root, d=>directories, f=>files
-    writeln('Trying to display a list of all the ANSIs')
-    for r, d, f in os.walk(location):
+    # writeln('Trying to display a list of all the ANSIs')
+    for r, d, f in os.walk(LOCATION):
         for item in f:
-            writeln(item)
-            chosen_ansi = item
-            # if '.ans' in item:
-            #    files_in_dir.append(os.path.join(r, item))
-    writeln("Those are the files. Now to display the last of those files")
-    writeln("|CR|PA")
+            # writeln(item)
+            # chosen_ansi = item
+            if '.ans' in item:
+                files_in_dir.append(os.path.join(r, item))
+    # writeln("Those are the files. Now to display the last of those files")
+    # writeln("|CR|PA")
     #
     # for item in files_in_dir:
     #     print("file in dir: ", item)
-    f = open(location + item, 'r')
-    file_contents = f.read()
-    write (file_contents)
-    f.close()
-    write('|[X01|[Y23|16|14 ' + str(day_of_week_english) + ', ' + str(month_english) + ' ' + str(day))
+    # f = open(LOCATION + chosen_ansi, 'r')
+    # file_contents = f.read()
+    # write (file_contents)
+    # f.close()
+    # write('|[X01|[Y23|16|14 ' + str(day_of_week_english) + ', ' + str(month_english) + ' ' + str(day))
+    # writeln("|CR|PA")
+
+    # If no ANSIs found, use default for the month
+    # writeln("The default ANSI for " + month_english)
+    monthly_ansi = dFilter(files_in_dir, month)
+    for item in monthly_ansi:
+        # writeln(item)
+        chosen_ansi = item
+
+    # writeln("|CR|PA")
 
     # Look to see if there's any ANSIs for that day
+    # writeln("Now the list of ANSIs for " + month_english + " " + day)
+    daily_ansi = nFilter(files_in_dir, month, day)
+    for item in daily_ansi:
+        # writeln(item)
+        chosen_ansi = item
+    # writeln("|CR|PA")
+
     # Look to see if there's any ANSIs for that day of that week of that month (e.g., 4th Thursday in November)
+    # writeln("Now the list of ANSIs for the " + day_of_week_english + " of week " + week_of_month + " of "
+    #         + month_english)
+    cardinal_ansi = cFilter(files_in_dir, month, week_of_month, day_of_week)
+    for item in cardinal_ansi:
+        # writeln(item)
+        chosen_ansi = item
+    # writeln("|CR|PA")
+
     # Look to see if there's any special-day ANSIs (Mainly thinking of Easter)
-    # If no ANSIs found, use default for the month
+    # writeln("Now the list of ANSIs for Easter (to demonstrate that the special filter works)")
+    # special_ansi = sFilter(files_in_dir, "Easter")
+    # for item in special_ansi:
+    #     writeln(item)
+    #     # chosen_ansi = item
+    # writeln("|CR|PA")
+
+    # writeln("Now to use that special filter if it's actually Easter")
+    if today_is_easter(year, month, day):
+        # writeln("Today is Easter!")
+        special_ansi = sFilter(files_in_dir, "Easter")
+        for item in special_ansi:
+            # writeln(item)
+            chosen_ansi = item
+    # writeln("|CR|PA")
+
+    # writeln("In reverse order of preference, the chosen ANSI is monthly default, particular day of month,"
+    #         "particular day of cardinal week, special ANSI. Of those, this is the chosen ANSI:")
+    # writeln(chosen_ansi)
+    # writeln("|CR|PA")
+
     # If still nothing found, print error message
     # If more than one ANSI found, choose based on which has higher priority
     # If no difference in priority, just choose the first one. Whatever that is.
     # display the ANSI
+    if chosen_ansi != 'none':
+        f = open(chosen_ansi, 'r')
+        file_contents = f.read()
+        write (file_contents)
+        f.close()
+
     # display the date
+    write('|[X01|[Y23|16|14 ' + str(day_of_week_english) + ', ' + str(month_english) + ' ' + str(day))
     writeln("|CR|PA")
+
+
+# Filter function to get the daily(n) ANSIs - nMMDDPPName
+def nFilter(datalist, month, day):
+    # Look for the items, using regex, that start with n and the current month and date
+    return [val for val in datalist
+            if re.search(r'^' + LOCATION + 'n' + month + day, val)]
+
+
+# Filter function to get the cardinal(c) / x day in x week ANSIs - cMMWDPPName
+def cFilter(datalist, month, week_num, weekday_num):
+    # Look for the items, using regex, that start with c and the month, cardinal week, and weekday
+    return [val for val in datalist
+            if re.search(r'^' + LOCATION + 'c' + month + week_num + weekday_num, val)]
+
+
+# Filter function to get the special(s) ANSIs - sPPName
+def sFilter(datalist, name):
+    # Look for the items, using regex, that start with s and match the given name (e.g., "Easter")
+    return [val for val in datalist
+            if re.search(r'^' + LOCATION + 's' + re.escape(name), val)]
+
+
+# Filter function to get the default ANSI for the month - dMM
+def dFilter(datalist, month):
+    # Look for the items, using regex, that start with d and the month
+    return [val for val in datalist
+            if re.search(r'^' + LOCATION + 'd' + month, val)]
+
+
+def today_is_easter(year, month, day):
+    switcher = {
+        # '2020': y2020(month, day),
+        '2021': y2021(month, day),
+        '2022': y2022(month, day),
+        '2023': y2023(month, day),
+        '2024': y2024(month, day),
+        '2025': y2025(month, day),
+        '2026': y2026(month, day),
+        '2027': y2027(month, day),
+        '2028': y2028(month, day),
+        '2029': y2029(month, day),
+        '2030': y2030(month, day),
+    }
+    return switcher.get(year, False)
+
+
+# The following items are a ton of Easter definitions because Python does not have a good way to do a switch statement
+# def y2020(month, day):
+#     writeln("Testing: Month is " + month + " and the Day is " + day)
+#     if month == '07' and day == '19':
+#         return True
+#     return False
+
+
+def y2021(month, day):
+    if month == '04' and day == '04':
+        return True
+    return False
+
+
+def y2022(month, day):
+    if month == '04' and day == '17':
+        return True
+    return False
+
+
+def y2023(month, day):
+    if month == '04' and day == '09':
+        return True
+    return False
+
+
+def y2024(month, day):
+    if month == '03' and day == '31':
+        return True
+    return False
+
+
+def y2025(month, day):
+    if month == '04' and day == '20':
+        return True
+    return False
+
+
+def y2026(month, day):
+    if month == '04' and day == '05':
+        return True
+    return False
+
+
+def y2027(month, day):
+    if month == '03' and day == '28':
+        return True
+    return False
+
+
+def y2028(month, day):
+    if month == '04' and day == '16':
+        return True
+    return False
+
+
+def y2029(month, day):
+    if month == '04' and day == '01':
+        return True
+    return False
+
+
+def y2030(month, day):
+    if month == '04' and day == '21':
+        return True
+    return False
 
 ###################################
 # # PROGRAM EXECUTION BEGINS HERE ##
