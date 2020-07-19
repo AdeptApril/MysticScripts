@@ -1,56 +1,81 @@
 # -*- coding: CP437 -*-
 
-## DAILY CALENDAR DISPLAY FOR MYSTIC BBS
-## By April Monoceros / Adept from Storm BBS (stormbbs.com)
-## Version ? (Not yet released)
-##
-## The intent of this program is to display a different ANSI
-## screen every day of the year, preferably with different
-## items for various holidays. E.g., US Thanksgiving will
-## trigger on the right day, and same with Easter.
-##
-## Naming convention for ANSI files:
-## MMDDPPName
-##  - MM: 2 digit month - DD: 2 digit day - PP: 2 digit priority level(higher # is higher priority) - Name: Anything, but ignored
-## MMcWDPPName
-##  - Same as above, but 'c' signifies cardinal week, W is which week, and D is which day of the week. So American
-##   Thanksgiving starts 11c45, being in the 11th month (November), the 4th week, and on Thursday (Sunday = 1,
-##   Thursday = 5, Saturday = 7).
-## MMd - Default ANSI for the month
+# # DAILY CALENDAR DISPLAY FOR MYSTIC BBS
+# # By April Monoceros / Adept from Storm BBS (stormbbs.com)
+# # Version ? (Not yet released)
+# #
+# # The intent of this program is to display a different ANSI
+# # screen every day of the year, preferably with different
+# # items for various holidays. E.g., US Thanksgiving will
+# # trigger on the right day, and same with Easter.
+# #
+# # Naming convention for ANSI files:
+# # MMDDPPName
+# #  - MM: 2 digit month - DD: 2 digit day - PP: 2 digit priority level(higher # is higher priority) - Name: Anything, but ignored
+# # MMcWDPPName
+# #  - Same as above, but 'c' signifies cardinal week, W is which week, and D is which day of the week. So American
+# #   Thanksgiving starts 11c43, being in the 11th month (November), the 4th week, and on Thursday (Monday = 0,
+# #   Thursday = 3, Sunday = 6). Monday is 0 because that's how datetime treats it in Python.
+# # MMd - Default ANSI for the month
 
+# Milesstones
+# Load and display ANSI
+# Retrieve current date and display it back in a variety of forms
+# Have a default ANSI for the month display.
+# Create an ANSI for the current date and have it display it because the date matches
+# Create an ANSI for the current day of week that's the 1st/2nd/3rd/4th/5th in the month, and display it (removing previous success)
+# Create a special date ANSI, e.g. fake Easter where it's called and triggered through program logic
+# Have multiple ANSIs that show up, but with different priorities, and have it display the one with highest priority
 
-##############################################################
-## INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
-##############################################################
+# #############################################################
+# # INITIALIZE BBS FUNCTIONS AND DEFINE ANY GLOBAL VARIABLES ##
+# #############################################################
 
 from mystic_bbs import *
-#import random
+from datetime import date
+import calendar
 
-#Replacement identifiers (Must be constants, in caps, with _ for spaces rather than camelCase.
+# import random
+
+# Replacement identifiers (Must be constants, in caps, with _ for spaces rather than camelCase.
 
 
+# ###############################
+# # Calendar                   ##
+# ###############################
 
-################################
-## Calendar                   ##
-################################
+def stormcal():
+    # stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
+    # getkey()
 
-def calendar():
-    #stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
-    #getkey()
+    # Determine what day it is
+    today = date.today()
+    year = today.year
+    month = today.month
+    day = today.day
+    day_of_week = today.weekday()
+    day_of_week_english = calendar.day_name[day_of_week] # So '2' should be "Wednesday"
+    week_of_month = (day // 7) + 1 # So the 7th would still be the 1st week, 8th.
+    # used because it'd still work the same in Python3
 
-    #Determine what day it is
-    #Look to see if there's any ANSIs for that day
-    #Look to see if there's any ANSIs for that day of that week of that month (e.g., 4th Thursday in November)
-    #Look to see if there's any special-day ANSIs (Mainly thinking of Easter)
-    #If no ANSIs found, use default for the month
-    #If still nothing found, print error message
-    #If more than one ANSI found, choose based on which has higher priority
-    #If no difference in priority, just choose the first one. Whatever that is.
-    #display the ANSI
-    #display the date
+    # testing to see if the info is displaying correctly.
+    write('year ' + str(year) + ' month ' + str(month) + ' day ' + str(day) + ' day of week ' + str(day_of_week) +
+          ' ...in English ' + day_of_week_english + ' week of month ' + str(week_of_month))
+    stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
+    getkey()
+    # Look to see if there's any ANSIs for that day
+    # Look to see if there's any ANSIs for that day of that week of that month (e.g., 4th Thursday in November)
+    # Look to see if there's any special-day ANSIs (Mainly thinking of Easter)
+    # If no ANSIs found, use default for the month
+    # If still nothing found, print error message
+    # If more than one ANSI found, choose based on which has higher priority
+    # If no difference in priority, just choose the first one. Whatever that is.
+    # display the ANSI
+    # display the date
+    writeln("|CR|PA")
 
 ###################################
-## PROGRAM EXECUTION BEGINS HERE ##
+# # PROGRAM EXECUTION BEGINS HERE ##
 ###################################
 
-calendar()
+stormcal()
