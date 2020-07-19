@@ -34,6 +34,7 @@
 from mystic_bbs import *
 from datetime import date
 import calendar
+import os
 
 # import random
 
@@ -47,11 +48,13 @@ import calendar
 def stormcal():
     # stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
     # getkey()
+    chosen_ansi = ''
 
     # Determine what day it is
     today = date.today()
     year = today.year
     month = today.month
+    month_english = calendar.month_name[month]
     day = today.day
     day_of_week = today.weekday()
     day_of_week_english = calendar.day_name[day_of_week] # So '2' should be "Wednesday"
@@ -59,10 +62,34 @@ def stormcal():
     # used because it'd still work the same in Python3
 
     # testing to see if the info is displaying correctly.
-    write('year ' + str(year) + ' month ' + str(month) + ' day ' + str(day) + ' day of week ' + str(day_of_week) +
+    writeln('year ' + str(year) + ' month ' + str(month) + ' day ' + str(day) + ' day of week ' + str(day_of_week) +
           ' ...in English ' + day_of_week_english + ' week of month ' + str(week_of_month))
     stuffkey("A")  # The stuffkey/getkey is a kludge to get fTerm to update
     getkey()
+
+    # write out all the files in the stormcal directory
+    location = './themes/default/scripts/stormcal/'
+    files_in_dir = []
+
+    # r=>root, d=>directories, f=>files
+    writeln('Trying to display a list of all the ANSIs')
+    for r, d, f in os.walk(location):
+        for item in f:
+            writeln(item)
+            chosen_ansi = item
+            # if '.ans' in item:
+            #    files_in_dir.append(os.path.join(r, item))
+    writeln("Those are the files. Now to display the last of those files")
+    writeln("|CR|PA")
+    #
+    # for item in files_in_dir:
+    #     print("file in dir: ", item)
+    f = open(location + item, 'r')
+    file_contents = f.read()
+    write (file_contents)
+    f.close()
+    write('|[X01|[Y23|16|14 ' + str(day_of_week_english) + ', ' + str(month_english) + ' ' + str(day))
+
     # Look to see if there's any ANSIs for that day
     # Look to see if there's any ANSIs for that day of that week of that month (e.g., 4th Thursday in November)
     # Look to see if there's any special-day ANSIs (Mainly thinking of Easter)
