@@ -1,0 +1,41 @@
+The following are lists of made and possible ANSIs for the Storm Calendar project.
+The first bit (e.g., d0719) is what the filename would start with.
+* Means that at least one ANSI made for this item
+
+Default Monthly ANSIs
+d01 - January - Snow person in a snow storm?
+d02 - February - Lots of hearts
+d03 - March - 
+d04 - April - April showers
+d05 - May - May flowers
+d06 - June
+*d07 - July - A grill in the sun
+d08 - August
+d09 - September
+d10 - October
+d11 - November
+d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
+
+Daily ANSIs
+d0101 - New Year's Day
+
+*d0719 - National Stick Out Your Tongue Day
+*d0720 - Moon Day
+*d0721 - National Tug of War Tournament Day
+*d0722 - Pi Approximation Day
+d0723 - Peanut Butter and Chocolate Day, Hot Enough for Ya Day, Georgeous Grandma Day, Yada, Yada, Yada Day
+d0724 - Amelia Earhart Day, Cousins Day, National Drive-thru Day, National Tell an Old Joke Day, National Tequila Day, National Thermal Engineer Day, Pioneer Day (Mormon Pioneer Day)
+d0725 - Culinarians Day, Feast of Saint James, International Red Shoe Day, National Carousel Day, National Wine and Cheese Day
+
+d1003 - German Unification Day (Probably ANSI of Brandenburg Gate)
+
+d1231 - New Year's Eve
+
+Cardinal ANSIs (Meaning particular day of the week, a particular week of a month)
+-For file names, 'c', two-digit month, week of the month, then day of week (0=Monday, 3=Thursday, 6=Sunday)
+*c0736 - Ice Cream Day (3rd Sunday in July)
+c0743 - National Refreshment Day (4th Thursday in July)
+c0745 - National Day of the Cowboy (4th Saturday in July)
+
+Special ANSIs (Basically, Easter, but anything else that wouldn't qualify under the other formats. Requires changing code, other than "sEaster")
+sEaster
