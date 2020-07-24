@@ -17,25 +17,106 @@ d11 - November
 d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
 
 Daily ANSIs
-d0101 - New Year's Day
+d0101 - New Year's Day, Kwanzaa (final day)
+d0106 - Epiphany, 12th Day of Christmas
+d0107 - Orthodox Christmas
 
+d0202 - Groundhog Day
+d0204 - Rosa Parks Day
+d0214 - Valentine's Day
+
+d0308 - International Women's Day
+d0310 - Harriet Tubman Day
+d0314 - Pi Day
+d0317 - Saint Patrick's Day
+
+d0401 - April Fools' Day
+d0420 - 420
+d0422 - Earth Day
+d0425 - Tag des Baumes - Arbor Day (Germany)
+
+d0501 - May Day / International Workers' Day
+d0505 - Cinco de Mayo
+
+d0614 - Flag Day (US)
+d0619 - Juneteenth
+d0621 - Go Skateboarding Day
+
+d0704 - American Independence Day
 *d0719 - National Stick Out Your Tongue Day
 *d0720 - Moon Day
 *d0721 - National Tug of War Tournament Day
 *d0722 - Pi Approximation Day
-d0723 - Peanut Butter and Chocolate Day, Hot Enough for Ya Day, Georgeous Grandma Day, Yada, Yada, Yada Day
-d0724 - Amelia Earhart Day, Cousins Day, National Drive-thru Day, National Tell an Old Joke Day, National Tequila Day, National Thermal Engineer Day, Pioneer Day (Mormon Pioneer Day)
-d0725 - Culinarians Day, Feast of Saint James, International Red Shoe Day, National Carousel Day, National Wine and Cheese Day
+*d0723 - *Peanut Butter and Chocolate Day, Hot Enough for Ya Day, Gorgeous Grandma Day, Yada, Yada, Yada Day
+*d0724 - Amelia Earhart Day, Cousins Day, National Drive-thru Day, *National Tell an Old Joke Day, National Tequila Day, National Thermal Engineer Day, Pioneer Day (Mormon Pioneer Day)
+*d0725 - Culinarians Day, Feast of Saint James, *International Red Shoe Day, National Carousel Day, National Wine and Cheese Day
+*d0726 - *World Tofu Day, National Bagelfest Day
+*d0727 - Bagpipe Appreciation Day, Cross Atlantic Communication Day, Gary Gygax Day, National Crème Brûlée Day, National Korean War Veterans Armistice Day, National Scotch Day, *Take Your Houseplants for a Walk Day, Take Your Pants for a Walk Day, Walk on Stilts Day
+d0728 - Buffalo Soldiers Day, National Hamburger Day, World Nature Conservation Day, National Milk Chocolate Day
+d0729 - International Tiger Day, National Cheese Sacrifice Purchase Day, National Lipstick Day, Rain Day, National Lasagna Day
+d0730 - International Day of Friendship, National Cheesecake Day, National Support Public Education Day, National Whistleblower Appreciation Day, Paperback Book Day, World Snorkeling Day
+d0731 - Shredded Wheat Day, Uncommon Instrument Awareness Day, World Ranger Day, National Mutt Day
+
+
+d0826 - Women's Equality Day
+
+d0911 - Patriot Day/9/11
+d0919 - International Talk Like a Pirate Day
 
 d1003 - German Unification Day (Probably ANSI of Brandenburg Gate)
+d1006 - German-American Day
+d1009 - Lief Erikson Day
+d1023 - Mole Day (6.22*10^23 - Avogadro's number
+d1031 - Halloween
+d1101 - All Saint's Day
 
+d1207 - Pearl Harbor Remembrance Day
+d1224 - Christmas Eve
+d1225 - Christmas
+d1226 - Kwanzaa (first day)
 d1231 - New Year's Eve
+
+
+
 
 Cardinal ANSIs (Meaning particular day of the week, a particular week of a month)
 -For file names, 'c', two-digit month, week of the month, then day of week (0=Monday, 3=Thursday, 6=Sunday)
+c0130 - Martin Luther King, Jr. Day - 2nd Monday in January
+c0216 - Superb Owl Sunday (1st Sunday in February)
+
+c0515 - Free Comic Book Day (1st Saturday in May)
+c0526 - Mother's Day (2nd Sunday in May)
+
+c0636 - Father's Day (3rd Sunday in June)
+
 *c0736 - Ice Cream Day (3rd Sunday in July)
 c0743 - National Refreshment Day (4th Thursday in July)
 c0745 - National Day of the Cowboy (4th Saturday in July)
 
+c0910 - American Labor Day (1st Monday in September)
+
+c1143 - American Thanksgiving (4th Thursday in November)
+c1144 - Black Friday (Maybe this is a "Special" item, since it _can_ be the 5th Friday)
+
+
+
+
+
 Special ANSIs (Basically, Easter, but anything else that wouldn't qualify under the other formats. Requires changing code, other than "sEaster")
+sRamadanBegin
+sRamadanEnd
+sMardiGras - Day before Ash Wednesday
+sAshWednesday - 40 days before Easter, not counting Sundays
+sPalmSunday - Sunday before Easter
+sGoodFriday - Friday before Easter
+sPassover
 sEaster
+sMemorialDay - Last Monday in May. Could also just be May 30th.
+sGrandparents Day - first Sunday after Labor Day
+sOktoberfestFirstDay
+sOktoberfestFinalDay
+sElection Day - First Tuesday following the first Monday in November (US)
+sBlackFriday - Maybe not worth it to code, but it's the day after Thanksgiving, thus either the 4th or 5th Friday in November
+sSmallBusinessSaturday - Saturday after Thanksgiving
+sCyberMonday
+sHanukkah
