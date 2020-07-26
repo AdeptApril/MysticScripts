@@ -10,7 +10,7 @@ d04 - April - April showers
 d05 - May - May flowers
 d06 - June
 *d07 - July - A grill in the sun
-d08 - August
+*d08 - August - Hurricane
 d09 - September
 d10 - October
 d11 - November
@@ -53,10 +53,18 @@ d0704 - American Independence Day
 *d0726 - *World Tofu Day, National Bagelfest Day
 *d0727 - Bagpipe Appreciation Day, Cross Atlantic Communication Day, Gary Gygax Day, National Crème Brûlée Day, National Korean War Veterans Armistice Day, National Scotch Day, *Take Your Houseplants for a Walk Day, Take Your Pants for a Walk Day, Walk on Stilts Day
 d0728 - Buffalo Soldiers Day, National Hamburger Day, World Nature Conservation Day, National Milk Chocolate Day
-d0729 - International Tiger Day, National Cheese Sacrifice Purchase Day, National Lipstick Day, Rain Day, National Lasagna Day
-d0730 - International Day of Friendship, National Cheesecake Day, National Support Public Education Day, National Whistleblower Appreciation Day, Paperback Book Day, World Snorkeling Day
-d0731 - Shredded Wheat Day, Uncommon Instrument Awareness Day, World Ranger Day, National Mutt Day
+*d0729 - *International Tiger Day, National Cheese Sacrifice Purchase Day, National Lipstick Day, Rain Day, National Lasagna Day
+*d0730 - International Day of Friendship, National Cheesecake Day, National Support Public Education Day, National Whistleblower Appreciation Day, Paperback Book Day, *World Snorkeling Day
+*d0731 - Shredded Wheat Day, Uncommon Instrument Awareness Day, World Ranger Day, *National Mutt Day
 
+d0801 - Woman Astronomers Day, Spider-Man Day, World Wide Web Day, National Disc Golf Day, National Girlfriends Day, Homemade Pie Day, International Childfree Day, Lammas (loaf-mass; first harvest festival of the year)
+*d0802 - *Dinosaurs Day, National Doll Day
+d0803 - Airplane Crop Duster Day, Assistance Dog Day, Clean Your Floors Day
+d0804 - National Chocolate Chip Cookies Day, National Night Out, National White Wine Day, Single Working Women's Day, U.S. Coast Guard Day
+d0805 - International Traffic Light Day, National Underwear Day, Green Peppers Day
+d0806 - Balloons to Heaven Day, Cycle to Work Day (UK), National Gossip Day, Hiroshima Day, Wiggle Your Toes Day, National Root Beer Float Day
+d0807 - Beach Party Day, International Beer Day, National Lighthouse Day, Purple Heart Day
+d0808 - Celebrate Your Lakes Day, International Cat Day, National Dollar Day, National Frozen Custard Day, National Zucchini Day, The Date to Create
 
 d0826 - Women's Equality Day
 
@@ -92,6 +100,8 @@ c0636 - Father's Day (3rd Sunday in June)
 *c0736 - Ice Cream Day (3rd Sunday in July)
 c0743 - National Refreshment Day (4th Thursday in July)
 c0745 - National Day of the Cowboy (4th Saturday in July)
+
+c0825 - National Bowling Day, National Garage Sale Day (2nd Saturday in August)
 
 c0910 - American Labor Day (1st Monday in September)
 
