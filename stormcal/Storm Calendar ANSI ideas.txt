@@ -42,7 +42,8 @@ n0614 - Flag Day (US)
 n0619 - Juneteenth
 n0621 - Go Skateboarding Day
 
-n0704 - American Independence Day
+*n0704 - *American Independence Day
+
 *n0719 - National Stick Out Your Tongue Day
 *n0720 - Moon Day
 *n0721 - National Tug of War Tournament Day
@@ -62,9 +63,9 @@ n0704 - American Independence Day
 *n0803 - Airplane Crop Duster Day, Assistance Dog Day, *Clean Your Floors Day
 *n0804 - National Chocolate Chip Cookies Day, National Night Out, *National White Wine Day, Single Working Women's Day, U.S. Coast Guard Day
 *n0805 - *International Traffic Light Day, National Underwear Day, Green Peppers Day
-n0806 - Balloons to Heaven Day, Cycle to Work Day (UK), National Gossip Day, Hiroshima Day, Wiggle Your Toes Day, National Root Beer Float Day
-n0807 - Beach Party Day, International Beer Day, National Lighthouse Day, Purple Heart Day
-n0808 - Celebrate Your Lakes Day, International Cat Day, National Dollar Day, National Frozen Custard Day, National Zucchini Day, The Date to Create
+*n0806 - *Balloons to Heaven Day, Cycle to Work Day (UK), National Gossip Day, Hiroshima Day, Wiggle Your Toes Day, National Root Beer Float Day
+*n0807 - Beach Party Day, International Beer Day, *National Lighthouse Day, Purple Heart Day
+*n0808 - Celebrate Your Lakes Day, *International Cat Day, National Dollar Day, National Frozen Custard Day, National Zucchini Day, The Date to Create
 
 n0826 - Women's Equality Day
 
