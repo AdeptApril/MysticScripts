@@ -1,5 +1,5 @@
 The following are lists of made and possible ANSIs for the Storm Calendar project.
-The first bit (e.g., d0719) is what the filename would start with.
+The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
 Default Monthly ANSIs
@@ -17,72 +17,72 @@ d11 - November
 d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
 
 Daily ANSIs
-d0101 - New Year's Day, Kwanzaa (final day)
-d0106 - Epiphany, 12th Day of Christmas
-d0107 - Orthodox Christmas
+n0101 - New Year's Day, Kwanzaa (final day)
+n0106 - Epiphany, 12th Day of Christmas
+n0107 - Orthodox Christmas
 
-d0202 - Groundhog Day
-d0204 - Rosa Parks Day
-d0214 - Valentine's Day
+n0202 - Groundhog Day
+n0204 - Rosa Parks Day
+n0214 - Valentine's Day
 
-d0308 - International Women's Day
-d0310 - Harriet Tubman Day
-d0314 - Pi Day
-d0317 - Saint Patrick's Day
+n0308 - International Women's Day
+n0310 - Harriet Tubman Day
+n0314 - Pi Day
+n0317 - Saint Patrick's Day
 
-d0401 - April Fools' Day
-d0420 - 420
-d0422 - Earth Day
-d0425 - Tag des Baumes - Arbor Day (Germany)
+n0401 - April Fools' Day
+n0420 - 420
+n0422 - Earth Day
+n0425 - Tag des Baumes - Arbor Day (Germany)
 
-d0501 - May Day / International Workers' Day
-d0505 - Cinco de Mayo
+n0501 - May Day / International Workers' Day
+n0505 - Cinco de Mayo
 
-d0614 - Flag Day (US)
-d0619 - Juneteenth
-d0621 - Go Skateboarding Day
+n0614 - Flag Day (US)
+n0619 - Juneteenth
+n0621 - Go Skateboarding Day
 
-d0704 - American Independence Day
-*d0719 - National Stick Out Your Tongue Day
-*d0720 - Moon Day
-*d0721 - National Tug of War Tournament Day
-*d0722 - Pi Approximation Day
-*d0723 - *Peanut Butter and Chocolate Day, Hot Enough for Ya Day, Gorgeous Grandma Day, Yada, Yada, Yada Day
-*d0724 - Amelia Earhart Day, Cousins Day, National Drive-thru Day, *National Tell an Old Joke Day, National Tequila Day, National Thermal Engineer Day, Pioneer Day (Mormon Pioneer Day)
-*d0725 - Culinarians Day, Feast of Saint James, *International Red Shoe Day, National Carousel Day, National Wine and Cheese Day
-*d0726 - *World Tofu Day, National Bagelfest Day
-*d0727 - Bagpipe Appreciation Day, Cross Atlantic Communication Day, Gary Gygax Day, National Crème Brûlée Day, National Korean War Veterans Armistice Day, National Scotch Day, *Take Your Houseplants for a Walk Day, Take Your Pants for a Walk Day, Walk on Stilts Day
-d0728 - Buffalo Soldiers Day, National Hamburger Day, World Nature Conservation Day, National Milk Chocolate Day
-*d0729 - *International Tiger Day, National Cheese Sacrifice Purchase Day, National Lipstick Day, Rain Day, National Lasagna Day
-*d0730 - International Day of Friendship, National Cheesecake Day, National Support Public Education Day, National Whistleblower Appreciation Day, Paperback Book Day, *World Snorkeling Day
-*d0731 - Shredded Wheat Day, Uncommon Instrument Awareness Day, World Ranger Day, *National Mutt Day
+n0704 - American Independence Day
+*n0719 - National Stick Out Your Tongue Day
+*n0720 - Moon Day
+*n0721 - National Tug of War Tournament Day
+*n0722 - Pi Approximation Day
+*n0723 - *Peanut Butter and Chocolate Day, Hot Enough for Ya Day, Gorgeous Grandma Day, Yada, Yada, Yada Day
+*n0724 - Amelia Earhart Day, Cousins Day, National Drive-thru Day, *National Tell an Old Joke Day, National Tequila Day, National Thermal Engineer Day, Pioneer Day (Mormon Pioneer Day)
+*n0725 - Culinarians Day, Feast of Saint James, *International Red Shoe Day, National Carousel Day, National Wine and Cheese Day
+*n0726 - *World Tofu Day, National Bagelfest Day
+*n0727 - Bagpipe Appreciation Day, Cross Atlantic Communication Day, Gary Gygax Day, National Crème Brûlée Day, National Korean War Veterans Armistice Day, National Scotch Day, *Take Your Houseplants for a Walk Day, Take Your Pants for a Walk Day, Walk on Stilts Day
+*n0728 - Buffalo Soldiers Day, National Hamburger Day, *World Nature Conservation Day, National Milk Chocolate Day
+*n0729 - *International Tiger Day, National Cheese Sacrifice Purchase Day, National Lipstick Day, Rain Day, National Lasagna Day
+*n0730 - International Day of Friendship, National Cheesecake Day, National Support Public Education Day, National Whistleblower Appreciation Day, Paperback Book Day, *World Snorkeling Day
+*n0731 - Shredded Wheat Day, Uncommon Instrument Awareness Day, World Ranger Day, *National Mutt Day
 
-d0801 - Woman Astronomers Day, Spider-Man Day, World Wide Web Day, National Disc Golf Day, National Girlfriends Day, Homemade Pie Day, International Childfree Day, Lammas (loaf-mass; first harvest festival of the year)
-*d0802 - *Dinosaurs Day, National Doll Day
-d0803 - Airplane Crop Duster Day, Assistance Dog Day, Clean Your Floors Day
-d0804 - National Chocolate Chip Cookies Day, National Night Out, National White Wine Day, Single Working Women's Day, U.S. Coast Guard Day
-d0805 - International Traffic Light Day, National Underwear Day, Green Peppers Day
-d0806 - Balloons to Heaven Day, Cycle to Work Day (UK), National Gossip Day, Hiroshima Day, Wiggle Your Toes Day, National Root Beer Float Day
-d0807 - Beach Party Day, International Beer Day, National Lighthouse Day, Purple Heart Day
-d0808 - Celebrate Your Lakes Day, International Cat Day, National Dollar Day, National Frozen Custard Day, National Zucchini Day, The Date to Create
+*n0801 - Woman Astronomers Day, Spider-Man Day, World Wide Web Day, National Disc Golf Day, National Girlfriends Day, *Homemade Pie Day, International Childfree Day, Lammas (loaf-mass; first harvest festival of the year)
+*n0802 - *Dinosaurs Day, National Doll Day
+*n0803 - Airplane Crop Duster Day, Assistance Dog Day, *Clean Your Floors Day
+*n0804 - National Chocolate Chip Cookies Day, National Night Out, *National White Wine Day, Single Working Women's Day, U.S. Coast Guard Day
+*n0805 - *International Traffic Light Day, National Underwear Day, Green Peppers Day
+n0806 - Balloons to Heaven Day, Cycle to Work Day (UK), National Gossip Day, Hiroshima Day, Wiggle Your Toes Day, National Root Beer Float Day
+n0807 - Beach Party Day, International Beer Day, National Lighthouse Day, Purple Heart Day
+n0808 - Celebrate Your Lakes Day, International Cat Day, National Dollar Day, National Frozen Custard Day, National Zucchini Day, The Date to Create
 
-d0826 - Women's Equality Day
+n0826 - Women's Equality Day
 
-d0911 - Patriot Day/9/11
-d0919 - International Talk Like a Pirate Day
+n0911 - Patriot Day/9/11
+n0919 - International Talk Like a Pirate Day
 
-d1003 - German Unification Day (Probably ANSI of Brandenburg Gate)
-d1006 - German-American Day
-d1009 - Lief Erikson Day
-d1023 - Mole Day (6.22*10^23 - Avogadro's number
-d1031 - Halloween
-d1101 - All Saint's Day
+n1003 - German Unification Day (Probably ANSI of Brandenburg Gate)
+n1006 - German-American Day
+n1009 - Lief Erikson Day
+n1023 - Mole Day (6.22*10^23 - Avogadro's number
+n1031 - Halloween
+n1101 - All Saint's Day
 
-d1207 - Pearl Harbor Remembrance Day
-d1224 - Christmas Eve
-d1225 - Christmas
-d1226 - Kwanzaa (first day)
-d1231 - New Year's Eve
+n1207 - Pearl Harbor Remembrance Day
+n1224 - Christmas Eve
+n1225 - Christmas
+n1226 - Kwanzaa (first day)
+n1231 - New Year's Eve
 
 
 
