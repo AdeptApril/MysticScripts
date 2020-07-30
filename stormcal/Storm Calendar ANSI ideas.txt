@@ -66,6 +66,15 @@ n0621 - Go Skateboarding Day
 *n0806 - *Balloons to Heaven Day, Cycle to Work Day (UK), National Gossip Day, Hiroshima Day, Wiggle Your Toes Day, National Root Beer Float Day
 *n0807 - Beach Party Day, International Beer Day, *National Lighthouse Day, Purple Heart Day
 *n0808 - Celebrate Your Lakes Day, *International Cat Day, National Dollar Day, National Frozen Custard Day, National Zucchini Day, The Date to Create
+*n0809 - *Book Lovers Day, National Hand Holding Day, National Polka Day
+*n0810 - National Lazy Day, National S'mores Day, *National Shapewear Day, National Spoil Your Dog Day, World Lion Day, Smithsonian Day
+n0811 - Annual Medical Checkup Day, Play in the Sand Day, Presidential Joke Day
+n0812 - Baseball Fans Day, IBM PC Day, Truck Driver Day, Vinyl Record Day, World Calligraphy Day, World Elephant Day
+n0813 - International Left-Handers Day, National Fliet Mignon Day, National Prosecco Day
+n0814 - Color Book Day (first colored book published in 1457), National Creamsicle Day, National Financial Awareness Day
+n0815 - National Honeybee Day, , International Geocaching Day, Chant at the Moon Day, Break the Monotony Day
+n0816 - National Roller Coaster Day
+n0817 - 
 
 n0826 - Women's Equality Day
 
@@ -102,10 +111,13 @@ c0636 - Father's Day (3rd Sunday in June)
 c0743 - National Refreshment Day (4th Thursday in July)
 c0745 - National Day of the Cowboy (4th Saturday in July)
 
+c0820 - Victory Day / V-J Day (2nd Monday in August)
+c0824 - National Kool-Aid Day (2nd Friday in August)
 c0825 - National Bowling Day, National Garage Sale Day (2nd Saturday in August)
 
 c0910 - American Labor Day (1st Monday in September)
 
+c1115 - Book Lovers Day (1st Saturday in November. Also August 9th)
 c1143 - American Thanksgiving (4th Thursday in November)
 c1144 - Black Friday (Maybe this is a "Special" item, since it _can_ be the 5th Friday)
 
