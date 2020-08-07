@@ -78,9 +78,9 @@ n0621 - Go Skateboarding Day
 *n0818 - Helium Discovery Day, Mail Order Catalog Day, *National Bad Poetry Day, Pinot Noir Day
 *n0819 - International Orangutan Day, *National Potato Day, National Sandcastle and Sculpture Day, International Bow Day, World Photo/Photography Day
 *n0820 - National Radio Day (from one old technology to another...), *Virtual Worlds Day, National Bacon Lover's Day, National Lemonade Day
-n0821 - National Brazilian Blowout Day, National Spumoni Day, National Senior Citizens Day
-n0822 - National Surgical Oncologist Day, National Be An Angel Day, National Bao Day, Never Bean Better Day, National Tooth Fairy Day, National Pecan Torte Day
-n0823 - National Ride The Wind Day, National Sponge Cake Day
+*n0821 - National Brazilian Blowout Day, *National Spumoni Day, National Senior Citizens Day
+*n0822 - National Surgical Oncologist Day, National Be An Angel Day, National Bao Day, Never Bean Better Day, National Tooth Fairy Day, National Pecan Torte Day, *Southern Hemisphere Hoodie Hoo Day
+*n0823 - *National Ride The Wind Day, National Sponge Cake Day
 n0824 - National Maryland Day, National Peach Pie Day, National Waffle Day
 n0825 - National Park Service Founders Day, National Whiskey Sour Day, National Kiss and Make Up Day, National Secondhand Wardrobe Day, National Banana Split Day
 n0826 - National WebMistress Day, National Dog Day, National Women’s Equality Day, National Cherry Popsicle Day
@@ -302,17 +302,18 @@ n0928 - International Day for Universal Access to Information
 n0929 - World Heart Day
 National Coffee Day
     VFW Day
-n0930 - International Podcast Day
-    International Translation Day
-	National Love People Day
-    National Chewing Gum Day
-    National Mud Pack Day
-    National Hot Mulled Cider Day
-    National Women’s Health & Fitness Day– Last Wednesday in September
+n0930 - International Podcast Day, International Translation Day, National Love People Day, National Chewing Gum Day, National Mud Pack Day, National Hot Mulled Cider Day, National Women’s Health & Fitness Day– Last Wednesday in September
 
+n1001 - World Vegetarian Day, International Coffee Day,Children´s Day,Cyprus Independence Day, National Day of the People's Republic of China,International Day of Older Persons, Armed Forces Day, Elders' Day,Teachers Day, German Food Bank Day, National Hair Day, Fire Pup Day,National Homemade Cookies Day
+n1002 - Day after the Mid-Autumn-Festival, International Day of Non-Violence, Mid-Autumn Festival Day 3, Day after Mid-Autumn Festival, National Day Golden Week holiday, Independence Day, National Produce Misting Day *, National Custodial Worker’s Recognition Day, National Name Your Car Day, National Fried Scallops Day, National Manufacturing Day, National Body Language Day, World Smile Day
 n1003 - German Unification Day (Probably ANSI of Brandenburg Gate)
-n1006 - German-American Day
-n1009 - Lief Erikson Day
+n1004 - Teacher's Day, Feast of St Francis of Assisi, National Day Golden Week holiday, Daylight Saving Time starts, Sukkot II, Peace and Reconciliation Day, Wine Day (Day 2), Independence Day, World Animal Day, National Vodka Day, National Taco Day, National Golf Lover’s Day
+n1005 - World Teachers' Day, World Habitat Day, Constitution Day, Republic Implantation, Queen's Birthday, Labour Day, Child Health Day, Thanksgiving Day, Peat Cutting Monday, National Day Golden Week holiday, Sukkot III, National Get Funky Day, National Rhode Island Day, National Do Something Nice Day, National Apple Betty Day, National Consignment Day
+n1006 - German-American Day - , Day of Commemoration and National Mourning, Armed Forces Day, National Day Golden Week holiday, Sukkot IV, October Liberation Day, Dukla Pass Victims Day, National Orange Wine Day, National Plus Size Appreciation Day, National Mad Hatter Day, National German-American Day, National Noodle Day
+n1007 - World Cerebral Palsy Day, National Day Golden Week holiday, Sukkot V, Space Exploration Day, National LED Light Day, National Frappe Day, National Inner Beauty Day, National Walk to School Day, National Pumpkin Seed Day, National Coffee with a Cop Day
+n1008 - Battle of Angamos, Independence Day, World Sight Day, Arbaeen
+
+n1009 - Leif Erikson Day
 n1023 - Mole Day (6.22*10^23 - Avogadro's number
 n1031 - Halloween
 n1101 - All Saint's Day
