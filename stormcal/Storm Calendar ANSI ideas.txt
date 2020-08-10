@@ -85,8 +85,8 @@ n0621 - Go Skateboarding Day
 *n0825 - National Park Service Founders Day, National Whiskey Sour Day, National Kiss and Make Up Day, National Secondhand Wardrobe Day, *National Banana Split Day
 *n0826 - National WebMistress Day, National Dog Day, *National Women’s Equality Day, National Cherry Popsicle Day
 *n0827 - National Pots De Creme Day, National Just Because Day, *World Rock Paper Scissors Day
-n0828 - National Red Wine Day, National Power Rangers Day, National Bow Tie Day, National Cherry Turnovers Day, Rainbow Bridge Remembrance Day, International Read Comics in Public Day
-n0829 - National Chop Suey Day
+*n0828 - National Red Wine Day, National Power Rangers Day, National Bow Tie Day, National Cherry Turnovers Day, Rainbow Bridge Remembrance Day, *International Read Comics in Public Day*
+*n0829 - National Chop Suey Day, *Lemon Juice Day, More Herbs Less Salt Day, Record Store Day
 n0830 - National Toasted Marshmallow Day
     National Grief Awareness Day
     National Beach Day
