@@ -11,8 +11,8 @@ d05 - May - May flowers
 d06 - June
 *d07 - July - A grill in the sun
 *d08 - August - Hurricane
-d09 - September
-d10 - October
+*d09 - September - Library Card signup month
+*d10 - October - Pumpkin
 d11 - November
 d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
 
@@ -87,22 +87,13 @@ n0621 - Go Skateboarding Day
 *n0827 - National Pots De Creme Day, National Just Because Day, *World Rock Paper Scissors Day
 *n0828 - National Red Wine Day, National Power Rangers Day, National Bow Tie Day, National Cherry Turnovers Day, Rainbow Bridge Remembrance Day, *International Read Comics in Public Day*
 *n0829 - National Chop Suey Day, *Lemon Juice Day, More Herbs Less Salt Day, Record Store Day
-n0830 - National Toasted Marshmallow Day
-    National Grief Awareness Day
-    National Beach Day
-n0831 - National South Carolina Day
-    National Matchmaker Day
-    National Diatomaceous Earth Day
-    National Trail Mix Day
+*n0830 - National Toasted Marshmallow Day, National Grief Awareness Day, National Beach Day, *Frankenstein Day (Mary Shelley's birthday)
+n0831 - National South Carolina Day, National Matchmaker Day, National Diatomaceous Earth Day, National Trail Mix Day, Eat Outside Day
 
 
-n0901 - World Letter Writing Day
-    National Chicken Boy’s Day
-    National No Rhyme (Nor Reason) Day
-n0902 -     National Blueberry Popsicle Day
-    National V-J Day
-n0903 -     National Welsh Rarebit Day
-    U.S. Bowling League Day
+*n0901 - *World Letter Writing Day, National Chicken Boy’s Day, National No Rhyme (Nor Reason) Day
+n0902 - National Blueberry Popsicle Day, National V-J Day
+n0903 - National Welsh Rarebit Day, U.S. Bowling League Day
 n0904 - World Sexual Health Day
     Global Talent Acquisition Day
 	National Chianti Day * – First Friday in September
