@@ -103,10 +103,8 @@ n0904 - World Sexual Health Day
     National Lazy Mom’s Day – First Friday in September
     National Food Bank Day– First Friday in September
     National College Colors Day – Friday before Labor Day
-n0905 - International Day of Charity
-National Cheese Pizza Day
-    National Be Late For Something Day
-    National Tailgating Day – First Saturday in September
+*n0905 - International Day of Charity, National Cheese Pizza Day, National Be Late For Something Day, 	*World Samosa Day
+	National Tailgating Day – First Saturday in September
     World Beard Day – First Saturday in September
 n0906 - National Coffee Ice Cream Day
     National Read A Book Day
@@ -332,6 +330,7 @@ c0824 - National Kool-Aid Day (2nd Friday in August)
 c0825 - National Bowling Day, National Garage Sale Day (2nd Saturday in August)
 
 c0910 - American Labor Day (1st Monday in September)
+*c0914 - *Wear Teal Day
 
 c1115 - Book Lovers Day (1st Saturday in November. Also August 9th)
 c1143 - American Thanksgiving (4th Thursday in November)
