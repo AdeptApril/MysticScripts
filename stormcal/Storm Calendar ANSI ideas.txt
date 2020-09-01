@@ -3,18 +3,18 @@ The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
 Default Monthly ANSIs
-d01 - January - Snow person in a snow storm?
-d02 - February - Lots of hearts
-d03 - March - 
-d04 - April - April showers
-d05 - May - May flowers
-d06 - June
+*d01 - January - Snow person in a snow storm?
+*d02 - February - Lots of hearts
+*d03 - March - Irish American Heritage Month
+*d04 - April - April showers
+*d05 - May - May flowers
+*d06 - June - Pride Month
 *d07 - July - A grill in the sun
 *d08 - August - Hurricane
 *d09 - September - Library Card signup month
 *d10 - October - Pumpkin
-d11 - November
-d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
+*d11 - November - Corn shock, with pumpkins, and a white-picket fence
+*d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
 
 Daily ANSIs
 n0101 - New Year's Day, Kwanzaa (final day)
@@ -31,6 +31,7 @@ n0314 - Pi Day
 n0317 - Saint Patrick's Day
 
 n0401 - April Fools' Day
+n0411 - Adept's birthday
 n0420 - 420
 n0422 - Earth Day
 n0425 - Tag des Baumes - Arbor Day (Germany)
