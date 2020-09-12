@@ -257,9 +257,13 @@ National Fried Rice Day
 *n1005 - *World Teachers' Day
 *n1006 - *German-American Day
 *n1007 - *Bathtub Day
-n1008 - Battle of Angamos, Independence Day, World Sight Day, Arbaeen
+*n1008 - *World Octopus Day, Battle of Angamos, Independence Day, World Sight Day, Arbaeen
+*n1009 - *Leif Erikson Day
+*n1010 - *National Metric Day
+*n1011 - *Kraken/Myths and Legends Day
+*n1012 - *Cookbook Launch Day
+*n1013 - *International Suit Up Day, *National No Bra Day
 
-n1009 - Leif Erikson Day
 n1023 - Mole Day (6.22*10^23 - Avogadro's number
 n1031 - Halloween
 n1101 - All Saint's Day
@@ -300,6 +304,8 @@ c1144 - Black Friday (Maybe this is a "Special" item, since it _can_ be the 5th 
 
 
 
+Different categories needed, or possibly special:
+Last Saturday in February - Open that Bottle Night
 
 
 Special ANSIs (Basically, Easter, but anything else that wouldn't qualify under the other formats. Requires changing code, other than "sEaster")
