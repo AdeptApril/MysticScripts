@@ -263,6 +263,7 @@ National Fried Rice Day
 *n1011 - *Kraken/Myths and Legends Day
 *n1012 - *Cookbook Launch Day
 *n1013 - *International Suit Up Day, *National No Bra Day
+*n1014 - *national lowercase day
 
 n1023 - Mole Day (6.22*10^23 - Avogadro's number
 n1031 - Halloween
