@@ -266,8 +266,8 @@ National Fried Rice Day
 *n1014 - *national lowercase day
 *n1015 - *National Cheese Curd Day
 *n1016 - *National Dictionary Day, National Learn-a-word Day
-n1017 - National Spreadsheet Day (though there are lots of interesting days here, including a bridge day for the 3rd Saturday of the month)
-n1018 - 
+*n1017 - *National Spreadsheet Day (though there are lots of interesting days here, including a bridge day for the 3rd Saturday of the month)
+*n1018 - National Chocolate Cupcake Day
 n1019 - 
 n1020 -
 n1021 - 
