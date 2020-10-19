@@ -267,10 +267,10 @@ National Fried Rice Day
 *n1015 - *National Cheese Curd Day
 *n1016 - *National Dictionary Day, National Learn-a-word Day
 *n1017 - *National Spreadsheet Day (though there are lots of interesting days here, including a bridge day for the 3rd Saturday of the month)
-*n1018 - National Chocolate Cupcake Day
-n1019 - 
-n1020 -
-n1021 - 
+*n1018 - *National Chocolate Cupcake Day
+*n1019 - *LGBT Center Day
+*n1020 - *International Day of the Air Traffic Controller
+*n1021 - *Apple Day
 n1022 -
 n1023 - Mole Day (6.22*10^23 - Avogadro's number
 n1031 - Halloween
