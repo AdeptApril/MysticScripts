@@ -271,9 +271,16 @@ National Fried Rice Day
 *n1019 - *LGBT Center Day
 *n1020 - *International Day of the Air Traffic Controller
 *n1021 - *Apple Day
-n1022 -
-n1023 - Mole Day (6.22*10^23 - Avogadro's number
-n1031 - Halloween
+*n1022 - *International Capslock Day / *National Color Day
+*n1023 - *Mole Day (6.22*10^23 - Avogadro's number
+*n1024 - *Tag der Bibliothek
+*n1025 - *International Artist Day
+*n1026 - *Worldwide Howl at the Moon Night
+*n1027 - *World Day for Audiovisual Heritage
+*n1028 - *International Animation Day
+*n1029 - *Internet Day
+*n1030 - *Candy Corn Day
+*n1031 - *Halloween
 n1101 - All Saint's Day
 
 n1207 - Pearl Harbor Remembrance Day
