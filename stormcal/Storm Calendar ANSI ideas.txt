@@ -281,7 +281,11 @@ National Fried Rice Day
 *n1029 - *Internet Day
 *n1030 - *Candy Corn Day
 *n1031 - *Halloween
-n1101 - All Saint's Day
+*n1101 - *All Saint's Day
+*n1102 - *Plan Your Epitaph Day
+*n1103 - *Cliche Day
+*n1104 - *King Tut Day
+n1105 - Guy Fawkes Night
 
 n1207 - Pearl Harbor Remembrance Day
 n1224 - Christmas Eve
