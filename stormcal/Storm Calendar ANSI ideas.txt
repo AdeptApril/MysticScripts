@@ -285,7 +285,23 @@ National Fried Rice Day
 *n1102 - *Plan Your Epitaph Day
 *n1103 - *Cliche Day
 *n1104 - *King Tut Day
-n1105 - Guy Fawkes Night
+*n1105 - *Guy Fawkes Night
+*n1106 - *Fountain Pen Day
+*n1107 - *Little League Girls Day, Hug a Bear Day
+n1108 - World Town Planning Day
+n1109 - World Freedom Day (fall of the Berlin Wall)
+n1110 - 
+n1111 - 
+n1112 - 
+n1113 - 
+n1114 - 
+n1115 - 
+n1116 - 
+n1117 - 
+n1118 - 
+n1119 - 
+n1120 - 
+
 
 n1207 - Pearl Harbor Remembrance Day
 n1224 - Christmas Eve
