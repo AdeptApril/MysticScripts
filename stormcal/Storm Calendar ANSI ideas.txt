@@ -281,6 +281,7 @@ National Fried Rice Day
 *n1029 - *Internet Day
 *n1030 - *Candy Corn Day
 *n1031 - *Halloween
+
 *n1101 - *All Saint's Day
 *n1102 - *Plan Your Epitaph Day
 *n1103 - *Cliche Day
@@ -292,18 +293,38 @@ National Fried Rice Day
 *n1109 - *World Freedom Day (fall of the Berlin Wall)
 *n1110 - *Area Code Day
 *n1111 - *Veterans Day
-n1112 - Fancy Rat & Mouse Day
-n1113 - Sadie Hawkins Day
-n1114 - National Seat Belt Day
-n1115 - 
-n1116 - 
-n1117 - 
-n1118 - 
-n1119 - 
-n1120 - 
+*n1112 - *Fancy Rat & Mouse Day
+*n1113 - *Sadie Hawkins Day
+*n1114 - *National Seat Belt Day
+*n1115 - *Little Red Wagon Day
+*n1116 - *National Button Day
+*n1117 - *Homemade Bread Day
+*n1118 - *Geographic Information Systems (GIS) Day
+*n1119 - *Equal Opportunity Day/Gettysburg Address Day
+*n1120 - *Name Your PC Day
+*n1121 - *Gingerbread Day, Red Mitten Day
+*n1122 - Go for a Ride Day / Start Your Own Country Day
+*n1123 - *Fibonacci Day
+*n1124 - *D.B. Cooper Day, Brownielocks Day (celebrate brunettes)
+*n1125 - International Day for the Elimination of Violence against Women, *National Jukebox day
+n1126 - (Doing *Thanksgiving for 2020), National Cake Day, Good Grief Day
+*n1127 - Turtle Adoption Day / *Turtle Sponsorship Day
+*n1128 - Red Planet Day, Letter Writing Day, *Make Your Own Head Day
+n1129 - (Advent Sunday in 2020), International Day of the Bible
+n1130 - Mason Jar Day
 
-
+n1201 - 
+n1202 - 
+n1203 - 
+n1204 - 
+n1205 - 
+n1206 - 
 n1207 - Pearl Harbor Remembrance Day
+n1208 - 
+n1209 - 
+n1210 - 
+n1211 - 
+
 n1224 - Christmas Eve
 n1225 - Christmas
 n1226 - Kwanzaa (first day)
@@ -362,3 +383,4 @@ sBlackFriday - Maybe not worth it to code, but it's the day after Thanksgiving, 
 sSmallBusinessSaturday - Saturday after Thanksgiving
 sCyberMonday
 sHanukkah
+sAdventSunday - fourth Sunday prior to Christmas Day
