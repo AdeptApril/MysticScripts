@@ -2,6 +2,9 @@ The following are lists of made and possible ANSIs for the Storm Calendar projec
 The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
+Needed Fixes:
+Advent Sunday - Just used November 29th, should be 4th Sunday before Christmas. Which probably isn't bad, programmatically as a before-x-day item. But could also just be a special day.
+
 Default Monthly ANSIs
 *d01 - January - Snow person in a snow storm?
 *d02 - February - Lots of hearts
@@ -17,8 +20,12 @@ Default Monthly ANSIs
 *d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
 
 Daily ANSIs
-n0101 - New Year's Day, Kwanzaa (final day)
-n0106 - Epiphany, 12th Day of Christmas
+n0101 - New Year's Day, Kwanzaa (final day), Copyright Law Day, Public Domain Day, 8th Day of Christmas
+n0102 - 9th Day of Christmas
+n0103 - 10th Day of Christmas
+n0104 - 11th Day of Christmas
+n0105 - 12th Day of Christmas
+n0106 - Epiphany
 n0107 - Orthodox Christmas
 
 n0202 - Groundhog Day
@@ -310,25 +317,40 @@ National Fried Rice Day
 n1126 - (Doing *Thanksgiving for 2020), National Cake Day, Good Grief Day
 *n1127 - Turtle Adoption Day / *Turtle Sponsorship Day
 *n1128 - Red Planet Day, Letter Writing Day, *Make Your Own Head Day
-n1129 - (Advent Sunday in 2020), International Day of the Bible
-n1130 - Mason Jar Day
+n1129 - (*Advent Sunday in 2020), International Day of the Bible
+*n1130 - *Mason Jar Day
 
-n1201 - 
-n1202 - 
-n1203 - 
-n1204 - 
-n1205 - 
-n1206 - 
+*n1201 - *National Christmas Lights Day, Wear a Dress Day (also on June 1st)
+*n1202 - *Play Basketball Day
+n1203 - Make a Gift Day
+n1204 - National Dice Day
+n1205 - Day of the Ninja, Krampusnacht
+n1206 - Miners' Day, St. Nicholas Day
 n1207 - Pearl Harbor Remembrance Day
-n1208 - 
-n1209 - 
-n1210 - 
-n1211 - 
-
+n1208 - National Christmas Tree Day
+n1209 - Christmas Card Day
+n1210 - Dewey Decimal System Day
+n1211 - International Mountain Day
+n1212 - National Poinsettia Day
+n1213 - National Day of the Horse, National Violin Day, National Cocoa Day
+n1214 - Monkey Day
+n1215 - Bill of Rights Day, National Wear Your Pearls Day
+n1216 - Boston Tea Party Day
+n1217 - Wright Brothers Day
+n1218 - Flake Appreciation Day, Answer the Phone Like Buddy the Elf Day
+n1219 - Holly Day, National Hard Candy Day
+n1220 - Games Day
+n1221 - (Yule, First Day of Winter in 2020) National Flashlight Day, National Kiwi Fruit Day
+n1222 - National Cookie Exchange Day
+n1223 - Festivus
 n1224 - Christmas Eve
 n1225 - Christmas
-n1226 - Kwanzaa (first day)
-n1231 - New Year's Eve
+n1226 - Kwanzaa (first day), Boxing Day, National Candy Cane Day, 2nd Day of Christmas
+n1227 - Visit the Zoo Day, 3rd Day of Christmas
+n1228 - National Card Playing Day, 4th Day of Christmas
+n1229 - Tick Tock Day, 5th Day of Christmas
+n1230 - National Bicarbonate of Soda Day, 6th Day of Christmas
+n1231 - New Year's Eve, 7th Day of Christmas
 
 
 
