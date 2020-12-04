@@ -322,10 +322,10 @@ n1129 - (*Advent Sunday in 2020), International Day of the Bible
 
 *n1201 - *National Christmas Lights Day, Wear a Dress Day (also on June 1st)
 *n1202 - *Play Basketball Day
-n1203 - Make a Gift Day
-n1204 - National Dice Day
-n1205 - Day of the Ninja, Krampusnacht
-n1206 - Miners' Day, St. Nicholas Day
+*n1203 - *Make a Gift Day
+*n1204 - *National Dice Day
+*n1205 - *Day of the Ninja, Krampusnacht
+*n1206 - *Miners' Day, St. Nicholas Day
 n1207 - Pearl Harbor Remembrance Day
 n1208 - National Christmas Tree Day
 n1209 - Christmas Card Day
