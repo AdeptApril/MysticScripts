@@ -326,14 +326,14 @@ n1129 - (*Advent Sunday in 2020), International Day of the Bible
 *n1204 - *National Dice Day
 *n1205 - *Day of the Ninja, Krampusnacht
 *n1206 - *Miners' Day, St. Nicholas Day
-n1207 - Pearl Harbor Remembrance Day
-n1208 - National Christmas Tree Day
-n1209 - Christmas Card Day
-n1210 - Dewey Decimal System Day
-n1211 - International Mountain Day
-n1212 - National Poinsettia Day
-n1213 - National Day of the Horse, National Violin Day, National Cocoa Day
-n1214 - Monkey Day
+*n1207 - *Pearl Harbor Remembrance Day
+*n1208 - *National Christmas Tree Day
+*n1209 - *Christmas Card Day
+*n1210 - *Dewey Decimal System Day
+*n1211 - *International Mountain Day
+*n1212 - *National Poinsettia Day
+*n1213 - *National Day of the Horse, *National Violin Day, National Cocoa Day
+*n1214 - *Monkey Day
 n1215 - Bill of Rights Day, National Wear Your Pearls Day
 n1216 - Boston Tea Party Day
 n1217 - Wright Brothers Day
