@@ -334,8 +334,8 @@ n1129 - (*Advent Sunday in 2020), International Day of the Bible
 *n1212 - *National Poinsettia Day
 *n1213 - *National Day of the Horse, *National Violin Day, National Cocoa Day
 *n1214 - *Monkey Day
-n1215 - Bill of Rights Day, National Wear Your Pearls Day
-n1216 - Boston Tea Party Day
+*n1215 - *Bill of Rights Day, National Wear Your Pearls Day
+*n1216 - *Boston Tea Party Day
 n1217 - Wright Brothers Day
 n1218 - Flake Appreciation Day, Answer the Phone Like Buddy the Elf Day
 n1219 - Holly Day, National Hard Candy Day
