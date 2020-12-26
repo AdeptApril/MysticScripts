@@ -20,11 +20,11 @@ Default Monthly ANSIs
 *d12 - December - Something with candles, snow, Christmas trees, lights, flashing?
 
 Daily ANSIs
-n0101 - New Year's Day, Kwanzaa (final day), Copyright Law Day, Public Domain Day, 8th Day of Christmas
-n0102 - 9th Day of Christmas
-n0103 - 10th Day of Christmas
-n0104 - 11th Day of Christmas
-n0105 - 12th Day of Christmas
+*n0101 - New Year's Day, Kwanzaa (final day), Copyright Law Day, Public Domain Day, *8th Day of Christmas
+*n0102 - *9th Day of Christmas
+*n0103 - *10th Day of Christmas
+*n0104 - *11th Day of Christmas
+*n0105 - *12th Day of Christmas
 n0106 - Epiphany
 n0107 - Orthodox Christmas
 
@@ -336,21 +336,21 @@ n1129 - (*Advent Sunday in 2020), International Day of the Bible
 *n1214 - *Monkey Day
 *n1215 - *Bill of Rights Day, National Wear Your Pearls Day
 *n1216 - *Boston Tea Party Day
-n1217 - Wright Brothers Day
-n1218 - Flake Appreciation Day, Answer the Phone Like Buddy the Elf Day
-n1219 - Holly Day, National Hard Candy Day
-n1220 - Games Day
-n1221 - (Yule, First Day of Winter in 2020) National Flashlight Day, National Kiwi Fruit Day
-n1222 - National Cookie Exchange Day
-n1223 - Festivus
-n1224 - Christmas Eve
-n1225 - Christmas
-n1226 - Kwanzaa (first day), Boxing Day, National Candy Cane Day, 2nd Day of Christmas
-n1227 - Visit the Zoo Day, 3rd Day of Christmas
-n1228 - National Card Playing Day, 4th Day of Christmas
-n1229 - Tick Tock Day, 5th Day of Christmas
-n1230 - National Bicarbonate of Soda Day, 6th Day of Christmas
-n1231 - New Year's Eve, 7th Day of Christmas
+*n1217 - *Wright Brothers Day
+*n1218 - *Flake Appreciation Day, Answer the Phone Like Buddy the Elf Day
+*n1219 - *Holly Day, National Hard Candy Day
+*n1220 - *Games Day
+*n1221 - (Yule, First Day of Winter in 2020) *National Flashlight Day, National Kiwi Fruit Day
+*n1222 - *National Cookie Exchange Day
+*n1223 - *Festivus
+*n1224 - *Christmas Eve
+*n1225 - Christmas, *1st day of Christmas
+*n1226 - Kwanzaa (first day), Boxing Day, National Candy Cane Day, *2nd Day of Christmas
+*n1227 - Visit the Zoo Day, *3rd Day of Christmas
+*n1228 - National Card Playing Day, *4th Day of Christmas
+*n1229 - Tick Tock Day, *5th Day of Christmas
+*n1230 - National Bicarbonate of Soda Day, *6th Day of Christmas
+*n1231 - New Year's Eve, *7th Day of Christmas
 
 
 
