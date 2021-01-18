@@ -25,11 +25,46 @@ Daily ANSIs
 *n0103 - *10th Day of Christmas
 *n0104 - *11th Day of Christmas
 *n0105 - *12th Day of Christmas
-n0106 - Epiphany
-n0107 - Orthodox Christmas
+*n0106 - *Epiphany, *Three Kings Day, The Three Wise Men Day, Army Day, Christmas Eve (Orthodox)
+*n0107 - *Orthodox Christmas
+*n0108 - *National Bubble Bath Day
+*n0109 - *National Static Electricity Day
+*n0110 - *National Save the Eagles Day
+*n0111 - *National Milk Day, National Clean Off Your Desk Day
+*n0112 - *Shop for Travel Day
+*n0113 - *National Rubber Ducky Day
+*n0114 - Orthodox New Year, *National Dress Up Your Pet Day
+*n0115 - *National Hat Day
+*n0116 - *Nothing day
+*n0117 - *National Bootlegger's Day
+*n0118 - *National Michigan Day, National Thesaurus Day
+*n0119 - World Quark Day, *National Popcorn Day
+*n0120 - *Penguin Awareness Day, National Disc Jockey Day, National Cheese Lover's Day
+*n0121 - National Hug Day, *Squirrel Appreciation Day
+*n0122 - *Franco-German Day, Ukranian Unity Day
+*n0123 - *Handwriting Day
+*n0124 - Unification Day (Romania), *National Peanut Butter Day
+n0125 - National Florida Day, National Irish Coffee Day
+n0126 - Australia Day
+n0127 - National Chocolate Cake Day
+n0128 - National Kazoo Day
+n0129 - Kansas Day, National Puzzle Day
+n0130 - National Croissant Day
+n0131 - National Hot Chocolate Day
 
+n0201 - 
 n0202 - Groundhog Day
+n0203 - 
 n0204 - Rosa Parks Day
+n0205 - 
+n0206 -
+n0207 -
+n0208 -
+n0209 -
+n0210 - 
+n0211 -
+n0212 - 
+n0213 -
 n0214 - Valentine's Day
 
 n0308 - International Women's Day
