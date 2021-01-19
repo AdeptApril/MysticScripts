@@ -44,9 +44,9 @@ Daily ANSIs
 *n0122 - *Franco-German Day, Ukranian Unity Day
 *n0123 - *Handwriting Day
 *n0124 - Unification Day (Romania), *National Peanut Butter Day
-n0125 - National Florida Day, National Irish Coffee Day
-n0126 - Australia Day
-n0127 - National Chocolate Cake Day
+*n0125 - *National Florida Day, National Irish Coffee Day
+*n0126 - *Australia Day
+*n0127 - *National Chocolate Cake Day
 n0128 - National Kazoo Day
 n0129 - Kansas Day, National Puzzle Day
 n0130 - National Croissant Day
