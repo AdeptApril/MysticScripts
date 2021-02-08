@@ -47,23 +47,23 @@ Daily ANSIs
 *n0125 - *National Florida Day, National Irish Coffee Day
 *n0126 - *Australia Day
 *n0127 - *National Chocolate Cake Day
-n0128 - National Kazoo Day
-n0129 - Kansas Day, National Puzzle Day
-n0130 - National Croissant Day
-n0131 - National Hot Chocolate Day
+*n0128 - *National Kazoo Day
+*n0129 - Kansas Day, *National Puzzle Day
+*n0130 - *National Croissant Day
+*n0131 - *National Hot Chocolate Day
 
-n0201 - 
-n0202 - Groundhog Day
-n0203 - 
-n0204 - Rosa Parks Day
-n0205 - 
-n0206 -
-n0207 -
-n0208 -
-n0209 -
-n0210 - 
-n0211 -
-n0212 - 
+*n0201 - *National Serpent Day
+*n0202 - *Groundhog Day
+*n0203 - *National Wedding Ring Day
+*n0204 - Rosa Parks Day, *Thank a Mail Carrier Day
+*n0205 - National Fart Day, National Chocolate Fondue Day, California Western Monarch Day, *National Shower with a Friend Day
+*n0206 - *Lame Duck Day
+*n0207 - 'e' Day, *Ballet Day
+*n0208 - *National Kite Flying Day
+*n0209 - *Read in the Bathtub Day
+n0210 - Umbrella Day
+n0211 - Get Out Your Guitar Day
+n0212 - Paul Bunyan Day, National Freedom to Marry Day
 n0213 -
 n0214 - Valentine's Day
 
