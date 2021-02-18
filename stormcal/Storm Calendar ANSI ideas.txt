@@ -61,32 +61,171 @@ Daily ANSIs
 *n0207 - 'e' Day, *Ballet Day
 *n0208 - *National Kite Flying Day
 *n0209 - *Read in the Bathtub Day
-n0210 - Umbrella Day
-n0211 - Get Out Your Guitar Day
-n0212 - Paul Bunyan Day, National Freedom to Marry Day
-n0213 -
-n0214 - Valentine's Day
+*n0210 - *Umbrella Day
+*n0211 - *Get Out Your Guitar Day
+*n0212 - *Paul Bunyan Day, National Freedom to Marry Day
+*n0213 - *Get a different name Day
+*n0214 - *Valentine's Day
+*n0215 - *Hippo Day
+*n0216 - *National Innovation Day, National Almond Day
+*n0217 - *Champion Crab Races Day
+*n0218 - Cow Milked While Flying in an Airplane Day (Elm Farm Ollie Day), *Pluto Day
+*n0219 - *Iwo Jima Day
+n0220 - National Handcuff Day, Clean Out Your Bookcase Day
+n0221 - 
+n0222 - 
+n0223 - 
+n0224 - 
+n0225 - 
+n0226 - 
+n0227 - 
+n0228 - 
+n0229 - 
 
+n0301 - 
+n0302 - 
+n0303 - 
+n0304 - 
+n0305 - 
+n0306 - 
+n0307 - 
 n0308 - International Women's Day
+n0309 - 
 n0310 - Harriet Tubman Day
+n0311 - 
+n0312 - 
+n0313 - 
 n0314 - Pi Day
+n0315 - 
+n0316 - 
 n0317 - Saint Patrick's Day
+n0318 - 
+n0319 - 
+n0320 - 
+n0321 - 
+n0322 - 
+n0323 - Mom's birthday
+n0324 - 
+n0325 - 
+n0326 - 
+n0327 - 
+n0328 - 
+n0329 - 
+n0330 - 
+n0331 - 
 
 n0401 - April Fools' Day
+n0402 - 
+n0403 - 
+n0404 - 
+n0405 - 
+n0406 - 
+n0407 - 
+n0408 - 
+n0409 - 
+n0410 - 
 n0411 - Adept's birthday
+n0412 - Barb's birthday
+n0413 - Dad's birthday
+n0414 - 
+n0415 - 
+n0416 - 
+n0417 - 
+n0418 - 
+n0419 - 
 n0420 - 420
+n0421 - 
 n0422 - Earth Day
+n0423 - 
+n0424 - 
 n0425 - Tag des Baumes - Arbor Day (Germany)
+n0426 - 
+n0427 - 
+n0428 - 
+n0429 - 
+n0430 - 
 
 n0501 - May Day / International Workers' Day
+n0502 - 
+n0503 - 
+n0504 - 
 n0505 - Cinco de Mayo
+n0506 - 
+n0507 - 
+n0508 - 
+n0509 - 
+n0510 - 
+n0511 - 
+n0512 - 
+n0513 - 
+n0514 - 
+n0515 - 
+n0516 - 
+n0517 - 
+n0518 - 
+n0519 - 
+n0520 - 
+n0521 - 
+n0522 - 
+n0523 - 
+n0524 - 
+n0525 - Megan's birthday
+n0526 - 
+n0527 - 
+n0528 - 
+n0529 - 
+n0530 - 
+n0531 - 
 
+n0601 - 
+n0602 - 
+n0603 - 
+n0604 - 
+n0605 - 
+n0606 - 
+n0607 - 
+n0608 - 
+n0609 - 
+n0610 - 
+n0611 - 
+n0612 - 
+n0613 - 
 n0614 - Flag Day (US)
+n0615 - 
+n0616 - 
+n0617 - 
+n0618 - 
 n0619 - Juneteenth
+n0620 - 
 n0621 - Go Skateboarding Day
+n0622 - 
+n0623 - 
+n0624 - 
+n0625 - 
+n0626 - 
+n0627 - 
+n0628 - 
+n0629 - 
+n0630 - 
 
+n0701 - 
+n0702 - 
+n0703 - 
 *n0704 - *American Independence Day
-
+n0705 - 
+n0706 - 
+n0707 - 
+n0708 - 
+n0709 - 
+n0710 - 
+n0711 - 
+n0712 - 
+n0713 - 
+n0714 - 
+n0715 - 
+n0716 - 
+n0717 - 
+n0718 - 
 *n0719 - National Stick Out Your Tongue Day
 *n0720 - Moon Day
 *n0721 - National Tug of War Tournament Day
@@ -394,6 +533,7 @@ Cardinal ANSIs (Meaning particular day of the week, a particular week of a month
 -For file names, 'c', two-digit month, week of the month, then day of week (0=Monday, 3=Thursday, 6=Sunday)
 c0130 - Martin Luther King, Jr. Day - 2nd Monday in January
 c0216 - Superb Owl Sunday (1st Sunday in February)
+c0230 - Presidents' Day / Washington's Birthday
 
 c0515 - Free Comic Book Day (1st Saturday in May)
 c0526 - Mother's Day (2nd Sunday in May)
@@ -424,6 +564,7 @@ Last Saturday in February - Open that Bottle Night
 Special ANSIs (Basically, Easter, but anything else that wouldn't qualify under the other formats. Requires changing code, other than "sEaster")
 sRamadanBegin
 sRamadanEnd
+sShroveMonday - 48 days before Easter
 sMardiGras - Day before Ash Wednesday
 sAshWednesday - 40 days before Easter, not counting Sundays
 sPalmSunday - Sunday before Easter
