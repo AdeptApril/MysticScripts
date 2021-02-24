@@ -71,16 +71,16 @@ Daily ANSIs
 *n0217 - *Champion Crab Races Day
 *n0218 - Cow Milked While Flying in an Airplane Day (Elm Farm Ollie Day), *Pluto Day
 *n0219 - *Iwo Jima Day
-n0220 - National Handcuff Day, Clean Out Your Bookcase Day
-n0221 - 
-n0222 - 
-n0223 - 
-n0224 - 
-n0225 - 
-n0226 - 
-n0227 - 
-n0228 - 
-n0229 - 
+*n0220 - *National Handcuff Day, Clean Out Your Bookcase Day
+*n0221 - *Card Reading Day
+*n0222 - Play More Cards Day, *Recreational Sports & Fitness Day
+*n0223 - *National Tile Day, Curling is Cool Day, Play Tennis Day
+*n0224 - National Tortilla Chip Day, *National Trading Card Day, World Bartender Day
+*n0225 - *Quiet Day
+n0226 - Tell a Fairy Tale Day, Thermos Bottle Day
+n0227 - (Probably doing Open That Bottle Night for 2021) International Polar Bear Day, National Retro Day
+n0228 - Car Keys and Small Change Day, Floral Design Day, National Science Day, National Public Sleeping Day
+n0229 - (Nothing for 2021, 2022, or 2023)
 
 n0301 - 
 n0302 - 
@@ -560,10 +560,13 @@ c1144 - Black Friday (Maybe this is a "Special" item, since it _can_ be the 5th 
 Different categories needed, or possibly special:
 Last Saturday in February - Open that Bottle Night
 
+Last Thursday in February - National Toast Day (UK)
+
 
 Special ANSIs (Basically, Easter, but anything else that wouldn't qualify under the other formats. Requires changing code, other than "sEaster")
 sRamadanBegin
 sRamadanEnd
+sGirlEngineering - Introduce a Girl to Engineering Day - Thursday of National Engineers Week(the week of George Washington's Birthday)
 sShroveMonday - 48 days before Easter
 sMardiGras - Day before Ash Wednesday
 sAshWednesday - 40 days before Easter, not counting Sundays
