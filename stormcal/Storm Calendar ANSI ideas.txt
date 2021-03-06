@@ -95,7 +95,7 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0311 - *World Plumbing Day, Dream Day, National Proposal Day
 *n0312 - *National Plant a Flower Day
 n0313 - National Jewel Day, Earmuff Day
-n0314 - Pi Day
+*n0314 - *Pi Day
 n0315 - Ides of March, Everything You Think Is Wrong Day
 n0316 - National Panda Day, Lips Appreciation Day
 n0317 - Saint Patrick's Day, CAmp Fire Girls Day
@@ -117,21 +117,21 @@ n0331 - Eiffel Tower Day, National Bunsen Burner Day, National Crayon Day, Natio
 n0401 - April Fools' Day
 n0402 - International Children's Book Day, National Peanut Butter and Jelly Day
 n0403 - American Circus Day, Find a Rainbow Day, Pony Express Day
-n0404 - 404 Day, International Carrot Day, Tell a Lie Day
+*n0404 - 404 Day, *International Carrot Day, Tell a Lie Day
 n0405 - Bell Bottoms Day, National Dandelion Day
 n0406 - Army Day, New Beer's Eve(day before repeal day for prohibition), Plan Your Epitaph Day, World Table Tennis Day
 n0407 - Empowered Women Entrepreneurs Day,Metric System Day, National Beer Day, National Making the first Move Day
 n0408 - Dog Farting Awareness Day, Draw a Picture of a Bird Day, Trading Cards for Grown-ups Day, Zoo Lovers Day
 n0409 - National Unicorn Day
 n0410 - Golfer's Day, National Farm Animals Day, Safety Pin Day
-n0411 - Adept's birthday
+*n0411 - *Adept's birthday
 n0412 - Barb's birthday, International Day of Human Space Flight
 n0413 - Dad's birthday, Scrabble Day
 n0414 - Cake and Cunnilingus Day, Ex-Spouse Day, International Day of Pink, National Dolphin Day
 n0415 - Anime Day, National Laundry Day, National Rubber Eraser Day, National That Sucks Day, Titanic Remembrance Day
 n0416 - Day of the Mushroom, National Librarian Day, National Orchid Day, Save the Elephant Day, World Semicolon Day
 n0417 - Bat Appreciation Day, International Haiku Poetry Day, Malbec World Day
-n0418 - International Amateur Radio Day, National Velociraptor Awareness Day, Piñata Day
+n0418 - International Amateur Radio Day, National Velociraptor Awareness Day, Piï¿½ata Day
 n0419 - Bicycle Day, National Garlic Day
 n0420 - 420 (National Pot Smokers Day), Chinese Language Day
 n0421 - National Tea Day, Thank You For Libraries Day
@@ -234,7 +234,7 @@ n0718 - Perfect Family Day, Nelson Mandela International Day, Insurance Nerd Day
 *n0724 - Amelia Earhart Day, Cousins Day, National Drive-thru Day, *National Tell an Old Joke Day, National Tequila Day, National Thermal Engineer Day, Pioneer Day (Mormon Pioneer Day)
 *n0725 - Culinarians Day, Feast of Saint James, *International Red Shoe Day, National Carousel Day, National Wine and Cheese Day
 *n0726 - *World Tofu Day, National Bagelfest Day
-*n0727 - Bagpipe Appreciation Day, Cross Atlantic Communication Day, Gary Gygax Day, National Crème Brûlée Day, National Korean War Veterans Armistice Day, National Scotch Day, *Take Your Houseplants for a Walk Day, Take Your Pants for a Walk Day, Walk on Stilts Day
+*n0727 - Bagpipe Appreciation Day, Cross Atlantic Communication Day, Gary Gygax Day, National Crï¿½me Brï¿½lï¿½e Day, National Korean War Veterans Armistice Day, National Scotch Day, *Take Your Houseplants for a Walk Day, Take Your Pants for a Walk Day, Walk on Stilts Day
 *n0728 - Buffalo Soldiers Day, National Hamburger Day, *World Nature Conservation Day, National Milk Chocolate Day
 *n0729 - *International Tiger Day, National Cheese Sacrifice Purchase Day, National Lipstick Day, Rain Day, National Lasagna Day
 *n0730 - International Day of Friendship, National Cheesecake Day, National Support Public Education Day, National Whistleblower Appreciation Day, Paperback Book Day, *World Snorkeling Day
@@ -265,7 +265,7 @@ n0718 - Perfect Family Day, Nelson Mandela International Day, Insurance Nerd Day
 *n0823 - *National Ride The Wind Day, National Sponge Cake Day
 *n0824 - National Maryland Day, National Peach Pie Day, National Waffle Day, *Weather Complaint Day
 *n0825 - National Park Service Founders Day, National Whiskey Sour Day, National Kiss and Make Up Day, National Secondhand Wardrobe Day, *National Banana Split Day
-*n0826 - National WebMistress Day, National Dog Day, *National Women’s Equality Day, National Cherry Popsicle Day
+*n0826 - National WebMistress Day, National Dog Day, *National Womenï¿½s Equality Day, National Cherry Popsicle Day
 *n0827 - National Pots De Creme Day, National Just Because Day, *World Rock Paper Scissors Day
 *n0828 - National Red Wine Day, National Power Rangers Day, National Bow Tie Day, National Cherry Turnovers Day, Rainbow Bridge Remembrance Day, *International Read Comics in Public Day*
 *n0829 - National Chop Suey Day, *Lemon Juice Day, More Herbs Less Salt Day, Record Store Day
@@ -273,23 +273,23 @@ n0718 - Perfect Family Day, Nelson Mandela International Day, Insurance Nerd Day
 n0831 - National South Carolina Day, National Matchmaker Day, National Diatomaceous Earth Day, National Trail Mix Day, Eat Outside Day
 
 
-*n0901 - *World Letter Writing Day, National Chicken Boy’s Day, National No Rhyme (Nor Reason) Day
+*n0901 - *World Letter Writing Day, National Chicken Boyï¿½s Day, National No Rhyme (Nor Reason) Day
 *n0902 - National Blueberry Popsicle Day, *National V-J Day
 *n0903 - *National Skyscraper Day, National Welsh Rarebit Day, U.S. Bowling League Day
 n0904 - World Sexual Health Day, Global Talent Acquisition Day, National Chianti Day
     National Wildlife Day
     National Newspaper Carrier Day
     National Macadamia Nut Day
-    National Lazy Mom’s Day – First Friday in September
-    National Food Bank Day– First Friday in September
-    National College Colors Day – Friday before Labor Day
+    National Lazy Momï¿½s Day ï¿½ First Friday in September
+    National Food Bank Dayï¿½ First Friday in September
+    National College Colors Day ï¿½ Friday before Labor Day
 *n0905 - International Day of Charity, National Cheese Pizza Day, National Be Late For Something Day, 	*World Samosa Day
-	National Tailgating Day – First Saturday in September
-    World Beard Day – First Saturday in September
+	National Tailgating Day ï¿½ First Saturday in September
+    World Beard Day ï¿½ First Saturday in September
 *n0906 - *Fight Procrastination Day, National Coffee Ice Cream Day, National Read A Book Day
-*n0907 World Beard Day – First Saturday in September
-    International Turkey Vulture Day – First Saturday in September
-	National Beer Lover’s Day
+*n0907 World Beard Day ï¿½ First Saturday in September
+    International Turkey Vulture Day ï¿½ First Saturday in September
+	National Beer Loverï¿½s Day
     *National Neither Snow Nor Rain Day
     National Grandma Moses Day
     National Acorn Squash Day
@@ -300,8 +300,8 @@ n0904 - World Sexual Health Day, Global Talent Acquisition Day, National Chianti
     World Physical Therapy Day
 	National Pediatric Hematology/Oncology Nurses Day
     *National Ampersand Day
-    National Ants on a Log Day – Second Tuesday in September
-    National Another Look Unlimited Day – Day after Labor Day
+    National Ants on a Log Day ï¿½ Second Tuesday in September
+    National Another Look Unlimited Day ï¿½ Day after Labor Day
 *n0909 - *Tester's Day, Emergency Services Day (UK), National Teddy Bear Day, Care Bears Share Your Care Day, National Wiener Schnitzel Day
 *n0910 - *International Makeup Day, World Suicide Prevention Day, National Swap Ideas Day, National TV Dinner Day
 National School Picture Day *- Second Thursday in September
@@ -315,22 +315,22 @@ German Language Day - Tag der deutschen Sprache
     National Chocolate Milkshake Day
     National Day of Encouragement
     National Report Medicare Fraud Day
-    *National Programmers Day – 256th Day of the Year - TODO - ANSI set for n0912 should be on the 13th next year
+    *National Programmers Day ï¿½ 256th Day of the Year - TODO - ANSI set for n0912 should be on the 13th next year
 *n0913 - *National Defy Superstition Day, Day of the Programmer
 National Kids Take Over The Kitchen Day
     National Peanut Day
     Uncle Sam Day
     National Celiac Disease Awareness Day
     National Bald is Beautiful Day
-    National Pet Memorial Day – Second Sunday in September
-    National Hug Your Hound Day – Second Sunday in September
-    National Grandparent’s Day – Sunday after Labor Day
+    National Pet Memorial Day ï¿½ Second Sunday in September
+    National Hug Your Hound Day ï¿½ Second Sunday in September
+    National Grandparentï¿½s Day ï¿½ Sunday after Labor Day
 *n0914 - *National Coloring Day, National Cream Filled Donut Day
     National Eat a Hoagie Day
     National Live Creative Day
     National Sober Day *
     National Virginia Day
-    National Boss/Employee Exchange Day – Monday after Labor Day
+    National Boss/Employee Exchange Day ï¿½ Monday after Labor Day
 *n0915 - *World Afro Day, International Day of Democracy, International Dot Day
     World Lymphoma Awareness Day, National Cheese Toast Day
     National Linguine Day
@@ -341,7 +341,7 @@ National Kids Take Over The Kitchen Day
     National Neonatal Nurses Day
     National Online Learning Day
     Greenpeace Day
-    National IT Professionals Day– Third Tuesday in September
+    National IT Professionals Dayï¿½ Third Tuesday in September
 *n0916 - *Mexican Independence Day, International Day for the Preservation of the Ozone Layer
 National Play-Doh Day
     National Cinnamon Raisin Bread Day
@@ -354,35 +354,35 @@ National Play-Doh Day
     National Apple Dumpling Day
     Constitution Day and Citizenship Day
     National Monte Cristo Day
-    National Pawpaw Day * – Third Thursday in September
+    National Pawpaw Day * ï¿½ Third Thursday in September
 *n0918 - *International Read and EBook Day,
 Airforce Birthday
     National Cheeseburger Day
     National HIV/AIDS and Aging Awareness Day
-    National Tradesmen Day – Third Friday in September
-    National POW/MIA Recognition Day – Third Friday in September
-    National Hug Your Boss Day – Changes Annually – Friday, September 18, 2020
+    National Tradesmen Day ï¿½ Third Friday in September
+    National POW/MIA Recognition Day ï¿½ Third Friday in September
+    National Hug Your Boss Day ï¿½ Changes Annually ï¿½ Friday, September 18, 2020
 *n0919 - *International Talk Like a Pirate Day
 National Butterscotch Pudding Day
     Talk Like A Pirate Day
-    National Dance Day– Third Saturday in September
-    National Gymnastics Day– Third Saturday in September
-    Boys’ and Girls’ Club Day for Kids – Third Saturday in September
-    Puppy Mill Awareness Day – Third Saturday in September
-    Responsible Dog Ownership Day – Third Saturday in September
-    National CleanUp Day– Third Saturday In September
+    National Dance Dayï¿½ Third Saturday in September
+    National Gymnastics Dayï¿½ Third Saturday in September
+    Boysï¿½ and Girlsï¿½ Club Day for Kids ï¿½ Third Saturday in September
+    Puppy Mill Awareness Day ï¿½ Third Saturday in September
+    Responsible Dog Ownership Day ï¿½ Third Saturday in September
+    National CleanUp Dayï¿½ Third Saturday In September
 *n0920 - *National Gibberish Day,
 National Fried Rice Day
     National Pepperoni Pizza Day
     National Punch Day
     National String Cheese Day
-    Wife Appreciation Day – Third Sunday in September
+    Wife Appreciation Day ï¿½ Third Sunday in September
 *n0921 - International Day of Peace
-    World’s Alzheimer’s Day
+    Worldï¿½s Alzheimerï¿½s Day
     *World Gratitude Day
-    International Eat An Apple Day – Third Saturday in September
-    International Coastal Cleanup Day – Third Saturday in September
-    International Red Panda Day – Third Saturday in September
+    International Eat An Apple Day ï¿½ Third Saturday in September
+    International Coastal Cleanup Day ï¿½ Third Saturday in September
+    International Red Panda Day ï¿½ Third Saturday in September
 	National Chai Day
     National Pecan Cookie Day
     National New York Day
@@ -391,18 +391,18 @@ National Fried Rice Day
     *World Rhino Day
     World Car Free Day
 	National Online Recovery Day *
-    American Business Women’s Day
+    American Business Womenï¿½s Day
     Car Free Day
     Dear Diary Day
-    National Centenarian’s Day
+    National Centenarianï¿½s Day
     Elephant Appreciation Day
-    National Girls’ Night
+    National Girlsï¿½ Night
     Hobbit Day
     National Ice Cream Cone Day
     National Legwear Day
     National White Chocolate Day
-    National Voter Registration Day – Fourth Tuesday in September
-    Autumnal Equinox – Changes Annually
+    National Voter Registration Day ï¿½ Fourth Tuesday in September
+    Autumnal Equinox ï¿½ Changes Annually
 *n0923 - International Day of Sign Languages
     *International Celebrate Bisexuality Day (also known as Bi Visibility Day)
 	Celebrate Bisexuality Day
@@ -410,7 +410,7 @@ National Fried Rice Day
     National Great American Pot Pie Day
     National Snack Stick Day
     National Teal Talk Day
-    Innergize Day – Day after the Autumn Equinox
+    Innergize Day ï¿½ Day after the Autumn Equinox
     Restless Legs Awareness Day(Different sponsor from the July Weekly Observance)
 *n0924 - National Quesadilla Day (Dia de la Quesadilla) *
     National Cherries Jubilee Day
@@ -424,7 +424,7 @@ National Fried Rice Day
     National Tune-Up Day
     National Research Administrator Day
     *Math Storytelling Day
-    National BRAVE DAY– Fourth Friday in September
+    National BRAVE DAYï¿½ Fourth Friday in September
 *n0926 - *European Day of Languages, International Observe the Moon Night
 *n0927 - *National Scarf Day
 *n0928 - *International Day for Universal Access to Information
