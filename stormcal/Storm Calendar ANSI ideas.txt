@@ -98,9 +98,9 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0314 - *Pi Day
 *n0315 - *Ides of March, Everything You Think Is Wrong Day
 *n0316 - *National Panda Day, Lips Appreciation Day
-n0317 - Saint Patrick's Day, CAmp Fire Girls Day
-n0318 - Goddess of Fertility Day (Aphrodite, Venus, Isis. Alternate name Ostara (another fertility goddess)
-n0319 - Certified Nurses Day, Red Nose Day (UK)
+*n0317 - *Saint Patrick's Day, Camp Fire Girls Day
+*n0318 - *Goddess of Fertility Day (Aphrodite, Venus, Isis. Alternate name Ostara (another fertility goddess)
+*n0319 - *Certified Nurses Day, Red Nose Day (UK)
 n0320 - Alien Abduction Day, Bibliomania Day (Book collecting (or stealing) day)
 n0321 - National Flower Day, World Poetry Day, World Puppetry Day
 n0322 - World Water Day
@@ -115,7 +115,7 @@ n0330 - Grass is Always Browner on the Other Side of the Fence Day, National Doc
 n0331 - Eiffel Tower Day, National Bunsen Burner Day, National Crayon Day, National Prom Day, World Backup Day
 
 n0401 - April Fools' Day
-n0402 - International Children's Book Day, National Peanut Butter and Jelly Day
+n0402 - International Sysops Day, International Children's Book Day, National Peanut Butter and Jelly Day
 n0403 - American Circus Day, Find a Rainbow Day, Pony Express Day
 *n0404 - 404 Day, *International Carrot Day, Tell a Lie Day
 n0405 - Bell Bottoms Day, National Dandelion Day
