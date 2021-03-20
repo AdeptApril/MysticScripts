@@ -2,6 +2,8 @@ The following are lists of made and possible ANSIs for the Storm Calendar projec
 The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
+267 ANSIs done, 114 ANSIs to go for first draft
+
 Needed Fixes:
 Advent Sunday - Just used November 29th, should be 4th Sunday before Christmas. Which probably isn't bad, programmatically as a before-x-day item. But could also just be a special day.
 
@@ -101,22 +103,22 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0317 - *Saint Patrick's Day, Camp Fire Girls Day
 *n0318 - *Goddess of Fertility Day (Aphrodite, Venus, Isis. Alternate name Ostara (another fertility goddess)
 *n0319 - *Certified Nurses Day, Red Nose Day (UK)
-n0320 - Alien Abduction Day, Bibliomania Day (Book collecting (or stealing) day)
-n0321 - National Flower Day, World Poetry Day, World Puppetry Day
-n0322 - World Water Day
-n0323 - Mom's birthday, Cuddly Kitten Day, National Chia Day
-n0324 - National Cocktail Day
-n0325 - Old New Year's Day, Tolkien Reading Day, International Waffle Day
-n0326 - Purple Day, National Make Up Your Own Holiday Day, Solitude Day
-n0327 - National Scribble Day
-n0328 - Children's Picture Book Day, National Something on a Stick Day, Weed Appreciation Day
-n0329 - Smoke and Mirrors Day (celebrate magicians and whatnot)
-n0330 - Grass is Always Browner on the Other Side of the Fence Day, National Doctors Day, Pencil Day, Take a Walk in the Park Day
-n0331 - Eiffel Tower Day, National Bunsen Burner Day, National Crayon Day, National Prom Day, World Backup Day
+*n0320 - *Alien Abduction Day, Bibliomania Day (Book collecting (or stealing) day)
+*n0321 - National Flower Day, World Poetry Day, *World Puppetry Day
+*n0322 - *World Water Day
+*n0323 - Mom's birthday, Cuddly Kitten Day, *National Chia Day
+*n0324 - *National Cocktail Day
+*n0325 - Old New Year's Day, Tolkien Reading Day, *International Waffle Day
+*n0326 - *Purple Day, *National Make Up Your Own Holiday Day, Solitude Day
+*n0327 - *National Scribble Day
+*n0328 - Children's Picture Book Day, *National Something on a Stick Day, Weed Appreciation Day
+*n0329 - *Smoke and Mirrors Day (celebrate magicians and whatnot)
+*n0330 - *Grass is Always Browner on the Other Side of the Fence Day, National Doctors Day, Pencil Day, Take a Walk in the Park Day
+*n0331 - Eiffel Tower Day, *National Bunsen Burner Day, National Crayon Day, National Prom Day, World Backup Day
 
-n0401 - April Fools' Day
-n0402 - International Sysops Day, International Children's Book Day, National Peanut Butter and Jelly Day
-n0403 - American Circus Day, Find a Rainbow Day, Pony Express Day
+*n0401 - *April Fools' Day
+*n0402 - *International Sysops Day, International Children's Book Day, National Peanut Butter and Jelly Day
+*n0403 - *American Circus Day, Find a Rainbow Day, Pony Express Day
 *n0404 - 404 Day, *International Carrot Day, Tell a Lie Day
 n0405 - Bell Bottoms Day, National Dandelion Day
 n0406 - Army Day, New Beer's Eve(day before repeal day for prohibition), Plan Your Epitaph Day, World Table Tennis Day
@@ -188,7 +190,7 @@ n0608 - World Oceans Day, Jelly-Filled Doughnut Day
 n0609 - National Strawberry-Rhubarb Pie Day
 n0610 - Ballpoint Pen Day, National Black Cow Day, National Herb and Spice Day
 n0611 - Corn on the Cob Day
-n0612 - Red Rose Day
+*n0612 - Red Rose Day, *Day to Honor Zeus
 n0613 - Sewing Machine Day, Weed Your Garden Day, World Softball Day
 n0614 - Flag Day (US), Pop Goes the Weasel Day
 n0615 - Magna Carta Day, National Electricity Day, Fly a Kite Day, Global Wind Day
