@@ -2,10 +2,14 @@ The following are lists of made and possible ANSIs for the Storm Calendar projec
 The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
-267 ANSIs done, 114 ANSIs to go for first draft
+310 ANSIs done, 71 ANSIs to go for first draft
 
-Needed Fixes:
+Needed/wanted Fixes:
 Advent Sunday - Just used November 29th, should be 4th Sunday before Christmas. Which probably isn't bad, programmatically as a before-x-day item. But could also just be a special day.
+February 29th
+n0426Alien seems to not display correctly with the script, but does fine in the ANSI gallery
+Open that Bottle Night needs to be added into the script somehow, and the day otherwise replaced
+n0504 - Possibly add some "14 over 3" (yellow over red) in an attempt to get a more orange hue to things. But the image could likely use some outlining anyway. Or more black, at least.
 
 Default Monthly ANSIs
 *d01 - January - Snow person in a snow storm?
@@ -134,37 +138,37 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0416 - *Day of the Mushroom, National Librarian Day, National Orchid Day, *Save the Elephant Day, *World Semicolon Day
 *n0417 - *Bat Appreciation Day, International Haiku Poetry Day, Malbec World Day
 *n0418 - International Amateur Radio Day, *National Velociraptor Awareness Day, Pi�ata Day
-*n0419 - Bicycle Day, *National Garlic Day
+*n0419 - Bicycle Day, *National Garlic Day, Mars Flight Day (first drone flight on Mars)
 *n0420 - *420 (National Pot Smokers Day), Chinese Language Day
 *n0421 - *National Tea Day, Thank You For Libraries Day
 *n0422 - Earth Day, *April Showers Day
 *n0423 - Day of Silence, German Beer Day, Movie Theatre Day, World Book and Copyright Day, *World Book Night
-n0424 - World Day for Laboratory Animals
-n0425 - Tag des Baumes - Arbor Day (Germany), DNA Day, World Penguin Day
-n0426 - Alien Day, Audubon Day
-n0427 - Babe Ruth Day, Morse Code Day
-n0428 - National Cubicle Day, National Superhero Day
-n0429 - International Dance Day, Zipper Day, National Peace Rose Day
-n0430 - Hairstyle Appreciation Day, National Bubble Tea Day
+*n0424 - *World Day for Laboratory Animals
+*n0425 - Tag des Baumes - Arbor Day (Germany),*DNA Day, World Penguin Day
+*n0426 - *Alien Day, Audubon Day
+*n0427 - Babe Ruth Day, *Morse Code Day
+*n0428 - National Cubicle Day, *National Superhero Day
+*n0429 - International Dance Day, *Zipper Day, National Peace Rose Day
+*n0430 - *Hairstyle Appreciation Day, National Bubble Tea Day
 
-n0501 - May Day / International Workers' Day, Save the Rhino Day, CSS Reboot Day
-n0502 - National Fire Day, World Tuna Day
-n0503 - Sun Day, National Two Different Colored Shoes Day
-n0504 - Bird Day, National Orange Juice Day
-n0505 - Cinco de Mayo
-n0506 - National Nurses Day, National Beverage Day
-n0507 - National Cosmopolitan Day (the drink)
-n0508 - Iris Day, Victory in Europe Day, World Red Cross and Red Crescent Day
-n0509 - Lost Sock Memorial Day, Hurray for Buttons Day
-n0510 - National Small Business Day, Clean Up Your Room Day
-n0511 - Eat What You Want Day
-n0512 - Limerick Day, Odometer Day
-n0513 - Tulip Day, Frog Jumping Day, National Apple Pie Day
-n0514 - National Buttermilk Biscuit Day
-n0515 - Bring Flowers to Someone Day, National Learn to Swim Day, National Chocolate Chip Day, Nylon Stockings Day, Straw Hat Day
-n0516 - International Day of Light, Love a Tree Day
-n0517 - National Pack Rat Day, National Cherry Cobbler Day, Pinot Grigio Day
-n0518 - International Museum Day, Send an Electronic Greeting Card Day
+*n0501 - May Day / International Workers' Day, *Save the Rhino Day, CSS Reboot Day
+*n0502 - *National Fire Day, World Tuna Day
+*n0503 - *Sun Day, National Two Different Colored Shoes Day
+*n0504 - Bird Day, *National Orange Juice Day
+*n0505 - *Cinco de Mayo
+*n0506 - *National Nurses Day, National Beverage Day
+*n0507 - *National Cosmopolitan Day (the drink)
+*n0508 - Iris Day, Victory in Europe Day, *World Red Cross and Red Crescent Day
+*n0509 - *Lost Sock Memorial Day, Hurray for Buttons Day
+*n0510 - National Small Business Day, *Clean Up Your Room Day
+*n0511 - *Eat What You Want Day
+*n0512 - *Limerick Day, Odometer Day
+*n0513 - *Tulip Day, Frog Jumping Day, National Apple Pie Day
+*n0514 - *National Buttermilk Biscuit Day
+*n0515 - Bring Flowers to Someone Day, National Learn to Swim Day, National Chocolate Chip Day, Nylon Stockings Day, *Straw Hat Day
+*n0516 - *International Day of Light, Love a Tree Day
+*n0517 - National Pack Rat Day, National Cherry Cobbler Day, *Pinot Grigio Day
+*n0518 - *International Museum Day, Send an Electronic Greeting Card Day
 n0519 - May Ray Day (Enjoy the sun)
 n0520 - Pick Strawberries Day, Weights and Measures Day
 n0521 - American Red Cross Founder's Day, International Tea Day
