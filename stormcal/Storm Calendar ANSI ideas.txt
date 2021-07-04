@@ -169,54 +169,54 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0516 - *International Day of Light, Love a Tree Day
 *n0517 - National Pack Rat Day, National Cherry Cobbler Day, *Pinot Grigio Day
 *n0518 - *International Museum Day, Send an Electronic Greeting Card Day
-n0519 - May Ray Day (Enjoy the sun)
-n0520 - Pick Strawberries Day, Weights and Measures Day
-n0521 - American Red Cross Founder's Day, International Tea Day
-n0522 - Sherlock HolmesDay, National Solitaire Day
-n0523 - Lucky Penny Day, National Taffy Day, World Turtle Day
-n0524 - Asparagus Day, International Tiara Day
-n0525 - Megan's birthday,Towel Day, National Wine Day
-n0526 - National Paper Airplane Day, World Dracula Day
-n0527 - Old-Time Player Piano Day
-n0528 - Menstrual Hygiene Day
-n0529 - Paper Clip Day
-n0530 - Water a Flower Day
-n0531 - World No Tobacco Day
+*n0519 - *May Ray Day (Enjoy the sun)
+*n0520 - *Pick Strawberries Day, Weights and Measures Day
+*n0521 - American Red Cross Founder's Day, *International Tea Day
+*n0522 - *Sherlock Holmes Day, National Solitaire Day
+*n0523 - Lucky Penny Day, National Taffy Day, *World Turtle Day
+*n0524 - Asparagus Day, *International Tiara Day
+*n0525 - Megan's birthday,*Towel Day, National Wine Day
+*n0526 - *National Paper Airplane Day, World Dracula Day
+*n0527 - *Old-Time Player Piano Day
+*n0528 - *Menstrual Hygiene Day
+*n0529 - *Paper Clip Day
+*n0530 - *Water a Flower Day
+*n0531 - *World No Tobacco Day
 
-n0601 - Dinosaur Day, Wear a Dress Day
-n0602 - International Sex Workers' Day, National Rocky Road Day
-n0603 - National Egg Day, National Moonshine Day
-n0604 - National Cheese Day, Shopping Cart Day
-n0605 - Hot Air Balloon Day, Apple II Day, National Veggie Burger Day
-n0606 - D-Day, Drive-in Movie Day, National Eyewear Day, National Yo-yo Day
-n0607 - VCR Day, National Chocolate Ice Cream Day
-n0608 - World Oceans Day, Jelly-Filled Doughnut Day
-n0609 - National Strawberry-Rhubarb Pie Day
-n0610 - Ballpoint Pen Day, National Black Cow Day, National Herb and Spice Day
-n0611 - Corn on the Cob Day
+*n0601 - *Dinosaur Day, *Wear a Dress Day
+*n0602 - *International Sex Workers' Day, National Rocky Road Day
+*n0603 - *National Egg Day, National Moonshine Day
+*n0604 - National Cheese Day, *Shopping Cart Day
+*n0605 - *Hot Air Balloon Day, Apple II Day, National Veggie Burger Day
+*n0606 - D-Day, Drive-in Movie Day, National Eyewear Day, *National Yo-yo Day
+*n0607 - *VCR Day, National Chocolate Ice Cream Day
+*n0608 - *World Oceans Day, Jelly-Filled Doughnut Day
+*n0609 - *National Strawberry-Rhubarb Pie Day
+*n0610 - Ballpoint Pen Day, *National Black Cow Day, National Herb and Spice Day
+*n0611 - *Corn on the Cob Day
 *n0612 - Red Rose Day, *Day to Honor Zeus
-n0613 - Sewing Machine Day, Weed Your Garden Day, World Softball Day
-n0614 - Flag Day (US), Pop Goes the Weasel Day
-n0615 - Magna Carta Day, National Electricity Day, Fly a Kite Day, Global Wind Day
-n0616 - World Sea Turtle Day, Fresh Veggies Day
-n0617 - World Croc Day (crocodiles), Global Garbage Man Day
-n0618 - Go Fishing Day, International Picnic Day, International Panic Day
-n0619 - Juneteenth, National Martini Day, World Juggling Day
-n0620 - World Refugee Day (Statue of Liberty, maybe?), New Identity Day
-n0621 - Go Skateboarding Day, International Day of Yoga, National Selfie Day, International Surfing Day, World Giraffe Day
-n0622 - World Rainforest Day
-n0623 - National Pink Day, Pink Flamingo Day
-n0624 - Swim a Lap Day, World UFO Day (also on July 2nd), Museum Comes to Life Day, International Fairy Day
-n0625 - Color TV Day, National Food Truck Day
-n0626 - National Canoe Day (Canada), Tropical Cocktails Day
-n0627 - National Bingo Day, National Orange Blossom Day, Sunglasses Day
-n0628 - Tau Day
-n0629 - National Camera Day, National Waffle Iron Day
-n0630 - International Asteroid Day, National Meteor Day, Social Media Day
+*n0613 - *Sewing Machine Day, Weed Your Garden Day, World Softball Day
+*n0614 - *Flag Day (US), Pop Goes the Weasel Day
+*n0615 - Magna Carta Day, *National Electricity Day, *Fly a Kite Day, *Global Wind Day
+*n0616 - *World Sea Turtle Day, Fresh Veggies Day
+*n0617 - World Croc Day (crocodiles), Global Garbage Man Day
+*n0618 - *Go Fishing Day, International Picnic Day, International Panic Day
+*n0619 - Juneteenth, National Martini Day, *World Juggling Day
+*n0620 - World Refugee Day (Statue of Liberty, maybe?), New Identity Day
+*n0621 - Go Skateboarding Day, International Day of Yoga, National Selfie Day, *International Surfing Day, World Giraffe Day
+*n0622 - *World Rainforest Day
+*n0623 - *National Pink Day, *Pink Flamingo Day
+*n0624 - Swim a Lap Day, World UFO Day (also on July 2nd), Museum Comes to Life Day, *International Fairy Day
+*n0625 - *Color TV Day, National Food Truck Day
+*3n0626 - *National Canoe Day (Canada), Tropical Cocktails Day
+*n0627 - *National Bingo Day, National Orange Blossom Day, Sunglasses Day
+*n0628 - *Tau Day
+*n0629 - *National Camera Day, National Waffle Iron Day
+*n0630 - *International Asteroid Day, *National Meteor Day, Social Media Day
 
-n0701 - International Joke Day, Second Half of the New Year Day, Canada Day
-n0702 - Comic Sans Day, I Forgot Day, World UFO Day (also June 24th), Freedom From Fear of Speaking Day
-n0703 - National Compliment Your Mirror Day, Stay Out of the Sun Day
+*n0701 - International Joke Day, Second Half of the New Year Day, *Canada Day
+*n0702 - Comic Sans Day, I Forgot Day, World UFO Day (also June 24th), *Freedom From Fear of Speaking Day
+*n0703 - National Compliment Your Mirror Day, *Stay Out of the Sun Day
 *n0704 - *American Independence Day
 n0705 - Bikini Day, Mechanical Pencil Day, National Apple Turnover Day, National Graham Cracker Day
 n0706 - International Kissing Day, National Air Traffic Control Day
