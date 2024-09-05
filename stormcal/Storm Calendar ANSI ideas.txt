@@ -2,14 +2,19 @@ The following are lists of made and possible ANSIs for the Storm Calendar projec
 The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
-310 ANSIs done, 71 ANSIs to go for first draft
+380 ANSIs done
 
 Needed/wanted Fixes:
 Advent Sunday - Just used November 29th, should be 4th Sunday before Christmas. Which probably isn't bad, programmatically as a before-x-day item. But could also just be a special day.
-February 29th
+February 29th (was added in 2024. Not sure if it should go elsewhere.)
 n0426Alien seems to not display correctly with the script, but does fine in the ANSI gallery
 Open that Bottle Night needs to be added into the script somehow, and the day otherwise replaced
+n0227 - Need a replacement for when it's not Open That Bottle Night
 n0504 - Possibly add some "14 over 3" (yellow over red) in an attempt to get a more orange hue to things. But the image could likely use some outlining anyway. Or more black, at least.
+n0701 - Canada Day says June 1st, when it's actually July 1st.
+n0912 - Need one for non-leap years.
+n1126 - Need one for when not Thanksgiving
+n1129 - Need one for when not the first Advent Sunday
 
 Default Monthly ANSIs
 *d01 - January - Snow person in a snow storm?
@@ -86,7 +91,7 @@ Daily ANSIs
 *n0226 - *Tell a Fairy Tale Day, Thermos Bottle Day
 n0227 - (*Probably doing Open That Bottle Night for 2021) International Polar Bear Day, National Retro Day
 *n0228 - Car Keys and Small Change Day, Floral Design Day, *National Science Day, National Public Sleeping Day
-n0229 - (Nothing for 2021, 2022, or 2023)
+*n0229 - (Nothing for 2021, 2022, or 2023)
 
 *n0301 - *National Pig Day
 *n0302 - *Old Stuff Day
@@ -208,7 +213,7 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0623 - *National Pink Day, *Pink Flamingo Day
 *n0624 - Swim a Lap Day, World UFO Day (also on July 2nd), Museum Comes to Life Day, *International Fairy Day
 *n0625 - *Color TV Day, National Food Truck Day
-*3n0626 - *National Canoe Day (Canada), Tropical Cocktails Day
+*n0626 - *National Canoe Day (Canada), Tropical Cocktails Day
 *n0627 - *National Bingo Day, National Orange Blossom Day, Sunglasses Day
 *n0628 - *Tau Day
 *n0629 - *National Camera Day, National Waffle Iron Day
@@ -276,14 +281,14 @@ n0229 - (Nothing for 2021, 2022, or 2023)
 *n0828 - National Red Wine Day, National Power Rangers Day, National Bow Tie Day, National Cherry Turnovers Day, Rainbow Bridge Remembrance Day, *International Read Comics in Public Day*
 *n0829 - National Chop Suey Day, *Lemon Juice Day, More Herbs Less Salt Day, Record Store Day
 *n0830 - National Toasted Marshmallow Day, National Grief Awareness Day, National Beach Day, *Frankenstein Day (Mary Shelley's birthday)
-n0831 - National South Carolina Day, National Matchmaker Day, National Diatomaceous Earth Day, National Trail Mix Day, Eat Outside Day
+*n0831 - National South Carolina Day, National Matchmaker Day, National Diatomaceous Earth Day, National Trail Mix Day, *Eat Outside Day
 
 
 *n0901 - *World Letter Writing Day, National Chicken Boy�s Day, National No Rhyme (Nor Reason) Day
 *n0902 - National Blueberry Popsicle Day, *National V-J Day
 *n0903 - *National Skyscraper Day, National Welsh Rarebit Day, U.S. Bowling League Day
-n0904 - World Sexual Health Day, Global Talent Acquisition Day, National Chianti Day
-    National Wildlife Day
+*n0904 - World Sexual Health Day, Global Talent Acquisition Day, National Chianti Day
+    *National Wildlife Day
     National Newspaper Carrier Day
     National Macadamia Nut Day
     National Lazy Mom�s Day � First Friday in September
@@ -315,7 +320,7 @@ National School Picture Day *- Second Thursday in September
 National Make Your Bed Day
     National Hot Cross Bun Day
     Patriot Day and National Day of Service and Remembrance
-*n0912 - United Nations Day for South-South Cooperation
+1/4th *n0912 - United Nations Day for South-South Cooperation
 National Video Games Day
 German Language Day - Tag der deutschen Sprache
     National Chocolate Milkshake Day
