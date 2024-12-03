@@ -2,7 +2,7 @@ The following are lists of made and possible ANSIs for the Storm Calendar projec
 The first bit (e.g., n0719) is what the filename would start with.
 * Means that at least one ANSI made for this item
 
-380 ANSIs done
+380 ANSIs done (12 monthly, 361 daily, 5 daily that aren't actually(n0227, n0912, n1106, n1125, n1129), 2 weekly, and 0 special (not even Easter).
 
 Needed/wanted Fixes:
 Advent Sunday - Just used November 29th, should be 4th Sunday before Christmas. Which probably isn't bad, programmatically as a before-x-day item. But could also just be a special day.
@@ -13,8 +13,21 @@ n0227 - Need a replacement for when it's not Open That Bottle Night
 n0504 - Possibly add some "14 over 3" (yellow over red) in an attempt to get a more orange hue to things. But the image could likely use some outlining anyway. Or more black, at least.
 n0701 - Canada Day says June 1st, when it's actually July 1st.
 n0912 - Need one for non-leap years.
-n1126 - Need one for when not Thanksgiving
+n0922 - Should add text for World Rhino Day / Storm BBS. And maybe some outlining
+n1001 - Should add text for Model T Day
+n1005 - World Teachers' Day - add a y (or maybe a 0) to the other side of the equation
+n1029 - World Animation Day - Lightning bolt is brown, somehow, on the BBS.
+n1106 - Evidently Fountain Pen Day is the first Friday in November, not November 6th
+n1117 - Make bread not be quite as dark in the middle
+n1125 - Mistigram: the humble #jukebox really is an artifact from a previous era, but fans of coin-op amusements often find them under a big tent with video arcade cabinets & especially pinball machines.  Today is their day*, so AdeptApril has inserted 25¢ and drawn an #ANSIart salute.
+* actually, the timing is a little more complicated than that: when AdeptApril drew these screens years ago Nov 25 was Jukebox Day.  It is actually pegged to "the day before Thanksgiving", the busiest day of bar activity in the US, when family congregating from out-of-town go out the night before the big home-cooked meal and get caught up with tunes and good times... so if you are making plans for your own family to observe Jukebox Day, it should technically be celebrated on Nov 27th this year.
 n1129 - Need one for when not the first Advent Sunday
+
+Code ideas:
+Make Easter actually determined, rather than just hard coding dates
+Determine how many times a user has logged in today, and cycle through the available graphics with each login.
+Have a mode where it displays all the valid graphics for the day (also allowing for multiple from each type)
+Have a mode where it asks for month, day, and year, and displays all valid graphics for the day (and, e.g., Next up, graphic 1 of 3...)
 
 Default Monthly ANSIs
 *d01 - January - Snow person in a snow storm?
@@ -320,7 +333,7 @@ National School Picture Day *- Second Thursday in September
 National Make Your Bed Day
     National Hot Cross Bun Day
     Patriot Day and National Day of Service and Remembrance
-1/4th *n0912 - United Nations Day for South-South Cooperation
+*n0912 - United Nations Day for South-South Cooperation
 National Video Games Day
 German Language Day - Tag der deutschen Sprache
     National Chocolate Milkshake Day
@@ -499,7 +512,7 @@ National Fried Rice Day
 *n1123 - *Fibonacci Day
 *n1124 - *D.B. Cooper Day, Brownielocks Day (celebrate brunettes)
 *n1125 - International Day for the Elimination of Violence against Women, *National Jukebox day
-n1126 - (Doing *Thanksgiving for 2020), National Cake Day, Good Grief Day
+*n1126 - *Mongolian People's Republic established in 1924, (Doing *Thanksgiving for 2020), National Cake Day, Good Grief Day
 *n1127 - Turtle Adoption Day / *Turtle Sponsorship Day
 *n1128 - Red Planet Day, Letter Writing Day, *Make Your Own Head Day
 n1129 - (*Advent Sunday in 2020), International Day of the Bible

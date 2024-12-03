@@ -143,37 +143,18 @@ def dFilter(datalist, month):
 
 def today_is_easter(year, month, day):
     switcher = {
-        # '2020': y2020(month, day),
-        '2021': y2021(month, day),
-        '2022': y2022(month, day),
-        '2023': y2023(month, day),
-        '2024': y2024(month, day),
         '2025': y2025(month, day),
         '2026': y2026(month, day),
         '2027': y2027(month, day),
         '2028': y2028(month, day),
         '2029': y2029(month, day),
         '2030': y2030(month, day),
+        '2031': y2031(month, day),
+        '2032': y2032(month, day),
+        '2033': y2033(month, day),
+        '2034': y2034(month, day),
     }
     return switcher.get(year, False)
-
-
-def y2021(month, day):
-    if month == '04' and day == '04':
-        return True
-    return False
-
-
-def y2022(month, day):
-    if month == '04' and day == '17':
-        return True
-    return False
-
-
-def y2023(month, day):
-    if month == '04' and day == '09':
-        return True
-    return False
 
 
 def y2024(month, day):
@@ -216,6 +197,27 @@ def y2030(month, day):
     if month == '04' and day == '21':
         return True
     return False
+
+def y2031(month, day):
+    if month == '04' and day == '13':
+        return True
+    return False
+
+def y2032(month, day):
+    if month == '03' and day == '28':
+        return True
+    return False
+
+def y2033(month, day):
+    if month == '04' and day == '17':
+        return True
+    return False
+
+def y2034(month, day):
+    if month == '04' and day == '09':
+        return True
+    return False
+
 
 ###################################
 # # PROGRAM EXECUTION BEGINS HERE ##
