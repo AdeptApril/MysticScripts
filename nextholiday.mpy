@@ -1,0 +1,144 @@
+# -*- coding: CP437 -*-
+
+# # NEXT HOLIDAY FOR MYSTIC BBS
+# # By April Monoceros / Adept from Storm BBS (stormbbs.com/telnet.stormbbs.com/bbs.stormbbs.com)
+# # Version 1 (Released on: Not yet released)
+# #
+# # Description
+# # Finds the next holiday from a directory of properly-named ANSIs, calculates how many days until that holiday,
+# # displays the ANSI, and then puts a bit of text over the top to say how long it is until that holiday.
+# #
+# # Instructions
+# # Place this .mpy file in your scripts directory.
+# # Inside of that scripts directory, create a directory called, "nextholiday", and place all the ANSI files in there.
+# #
+# # Make sure that that created directory lines up with what's defined under "LOCATION", below, or else change that
+# # variable to match what you have.
+# #
+# # To add to a menu or part of your login sequence:
+# #
+# # In a Mystic menu, under "Action List", add a line with "(GY) Execute Python 2 Script", with "Data" of "nextholiday".
+# #
+# # Works as either something that you hit a button to display, or as a line in your PreLogin set of commands.
+# #
+# # Make sure all your ANSIs are in the format of:
+# # nMMDDx##y##Name.ans
+# # E.g., n1031x25y15Halloween.ans, where it starts with 'n', then the two-digit month (e.g. 04 for April), then the
+# # two-digit day, then the x and y positioning for where the text should be displayed, then the holiday name.
+# #
+# # Be careful with the holiday name, as it will say, "Happy (holiday name)!" on the day of, and "(x) days until
+# # (holiday name)!" otherwise.
+# #
+# # You can also include things in CamelCase. E.g., "TalkLikeAPirateDay" will become, "Happy Talk Like A Pirate Day!".
+# #
+# # Version history:
+# # 1 - Initial release, including a README.txt, a file_id.diz, and the following ANSI dates: n0505, n0919, n1031, n1225
+
+from mystic_bbs import *
+from datetime import date
+import os
+import re
+
+LOCATION = './themes/default/scripts/nextholiday/'  # Directory where the holiday ANSIs are stored
+
+# Custom holiday greetings for specific target names (matches the raw parsed name)
+OVERRIDE_GREETINGS = {
+    'Christmas': '|15Merry Christmas!',
+}
+
+def split_camel_case(name):
+    # Pass 1: Handle lowercase -> uppercase (e.g., "LikeA" -> "Like A")
+    s1 = re.sub(r"([a-z])([A-Z])", r"\1 \2", name)
+    # Pass 2: Handle uppercase -> uppercase before lowercase (e.g., "APirate" -> "A Pirate")
+    return re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", s1)
+
+def get_greeting(holiday_name):
+    """Returns custom greeting if overridden, else returns default 'Happy <Name>' greeting."""
+    if holiday_name in OVERRIDE_GREETINGS:
+        return OVERRIDE_GREETINGS[holiday_name]
+    return "Happy " + split_camel_case(holiday_name) + "!"
+
+def nextholiday():
+    today = date.today()
+    current_year = today.year
+
+    # Regex pattern: nMMDDx##y##Name.ans
+    pattern = re.compile(r'^n(\d{2})(\d{2})x(\d{2})y(\d{2})([A-Za-z0-9]+)\.ans$', re.IGNORECASE)
+
+    candidates = []
+
+    # Read files in LOCATION directory
+    if not os.path.exists(LOCATION):
+        writeln("Next Holiday directory not found: " + LOCATION)
+        writeln("|CR|PA")
+        return
+
+    for filename in os.listdir(LOCATION):
+        match = pattern.match(filename)
+        if match:
+            month = int(match.group(1))
+            day = int(match.group(2))
+            x_pos = match.group(3)
+            y_pos = match.group(4)
+            name = match.group(5)
+
+            # Check target date in current year
+            try:
+                target_date = date(current_year, month, day)
+            except ValueError:
+                continue  # Invalid date handling (e.g. Feb 30)
+
+            # If the date has already passed this year, evaluate for next year
+            if target_date < today:
+                target_date = date(current_year + 1, month, day)
+
+            candidates.append({
+                'filepath': os.path.join(LOCATION, filename),
+                'target_date': target_date,
+                'x': x_pos,
+                'y': y_pos,
+                'name': name
+            })
+
+    if not candidates:
+        writeln("No Next Holiday ANSI files found.")
+        writeln("|CR|PA")
+        return
+
+    # Sort candidates by chronological target date
+    candidates.sort(key=lambda item: item['target_date'])
+    next_event = candidates[0]
+
+    # Calculate days remaining
+    days_until = (next_event['target_date'] - today).days
+
+    # 1. Display the selected ANSI file
+    try:
+        with open(next_event['filepath'], 'r') as f:
+            file_contents = f.read()
+            writeln("")
+            write(file_contents)
+    except IOError:
+        writeln("Error loading ANSI file: " + next_event['filepath'])
+        return
+
+    # 2. Format output text string
+    if days_until == 0:
+        display_text = get_greeting(next_event['name'])
+    else:
+        formatted_name = split_camel_case(next_event['name'])
+        display_text = "|15{} days until {}!".format(days_until, formatted_name)
+
+    # 3. Position cursor using Mystic BBS escape code syntax (|[X##|[Y##) and print overlay text
+    position_code = "|[X" + next_event['x'] + "|[Y" + next_event['y']
+    write(position_code + display_text)
+
+    # Pause screen, but put the pause at an appropriate place at the bottom
+    position_code = "|[X00|[Y25"
+    writeln(position_code + "|CR|PA")
+
+###################################
+# # PROGRAM EXECUTION BEGINS HERE ##
+###################################
+
+nextholiday()
